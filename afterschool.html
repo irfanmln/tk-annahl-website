@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Afterschool – An-Nahl Learning Center</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .ekskul-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .ekskul-card { background:white; border-radius:20px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s; text-align:center; }
+    .ekskul-card:hover { transform:translateY(-6px); }
+    .ekskul-icon { width:72px; height:72px; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:36px; margin:0 auto 18px; }
+    .ekskul-card h3 { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; margin-bottom:10px; }
+    .ekskul-card p { font-size:14px; color:var(--text-light); line-height:1.6; margin-bottom:14px; }
+    .ekskul-tag { display:inline-block; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; }
+    .info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .info-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); display:flex; gap:16px; }
+    .info-icon { width:50px; height:50px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+    .info-text h4 { font-weight:800; margin-bottom:6px; }
+    .info-text p { font-size:14px; color:var(--text-light); line-height:1.6; }
+    @media(max-width:900px){ .ekskul-grid { grid-template-columns:repeat(2,1fr); } .info-grid { grid-template-columns:1fr; } }
+    @media(max-width:600px){ .ekskul-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="page-hero">
+    <div class="page-hero-tag">🌟 Ekstrakurikuler</div>
+    <h1>Program <span>Afterschool</span></h1>
+    <p>Program ekstrakurikuler sore hari yang seru untuk mengembangkan bakat dan minat anak di berbagai bidang</p>
+  </div>
+
+  <section style="background:white"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">🎯 Ekskul Kami</div>
+      <h2 class="section-title">Pilihan <span>Ekstrakurikuler</span></h2>
+      <p class="section-desc">Tersedia berbagai pilihan ekskul yang bisa disesuaikan dengan minat dan bakat anak</p>
+    </div>
+    <div class="ekskul-grid">
+      <div class="ekskul-card">
+        <div class="ekskul-icon" style="background:#FFF3CC">🎨</div>
+        <h3>Melukis & Seni</h3>
+        <p>[Deskripsi ekskul melukis dan seni. Anak belajar berbagai teknik melukis dan berkarya seni.]</p>
+        <span class="ekskul-tag" style="background:#FFF3CC;color:#E65C00">Senin & Rabu</span>
+      </div>
+      <div class="ekskul-card">
+        <div class="ekskul-icon" style="background:#E8F5E9">⚽</div>
+        <h3>Futsal</h3>
+        <p>[Deskripsi ekskul futsal. Mengembangkan kemampuan fisik, sportivitas, dan kerja sama tim.]</p>
+        <span class="ekskul-tag" style="background:#E8F5E9;color:#2E7D32">Selasa & Kamis</span>
+      </div>
+      <div class="ekskul-card">
+        <div class="ekskul-icon" style="background:#E3F2FD">🎵</div>
+        <h3>Musik & Nasyid</h3>
+        <p>[Deskripsi ekskul musik. Anak belajar bermain alat musik sederhana dan bernyanyi nasyid Islami.]</p>
+        <span class="ekskul-tag" style="background:#E3F2FD;color:#1565C0">Senin & Jumat</span>
+      </div>
+      <div class="ekskul-card">
+        <div class="ekskul-icon" style="background:#FFE0F0">💃</div>
+        <h3>Tari Tradisional</h3>
+        <p>[Deskripsi ekskul tari. Mengenalkan budaya Indonesia melalui tarian tradisional yang disesuaikan untuk anak.]</p>
+        <span class="ekskul-tag" style="background:#FFE0F0;color:#C2185B">Selasa & Jumat</span>
+      </div>
+      <div class="ekskul-card">
+        <div class="ekskul-icon" style="background:#F3E5F5">📖</div>
+        <h3>Tahfidz Al-Quran</h3>
+        <p>[Deskripsi ekskul tahfidz. Program menghafal Al-Quran dengan metode yang menyenangkan dan efektif.]</p>
+        <span class="ekskul-tag" style="background:#F3E5F5;color:#7B1FA2">Setiap Hari</span>
+      </div>
+      <div class="ekskul-card">
+        <div class="ekskul-icon" style="background:#E0F7FA">🌿</div>
+        <h3>Berkebun</h3>
+        <p>[Deskripsi ekskul berkebun. Anak belajar menanam, merawat tanaman, dan mengenal alam dengan cara yang menyenangkan.]</p>
+        <span class="ekskul-tag" style="background:#E0F7FA;color:#00695C">Rabu & Sabtu</span>
+      </div>
+    </div>
+  </div></section>
+
+  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">ℹ️ Informasi</div>
+      <h2 class="section-title">Info <span>Afterschool</span></h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="info-icon" style="background:#FFF3CC">⏰</div><div class="info-text"><h4>Jam Pelaksanaan</h4><p>Senin – Jumat: 13.00 – 15.00 WIB<br>Sabtu: 08.00 – 10.00 WIB</p></div></div>
+      <div class="info-card"><div class="info-icon" style="background:#E8F5E9">👶</div><div class="info-text"><h4>Peserta</h4><p>Terbuka untuk semua siswa An-Nahl Learning Center. Setiap kelas maksimal 10 anak.</p></div></div>
+      <div class="info-card"><div class="info-icon" style="background:#E3F2FD">💰</div><div class="info-text"><h4>Biaya</h4><p>[Isi dengan informasi biaya ekskul dari sekolah. Hubungi sekolah untuk info terbaru.]</p></div></div>
+      <div class="info-card"><div class="info-icon" style="background:#FFE0F0">📝</div><div class="info-text"><h4>Pendaftaran</h4><p>Pendaftaran ekskul dilakukan bersamaan dengan pendaftaran sekolah atau di awal semester.</p></div></div>
+    </div>
+  </div></section>
+
+  <div style="background:linear-gradient(135deg,var(--purple),#E91E63);padding:60px 40px;text-align:center;color:white">
+    <h2 style="font-family:'Baloo 2',cursive;font-size:34px;font-weight:800;margin-bottom:14px">Minat Ikut Program Afterschool? 🌟</h2>
+    <p style="font-size:16px;opacity:0.9;margin-bottom:28px">Hubungi kami untuk informasi lengkap dan pendaftaran ekskul</p>
+    <a href="kontak.html" style="background:white;color:#7B1FA2;padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;transition:all 0.3s">📞 Hubungi Kami</a>
+  </div>
+
+  <div id="footer"></div>
+  <script src="main.js"></script>
+  <script>renderNavbar(); renderFooter();</script>
+</body>
+</html>

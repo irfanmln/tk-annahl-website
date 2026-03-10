@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Activities – An-Nahl Learning Center</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .act-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .act-card { background:white; border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s,box-shadow 0.3s; }
+    .act-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.13); }
+    .act-thumb { height:160px; display:flex; align-items:center; justify-content:center; font-size:70px; }
+    .act-body { padding:22px; }
+    .act-body h3 { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; margin-bottom:8px; }
+    .act-body p { font-size:14px; color:var(--text-light); line-height:1.6; }
+    .schedule-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .schedule-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+    .schedule-card h4 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; color:var(--orange-dark); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+    .sched-item { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px dashed #FFE0A0; }
+    .sched-item:last-child { border-bottom:none; }
+    .sched-time { background:var(--cream); color:var(--orange-dark); padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; white-space:nowrap; min-width:85px; text-align:center; }
+    @media(max-width:900px){ .act-grid { grid-template-columns:repeat(2,1fr); } .schedule-grid { grid-template-columns:1fr; } }
+    @media(max-width:600px){ .act-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="page-hero">
+    <div class="page-hero-tag">🎨 Kegiatan</div>
+    <h1>Activities <span>An-Nahl</span></h1>
+    <p>Berbagai kegiatan seru dan edukatif yang dirancang untuk mengembangkan kreativitas, kecerdasan, dan karakter anak</p>
+  </div>
+
+  <section style="background:white"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">🎯 Program Kegiatan</div>
+      <h2 class="section-title">Semua <span>Activities</span></h2>
+      <p class="section-desc">Kegiatan kami dirancang untuk merangsang seluruh aspek kecerdasan anak</p>
+    </div>
+    <div class="act-grid">
+      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FFD700,#FFA500)">🎨</div><div class="act-body"><h3>Seni & Kreasi</h3><p>[Deskripsi kegiatan seni dan kreasi. Contoh: mewarnai, melukis, membuat kerajinan tangan, dan eksplorasi berbagai media seni.]</p></div></div>
+      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">🔬</div><div class="act-body"><h3>Science & Eksplorasi</h3><p>[Deskripsi kegiatan sains. Contoh: eksperimen sederhana, mengenal alam, berkebun, dan observasi lingkungan sekitar.]</p></div></div>
+      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#2196F3,#00BCD4)">📖</div><div class="act-body"><h3>Literasi & Bahasa</h3><p>[Deskripsi program literasi. Contoh: storytelling, mengenal huruf, bermain kata, dan pengenalan bahasa asing.]</p></div></div>
+      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FF6B9D,#FF8C69)">🎵</div><div class="act-body"><h3>Musik & Gerak</h3><p>[Deskripsi kegiatan musik. Contoh: bernyanyi, memainkan instrumen sederhana, senam, dan tari tradisional.]</p></div></div>
+      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#9C27B0,#E91E63)">🕌</div><div class="act-body"><h3>Kegiatan Islami</h3><p>[Deskripsi kegiatan Islami. Contoh: hafalan surat pendek, doa harian, cerita nabi, dan praktik ibadah dasar.]</p></div></div>
+      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FF8C00,#E65C00)">⚽</div><div class="act-body"><h3>Olahraga & Gerak</h3><p>[Deskripsi kegiatan olahraga. Contoh: senam pagi, permainan outdoor, obstacle course, dan olahraga tim.]</p></div></div>
+    </div>
+  </div></section>
+
+  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">📅 Jadwal</div>
+      <h2 class="section-title">Jadwal <span>Kegiatan Harian</span></h2>
+      <p class="section-desc">Jadwal kegiatan terstruktur untuk perkembangan optimal anak</p>
+    </div>
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <h4>🌅 Senin & Rabu</h4>
+        <div class="sched-item"><span class="sched-time">07.30 – 08.00</span><span>🤲 Ikrar & Doa Pagi</span></div>
+        <div class="sched-item"><span class="sched-time">08.00 – 08.30</span><span>📖 Hafalan & Iqra</span></div>
+        <div class="sched-item"><span class="sched-time">08.30 – 09.30</span><span>🎨 Kegiatan Seni & Kreasi</span></div>
+        <div class="sched-item"><span class="sched-time">09.30 – 10.00</span><span>🍎 Istirahat & Makan</span></div>
+        <div class="sched-item"><span class="sched-time">10.00 – 11.00</span><span>🔬 Science & Eksplorasi</span></div>
+        <div class="sched-item"><span class="sched-time">11.00 – 11.30</span><span>🌟 Evaluasi & Pulang</span></div>
+      </div>
+      <div class="schedule-card">
+        <h4>🌞 Selasa & Kamis</h4>
+        <div class="sched-item"><span class="sched-time">07.30 – 08.00</span><span>🤲 Ikrar & Doa Pagi</span></div>
+        <div class="sched-item"><span class="sched-time">08.00 – 08.30</span><span>🎵 Musik & Gerak</span></div>
+        <div class="sched-item"><span class="sched-time">08.30 – 09.30</span><span>📖 Literasi & Bahasa</span></div>
+        <div class="sched-item"><span class="sched-time">09.30 – 10.00</span><span>🍱 Istirahat & Makan</span></div>
+        <div class="sched-item"><span class="sched-time">10.00 – 11.00</span><span>⚽ Olahraga & Gerak</span></div>
+        <div class="sched-item"><span class="sched-time">11.00 – 11.30</span><span>🌟 Evaluasi & Pulang</span></div>
+      </div>
+      <div class="schedule-card">
+        <h4>🕌 Jumat</h4>
+        <div class="sched-item"><span class="sched-time">07.30 – 08.00</span><span>🤲 Ikrar & Doa Pagi</span></div>
+        <div class="sched-item"><span class="sched-time">08.00 – 09.00</span><span>🕌 Kegiatan Islami</span></div>
+        <div class="sched-item"><span class="sched-time">09.00 – 09.30</span><span>🍎 Istirahat</span></div>
+        <div class="sched-item"><span class="sched-time">09.30 – 10.30</span><span>🎨 Kreasi Bebas</span></div>
+        <div class="sched-item"><span class="sched-time">10.30 – 11.00</span><span>🌟 Evaluasi & Pulang</span></div>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));border-radius:18px;padding:24px;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px">
+        <div style="font-size:50px">📝</div>
+        <h3 style="font-family:'Baloo 2',cursive;font-size:22px;font-weight:800">Ingin Tahu Lebih Lanjut?</h3>
+        <p style="opacity:0.9;font-size:14px">Hubungi kami untuk informasi detail tentang program activities</p>
+        <a href="kontak.html" style="background:white;color:var(--orange-dark);padding:10px 24px;border-radius:25px;font-weight:800;text-decoration:none;font-size:14px">Hubungi Kami</a>
+      </div>
+    </div>
+  </div></section>
+
+  <div id="footer"></div>
+  <script src="main.js"></script>
+  <script>renderNavbar(); renderFooter();</script>
+</body>
+</html>

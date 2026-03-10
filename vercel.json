@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/nursery", "destination": "/nursery.html" },
+    { "source": "/toddler", "destination": "/toddler.html" },
+    { "source": "/k1", "destination": "/k1.html" },
+    { "source": "/k2", "destination": "/k2.html" },
+    { "source": "/activities", "destination": "/activities.html" },
+    { "source": "/afterschool", "destination": "/afterschool.html" },
+    { "source": "/ppdb", "destination": "/ppdb.html" },
+    { "source": "/kontak", "destination": "/kontak.html" },
+    { "source": "/admin", "destination": "/admin.html" }
+  ]
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>K1 – An-Nahl Learning Center</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .prog-color { --pc: #4CAF50; --pc2: #8BC34A; --pc-light: #E8F5E9; --pc-dark: #2E7D32; }
+    .prog-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .prog-img { width:100%; aspect-ratio:4/3; background:linear-gradient(135deg,var(--pc),var(--pc2)); border-radius:28px; display:flex; align-items:center; justify-content:center; font-size:120px; box-shadow:0 20px 60px rgba(255,140,0,0.3); }
+    .vm-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .vm-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+    .vm-card h4 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; color:var(--pc-dark); margin-bottom:12px; }
+    .vm-card p { font-size:14px; color:var(--text-light); line-height:1.7; }
+    .kuri-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .kuri-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); text-align:center; transition:transform 0.3s; }
+    .kuri-card:hover { transform:translateY(-5px); }
+    .kuri-icon { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 14px; }
+    .kuri-card h4 { font-weight:800; font-size:15px; margin-bottom:8px; }
+    .kuri-card p { font-size:13px; color:var(--text-light); line-height:1.6; }
+    .galeri-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .galeri-item { border-radius:18px; overflow:hidden; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:60px; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+    @media(max-width:900px){ .prog-grid,.vm-grid { grid-template-columns:1fr; } .kuri-grid { grid-template-columns:repeat(2,1fr); } .galeri-grid { grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+<body class="prog-color">
+  <div id="navbar"></div>
+  <div class="page-hero">
+    <div class="page-hero-tag">⭐ Program</div>
+    <h1>K1 <span>Class</span></h1>
+    <p>Program pengenalan belajar yang aman, nyaman, dan menyenangkan untuk si kecil usia 4–5 tahun</p>
+  </div>
+
+  <!-- INTRO -->
+  <section style="background:white"><div class="container prog-grid">
+    <div><div class="prog-img">⭐</div></div>
+    <div>
+      <div class="section-tag">✨ Tentang Program</div>
+      <h2 class="section-title" style="text-align:left">K1 <span>Class</span></h2>
+      <p style="color:var(--text-light);line-height:1.8;margin-bottom:20px">K1 adalah program awal yang dirancang khusus untuk anak usia 4–5 tahun. Di sini, si kecil akan diperkenalkan dengan lingkungan belajar yang hangat dan penuh kasih sayang.</p>
+      <p style="color:var(--text-light);line-height:1.8;margin-bottom:28px">Dengan rasio guru dan murid yang ideal, setiap anak mendapatkan perhatian personal yang memaksimalkan tumbuh kembangnya.</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <div style="background:var(--pc-light);border-radius:14px;padding:16px 20px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--pc-dark);font-family:'Baloo 2',cursive">4–5</div><div style="font-size:13px;color:var(--text-light);font-weight:700">Tahun</div></div>
+        <div style="background:var(--pc-light);border-radius:14px;padding:16px 20px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--pc-dark);font-family:'Baloo 2',cursive">1:5</div><div style="font-size:13px;color:var(--text-light);font-weight:700">Rasio Guru:Siswa</div></div>
+        <div style="background:var(--pc-light);border-radius:14px;padding:16px 20px;text-align:center"><div style="font-size:28px;font-weight:800;color:var(--pc-dark);font-family:'Baloo 2',cursive">3x</div><div style="font-size:13px;color:var(--text-light);font-weight:700">Sesi per Minggu</div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- VISI MISI -->
+  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">🎯 Visi & Misi</div>
+      <h2 class="section-title">Visi & Misi <span>K1</span></h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card">
+        <h4>🌟 Visi</h4>
+        <p>[Isi dengan visi K1 dari sekolah. Contoh: Menjadi program k1 terbaik yang melahirkan generasi Islami yang cerdas, kreatif, dan berkarakter mulia sejak usia dini.]</p>
+      </div>
+      <div class="vm-card">
+        <h4>🎯 Misi</h4>
+        <p>[Isi dengan misi K1. Contoh: Menciptakan lingkungan belajar yang aman dan nyaman, mengembangkan kemampuan motorik dan kognitif anak, serta menanamkan nilai-nilai Islami sejak dini.]</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- KURIKULUM -->
+  <section style="background:white"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">📚 Kurikulum</div>
+      <h2 class="section-title">Area <span>Pembelajaran</span></h2>
+      <p class="section-desc">Kurikulum K1 dirancang untuk merangsang seluruh aspek perkembangan anak</p>
+    </div>
+    <div class="kuri-grid">
+      <div class="kuri-card"><div class="kuri-icon" style="background:#FFF3CC">🤲</div><h4>Pendidikan Agama Islam</h4><p>Pengenalan doa harian, asmaul husna, dan cerita para nabi dengan cara yang menyenangkan.</p></div>
+      <div class="kuri-card"><div class="kuri-icon" style="background:#E8F5E9">🗣️</div><h4>Bahasa & Komunikasi</h4><p>Stimulasi kemampuan bahasa melalui dongeng, nyanyian, dan permainan kata.</p></div>
+      <div class="kuri-card"><div class="kuri-icon" style="background:#E3F2FD">🎨</div><h4>Seni & Kreativitas</h4><p>Kegiatan mewarnai, melukis dengan jari, dan playdough untuk merangsang motorik halus.</p></div>
+      <div class="kuri-card"><div class="kuri-icon" style="background:#FFE0F0">🏃</div><h4>Motorik & Fisik</h4><p>Permainan aktif dan senam untuk mengembangkan koordinasi dan kekuatan tubuh.</p></div>
+      <div class="kuri-card"><div class="kuri-icon" style="background:#F3E5F5">🌿</div><h4>Pengenalan Alam</h4><p>Eksplorasi lingkungan sekitar dan pengenalan makhluk hidup secara sederhana.</p></div>
+      <div class="kuri-card"><div class="kuri-icon" style="background:#E0F7FA">🤝</div><h4>Sosial Emosional</h4><p>Belajar berbagi, bekerja sama, dan mengelola emosi dalam lingkungan yang aman.</p></div>
+    </div>
+    <div style="margin-top:32px;background:#FFF3CC;border-radius:16px;padding:20px 24px;border-left:4px solid var(--orange)">
+      <p style="font-weight:700;color:var(--orange-dark)">📝 Catatan:</p>
+      <p style="font-size:14px;color:var(--text-light);margin-top:6px">[Tambahkan detail kurikulum spesifik dari sekolah di sini setelah konfirmasi dengan pihak sekolah.]</p>
+    </div>
+  </div></section>
+
+  <!-- GALERI -->
+  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">📸 Galeri</div>
+      <h2 class="section-title">Kegiatan <span>K1</span></h2>
+    </div>
+    <div class="galeri-grid">
+      <div class="galeri-item" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">🎨</div>
+      <div class="galeri-item" style="background:linear-gradient(135deg,#FF6B9D,#FF8C69)">⭐</div>
+      <div class="galeri-item" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">🎵</div>
+      <div class="galeri-item" style="background:linear-gradient(135deg,#2196F3,#00BCD4)">🏃</div>
+      <div class="galeri-item" style="background:linear-gradient(135deg,#9C27B0,#E91E63)">📖</div>
+      <div class="galeri-item" style="background:linear-gradient(135deg,#FF8C00,#E65C00)">🤝</div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-light)">[Foto-foto kegiatan nyata akan ditambahkan setelah konfirmasi dengan pihak sekolah]</p>
+  </div></section>
+
+  <!-- CTA -->
+  <div style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:60px 40px;text-align:center;color:white">
+    <h2 style="font-family:'Baloo 2',cursive;font-size:34px;font-weight:800;margin-bottom:14px">Daftarkan Si Kecil ke K1! ⭐</h2>
+    <p style="font-size:16px;opacity:0.9;margin-bottom:28px">Tempat terbatas. Segera hubungi kami untuk informasi lebih lanjut.</p>
+    <a href="ppdb.html" class="btn-primary" style="background:white;color:var(--orange-dark)">📝 Daftar Sekarang</a>
+  </div>
+
+  <div id="footer"></div>
+  <script src="main.js"></script>
+  <script>renderNavbar(); renderFooter();</script>
+</body>
+</html>
