@@ -439,18 +439,58 @@ footer {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   nav { padding: 0 20px; }
-  .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-height); left: 0; right: 0; background: white; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); gap: 4px; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background: white;
+    padding: 12px 16px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    gap: 2px;
+    z-index: 998;
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+  }
   .nav-links.open { display: flex; }
   .nav-toggle { display: block; }
-  .nav-dropdown-menu { position: static; box-shadow: none; padding-left: 16px; }
-  .page-hero h1 { font-size: 30px; }
-  section { padding: 56px 20px; }
-  .stats-bar .container { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .nav-links a { padding: 10px 14px; border-radius: 10px; display: block; }
+  /* Mobile dropdown - show inline, tidak geser ke samping */
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown > a { display: flex; justify-content: space-between; }
+  .nav-dropdown-menu {
+    display: none !important;
+    position: static !important;
+    box-shadow: none !important;
+    padding: 4px 0 4px 16px !important;
+    background: #FFF8E7 !important;
+    border-radius: 12px !important;
+    margin: 4px 0 !important;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+  .nav-dropdown.mobile-open .nav-dropdown-menu { display: block !important; }
+  .nav-dropdown:hover .nav-dropdown-menu { display: none !important; }
+  .nav-dropdown-menu a { font-size: 13px !important; padding: 8px 12px !important; }
+
+  .page-hero h1 { font-size: 28px; }
+  section { padding: 50px 20px; }
+  .stats-bar { padding: 30px 20px; }
+  .stats-bar .container { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  /* Fix overflow pada semua halaman */
+  body { overflow-x: hidden; }
+  .container { width: 100%; overflow-x: hidden; }
+  section > .container, section > div { max-width: 100%; }
 }
 
 @media (max-width: 600px) {
-  .page-hero { padding: calc(var(--nav-height) + 40px) 20px 40px; }
-  .page-hero h1 { font-size: 26px; }
+  .page-hero { padding: calc(var(--nav-height) + 30px) 16px 36px; }
+  .page-hero h1 { font-size: 24px; }
+  .page-hero p { font-size: 14px; }
   .footer-grid { grid-template-columns: 1fr; }
+  section { padding: 40px 16px; }
+  .section-title { font-size: 26px; }
 }

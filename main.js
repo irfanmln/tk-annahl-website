@@ -44,7 +44,7 @@ function renderNavbar() {
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="${isActive('index.html')}">Beranda</a></li>
         <li class="nav-dropdown">
-          <a href="#" class="${['toddler.html','nursery.html','k1.html','k2.html'].includes(currentPath) ? 'active' : ''}">Program ▾</a>
+          <a href="#" onclick="toggleDropdown(this);return false;" class="${['toddler.html','nursery.html','k1.html','k2.html'].includes(currentPath) ? 'active' : ''}">Program ▾</a>
           <div class="nav-dropdown-menu">
             <a href="toddler.html">⭐ Toddler (2–3 Th)</a>
             <a href="nursery.html">🌱 Nursery (3–4 Th)</a>
@@ -53,7 +53,7 @@ function renderNavbar() {
           </div>
         </li>
         <li class="nav-dropdown">
-          <a href="#" class="${['activities.html','afterschool.html'].includes(currentPath) ? 'active' : ''}">Kegiatan ▾</a>
+          <a href="#" onclick="toggleDropdown(this);return false;" class="${['activities.html','afterschool.html'].includes(currentPath) ? 'active' : ''}">Kegiatan ▾</a>
           <div class="nav-dropdown-menu">
             <a href="activities.html">🎨 Activities</a>
             <a href="afterschool.html">🏹 Ekstrakurikuler</a>
@@ -69,6 +69,17 @@ function renderNavbar() {
 
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
+}
+
+function toggleDropdown(el) {
+  // Hanya aktif di mobile
+  if (window.innerWidth > 900) return;
+  const parent = el.closest('.nav-dropdown');
+  const isOpen = parent.classList.contains('mobile-open');
+  // Tutup semua dropdown dulu
+  document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('mobile-open'));
+  // Buka yang diklik kalau belum open
+  if (!isOpen) parent.classList.add('mobile-open');
 }
 
 // ===== FOOTER =====
