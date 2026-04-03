@@ -3,172 +3,291 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>An-Nahl Learning Center – Beranda</title>
+  <title>TK. PGRI An-Nahl – An-Nahl Learning Centre Kota Sukabumi</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .hero {
-      min-height: 100vh;
-      padding: calc(var(--nav-height) + 60px) 40px 80px;
-      display: flex; align-items: center;
-      background: linear-gradient(135deg, #FFF8E7 0%, #FFE8B0 50%, #FFD080 100%);
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: -120px; right: -120px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,165,0,0.25) 0%, transparent 70%);
-      border-radius: 50%; animation: float 7s ease-in-out infinite;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center; position: relative; z-index: 1;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: white; padding: 8px 18px; border-radius: 25px;
-      font-size: 13px; font-weight: 700; color: var(--orange-dark);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;
-    }
-    .hero-title { font-family: 'Baloo 2', cursive; font-size: 54px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-    .hero-title .hl { color: var(--orange-dark); position: relative; }
-    .hero-title .hl::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 8px; background: var(--yellow); border-radius: 4px; z-index: -1; }
-    .hero-desc { font-size: 17px; color: var(--text-light); line-height: 1.8; margin-bottom: 32px; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-visual { position: relative; display: flex; justify-content: center; }
-    .hero-circle { width: 380px; height: 380px; background: linear-gradient(135deg, var(--yellow), var(--orange)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 150px; box-shadow: 0 20px 60px rgba(255,140,0,0.4); animation: float 6s ease-in-out infinite; }
-    .floating-card { position: absolute; background: white; border-radius: 16px; padding: 12px 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 13px; }
-    .floating-card.fc1 { top: 20px; right: -10px; animation: float 4s ease-in-out infinite 1s; }
-    .floating-card.fc2 { bottom: 40px; left: -10px; animation: float 5s ease-in-out infinite 2s; }
-    .fc-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .programs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .program-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; display: block; }
-    .program-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.14); }
-    .program-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 70px; }
-    .program-body { padding: 20px; }
-    .program-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
-    .program-body h3 { font-family: 'Baloo 2', cursive; font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .program-body p { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 14px; }
-    .program-link { font-size: 13px; font-weight: 700; color: var(--orange-dark); }
-    .why { background: linear-gradient(135deg, #FFF8E7, #FFE8B0); }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .why-list { display: flex; flex-direction: column; gap: 20px; }
-    .why-item { display: flex; gap: 16px; }
-    .why-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-    .why-text h4 { font-weight: 800; font-size: 16px; margin-bottom: 6px; }
-    .why-text p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
-    .why-img-box { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--yellow), var(--orange)); border-radius: 28px; display: flex; align-items: center; justify-content: center; font-size: 100px; box-shadow: 0 20px 60px rgba(255,140,0,0.3); }
-    .act-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .act-card { border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); display: flex; transition: transform 0.3s; }
-    .act-card:hover { transform: translateY(-6px); }
-    .act-thumb { width: 140px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 60px; }
-    .act-body { padding: 24px; flex: 1; background: white; }
-    .act-body h3 { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .act-body p { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 14px; }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .testi-card { background: white; border-radius: 20px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
-    .testi-stars { font-size: 18px; margin-bottom: 14px; }
-    .testi-text { font-size: 15px; color: var(--text-light); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-    .testi-author { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-    .testi-name { font-weight: 700; font-size: 14px; }
-    .testi-role { font-size: 12px; color: var(--text-light); }
-    .cta-section { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); padding: 80px 40px; text-align: center; color: white; }
-    .cta-section h2 { font-family: 'Baloo 2', cursive; font-size: 40px; font-weight: 800; margin-bottom: 16px; }
-    .cta-section p { font-size: 17px; opacity: 0.9; margin-bottom: 32px; }
-    .cta-btn { background: white; color: var(--orange-dark); padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 16px; transition: all 0.3s; display: inline-block; }
-    .cta-btn:hover { background: var(--yellow); transform: translateY(-3px); }
+    .hero { min-height:100vh; padding:calc(var(--nav-height) + 60px) 40px 80px; display:flex; align-items:center; background:linear-gradient(135deg,#FFF8E7 0%,#FFE8B0 50%,#FFD080 100%); position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; top:-120px; right:-120px; width:600px; height:600px; background:radial-gradient(circle,rgba(255,165,0,0.25) 0%,transparent 70%); border-radius:50%; animation:float 7s ease-in-out infinite; }
+    .hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:white; padding:8px 18px; border-radius:25px; font-size:13px; font-weight:700; color:var(--orange-dark); box-shadow:0 4px 15px rgba(0,0,0,0.1); margin-bottom:20px; }
+    .hero-title { font-family:'Baloo 2',cursive; font-size:50px; font-weight:800; line-height:1.1; margin-bottom:20px; }
+    .hero-title .hl { color:var(--orange-dark); position:relative; }
+    .hero-title .hl::after { content:''; position:absolute; bottom:2px; left:0; right:0; height:8px; background:var(--yellow); border-radius:4px; z-index:-1; }
+    .hero-desc { font-size:16px; color:var(--text-light); line-height:1.8; margin-bottom:28px; }
+    .hero-tags { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+    .hero-tag { background:white; border:2px solid #FFE0A0; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; color:var(--orange-dark); }
+    .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+    .hero-visual { position:relative; display:flex; justify-content:center; }
+    .hero-logo-box { width:360px; height:360px; background:linear-gradient(135deg,var(--yellow),var(--orange)); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 20px 60px rgba(255,140,0,0.4); animation:float 6s ease-in-out infinite; overflow:hidden; }
+    .hero-logo-box img { width:280px; height:280px; object-fit:contain; }
+    .floating-card { position:absolute; background:white; border-radius:16px; padding:12px 16px; box-shadow:0 8px 24px rgba(0,0,0,0.12); display:flex; align-items:center; gap:10px; font-weight:700; font-size:13px; }
+    .floating-card.fc1 { top:20px; right:-10px; animation:float 4s ease-in-out infinite 1s; }
+    .floating-card.fc2 { bottom:40px; left:-10px; animation:float 5s ease-in-out infinite 2s; }
+    .fc-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; }
+
+    .programs-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .program-card { background:white; border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s,box-shadow 0.3s; text-decoration:none; color:inherit; display:block; }
+    .program-card:hover { transform:translateY(-8px); box-shadow:0 16px 40px rgba(0,0,0,0.14); }
+    .program-thumb { height:140px; display:flex; align-items:center; justify-content:center; font-size:60px; }
+    .program-body { padding:18px; }
+    .program-tag { display:inline-block; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; margin-bottom:8px; }
+    .program-body h3 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; margin-bottom:6px; }
+    .program-body .class-name { font-size:12px; color:var(--text-light); font-weight:700; margin-bottom:6px; }
+    .program-body p { font-size:13px; color:var(--text-light); line-height:1.6; margin-bottom:12px; }
+    .program-detail { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+    .program-detail span { background:#F5F5F5; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; color:var(--text-light); }
+    .program-link { font-size:13px; font-weight:700; color:var(--orange-dark); }
+
+    .why { background:linear-gradient(135deg,#FFF8E7,#FFE8B0); }
+    .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .why-list { display:flex; flex-direction:column; gap:18px; }
+    .why-item { display:flex; gap:16px; }
+    .why-icon { width:50px; height:50px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+    .why-text h4 { font-weight:800; font-size:15px; margin-bottom:5px; }
+    .why-text p { font-size:13px; color:var(--text-light); line-height:1.6; }
+    .why-img-box { width:100%; border-radius:28px; overflow:hidden; box-shadow:0 20px 60px rgba(255,140,0,0.3); }
+    .why-img-box img { width:100%; height:100%; object-fit:cover; }
+    .why-img-placeholder { background:linear-gradient(135deg,var(--yellow),var(--orange)); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; font-size:100px; }
+
+    .fasilitas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .fasilitas-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); display:flex; align-items:center; gap:14px; transition:transform 0.3s; }
+    .fasilitas-card:hover { transform:translateY(-4px); }
+    .fasilitas-icon { width:48px; height:48px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+    .fasilitas-card h4 { font-weight:700; font-size:14px; }
+
+    .act-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+    .act-card { border-radius:20px; overflow:hidden; text-decoration:none; color:inherit; box-shadow:0 4px 20px rgba(0,0,0,0.08); display:flex; transition:transform 0.3s; }
+    .act-card:hover { transform:translateY(-6px); }
+    .act-thumb { width:130px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:55px; }
+    .act-body { padding:22px; flex:1; background:white; }
+    .act-body h3 { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; margin-bottom:8px; }
+    .act-body p { font-size:13px; color:var(--text-light); line-height:1.6; margin-bottom:12px; }
+
+    .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .testi-card { background:white; border-radius:20px; padding:26px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+    .testi-stars { font-size:16px; margin-bottom:12px; }
+    .testi-text { font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:18px; font-style:italic; }
+    .testi-author { display:flex; align-items:center; gap:12px; }
+    .testi-avatar { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; }
+    .testi-name { font-weight:700; font-size:14px; }
+    .testi-role { font-size:12px; color:var(--text-light); }
+
+    .cta-section { background:linear-gradient(135deg,var(--orange),var(--orange-dark)); padding:80px 40px; text-align:center; color:white; }
+    .cta-section h2 { font-family:'Baloo 2',cursive; font-size:38px; font-weight:800; margin-bottom:14px; }
+    .cta-section p { font-size:16px; opacity:0.9; margin-bottom:28px; max-width:540px; margin-left:auto; margin-right:auto; }
+    .cta-btn { background:white; color:var(--orange-dark); padding:14px 36px; border-radius:30px; text-decoration:none; font-weight:800; font-size:16px; transition:all 0.3s; display:inline-block; margin:6px; }
+    .cta-btn:hover { background:var(--yellow); transform:translateY(-3px); }
+    .cta-btn.wa { background:var(--yellow); color:var(--orange-dark); }
+
     @media(max-width:900px){
-      .hero { padding: calc(var(--nav-height) + 40px) 20px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-title { font-size: 36px; }
-      .hero-circle { width: 260px; height: 260px; font-size: 100px; }
-      .programs-grid { grid-template-columns: repeat(2,1fr); }
-      .why-grid, .act-grid { grid-template-columns: 1fr; }
-      .testi-grid { grid-template-columns: 1fr; }
+      .hero { padding:calc(var(--nav-height) + 40px) 20px 60px; }
+      .hero-inner { grid-template-columns:1fr; gap:40px; }
+      .hero-title { font-size:34px; }
+      .hero-logo-box { width:260px; height:260px; }
+      .hero-logo-box img { width:200px; height:200px; }
+      .programs-grid { grid-template-columns:repeat(2,1fr); }
+      .why-grid,.act-grid { grid-template-columns:1fr; }
+      .fasilitas-grid { grid-template-columns:repeat(2,1fr); }
+      .testi-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:600px){
+      .programs-grid,.fasilitas-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
   <div id="navbar"></div>
+
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">🌟 Penerimaan Peserta Didik Baru 2025/2026</div>
-        <h1 class="hero-title">Tempat Terbaik untuk<br><span class="hl">Si Buah Hati</span><br>Tumbuh & Belajar</h1>
-        <p class="hero-desc">An-Nahl Learning Center hadir dengan metode pembelajaran Islami yang menyenangkan, membangun karakter dan kecerdasan anak sejak dini dengan penuh kasih sayang.</p>
+        <div class="hero-badge">🐝 Admission 2026–2027 Dibuka!</div>
+        <h1 class="hero-title">
+          Sekolah Islam<br>
+          <span class="hl">Montessori</span><br>
+          Kota Sukabumi
+        </h1>
+        <div class="hero-tags">
+          <span class="hero-tag">🕌 Islamic Montessori Method</span>
+          <span class="hero-tag">👶 Usia 2–6 Tahun</span>
+          <span class="hero-tag">🏫 YPLP PGRI</span>
+        </div>
+        <p class="hero-desc">TK. PGRI An-Nahl menghadirkan pembelajaran ramah anak berbasis pengalaman langsung (hands-on learning), membangun generasi bertaqwa, berakhlak mulia, cerdas, kreatif dan mandiri.</p>
         <div class="hero-btns">
           <a href="ppdb.html" class="btn-primary">📝 Daftar Sekarang</a>
-          <a href="#programs" class="btn-secondary">Lihat Program →</a>
+          <a href="https://wa.me/6281296282841" target="_blank" class="btn-secondary">💬 Tanya via WA</a>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-circle">🏫</div>
-        <div class="floating-card fc1"><div class="fc-icon" style="background:#FFF3CC">⭐</div><div><div style="font-size:18px;color:var(--orange-dark)">4.9</div><div style="font-size:11px;color:#aaa">Rating Orang Tua</div></div></div>
-        <div class="floating-card fc2"><div class="fc-icon" style="background:#E8F5E9">👶</div><div><div style="font-size:13px;color:#2E7D32">150+ Siswa Aktif</div><div style="font-size:11px;color:#aaa">TA 2024/2025</div></div></div>
+        <div class="hero-logo-box">
+          <img src="logo-annahl.png" alt="An-Nahl Learning Centre"/>
+        </div>
+        <div class="floating-card fc1">
+          <div class="fc-icon" style="background:#FFF3CC">🏆</div>
+          <div>
+            <div style="font-size:14px;color:var(--orange-dark);font-weight:800">YPLP PGRI</div>
+            <div style="font-size:11px;color:#aaa">Kota Sukabumi</div>
+          </div>
+        </div>
+        <div class="floating-card fc2">
+          <div class="fc-icon" style="background:#E8F5E9">🐝</div>
+          <div>
+            <div style="font-size:13px;color:#2E7D32;font-weight:800">Islamic Montessori</div>
+            <div style="font-size:11px;color:#aaa">Method</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="stats-bar"><div class="container">
-    <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Tahun Berpengalaman</div></div>
-    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">Siswa Aktif</div></div>
-    <div class="stat-item"><div class="stat-number">15</div><div class="stat-label">Tenaga Pendidik</div></div>
-    <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Alumni Berprestasi</div></div>
-  </div></div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Program Unggulan</div></div>
+      <div class="stat-item"><div class="stat-number">80</div><div class="stat-label">Kuota Siswa</div></div>
+      <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Area Montessori</div></div>
+      <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Pilihan Ekskul</div></div>
+    </div>
+  </div>
+
+  <!-- PROGRAMS -->
   <section style="background:white" id="programs"><div class="container">
     <div class="section-header">
       <div class="section-tag">📚 Program Kami</div>
-      <h2 class="section-title">Program <span>Unggulan</span></h2>
-      <p class="section-desc">Program pendidikan Islami untuk setiap tahap perkembangan anak</p>
+      <h2 class="section-title">Kelompok <span>Belajar</span></h2>
+      <p class="section-desc">Pembelajaran Senin s.d. Jumat dengan metode Islamic Montessori</p>
     </div>
     <div class="programs-grid">
-      <a href="nursery.html" class="program-card"><div class="program-thumb" style="background:linear-gradient(135deg,#FFD700,#FFA500)">🌱</div><div class="program-body"><div class="program-tag" style="background:#FFF3CC;color:#E65C00">Usia 2–3 Tahun</div><h3>Nursery Class</h3><p>Program pengenalan lingkungan belajar yang aman dan menyenangkan.</p><span class="program-link">Selengkapnya →</span></div></a>
-      <a href="toddler.html" class="program-card"><div class="program-thumb" style="background:linear-gradient(135deg,#FF6B9D,#FF8C69)">🐣</div><div class="program-body"><div class="program-tag" style="background:#FFE0F0;color:#C2185B">Usia 3–4 Tahun</div><h3>Toddler Class</h3><p>Stimulasi tumbuh kembang optimal melalui bermain dan eksplorasi kreatif.</p><span class="program-link">Selengkapnya →</span></div></a>
-      <a href="k1.html" class="program-card"><div class="program-thumb" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">⭐</div><div class="program-body"><div class="program-tag" style="background:#E8F5E9;color:#2E7D32">Usia 4–5 Tahun</div><h3>K1</h3><p>Persiapan akademik dasar dengan fondasi karakter Islami yang kuat.</p><span class="program-link">Selengkapnya →</span></div></a>
-      <a href="k2.html" class="program-card"><div class="program-thumb" style="background:linear-gradient(135deg,#2196F3,#00BCD4)">🚀</div><div class="program-body"><div class="program-tag" style="background:#E3F2FD;color:#1565C0">Usia 5–6 Tahun</div><h3>K2</h3><p>Persiapan komprehensif menuju jenjang Sekolah Dasar.</p><span class="program-link">Selengkapnya →</span></div></a>
+      <a href="toddler.html" class="program-card">
+        <div class="program-thumb" style="background:linear-gradient(135deg,#FFD700,#FFA500)">⭐</div>
+        <div class="program-body">
+          <div class="program-tag" style="background:#FFF3CC;color:#E65C00">Usia 2–3 Tahun</div>
+          <h3>Toddler</h3>
+          <div class="class-name">🌙 Kelas An-Najma</div>
+          <div class="program-detail">
+            <span>⏰ 10.30–12.00</span>
+            <span>👶 8 Siswa</span>
+          </div>
+          <p>Program pengenalan lingkungan belajar yang aman dan menyenangkan untuk si kecil.</p>
+          <span class="program-link">Selengkapnya →</span>
+        </div>
+      </a>
+      <a href="nursery.html" class="program-card">
+        <div class="program-thumb" style="background:linear-gradient(135deg,#FF6B9D,#FF8C69)">🌱</div>
+        <div class="program-body">
+          <div class="program-tag" style="background:#FFE0F0;color:#C2185B">Usia 3–4 Tahun</div>
+          <h3>Nursery</h3>
+          <div class="class-name">🌙 Kelas Al-Qomar</div>
+          <div class="program-detail">
+            <span>⏰ 08.00–10.00</span>
+            <span>👶 12 Siswa</span>
+          </div>
+          <p>Stimulasi tumbuh kembang optimal melalui bermain dan eksplorasi kreatif.</p>
+          <span class="program-link">Selengkapnya →</span>
+        </div>
+      </a>
+      <a href="k1.html" class="program-card">
+        <div class="program-thumb" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">☀️</div>
+        <div class="program-body">
+          <div class="program-tag" style="background:#E8F5E9;color:#2E7D32">Usia 4–5 Tahun</div>
+          <h3>Kindergarten 1</h3>
+          <div class="class-name">☀️ Kelas As-Syams</div>
+          <div class="program-detail">
+            <span>⏰ 07.30–12.00</span>
+            <span>👶 30 Siswa</span>
+          </div>
+          <p>Persiapan akademik dasar dengan fondasi karakter Islami yang kuat.</p>
+          <span class="program-link">Selengkapnya →</span>
+        </div>
+      </a>
+      <a href="k2.html" class="program-card">
+        <div class="program-thumb" style="background:linear-gradient(135deg,#2196F3,#00BCD4)">☁️</div>
+        <div class="program-body">
+          <div class="program-tag" style="background:#E3F2FD;color:#1565C0">Usia 5–6 Tahun</div>
+          <h3>Kindergarten 2</h3>
+          <div class="class-name">☁️ Kelas As-Sahab</div>
+          <div class="program-detail">
+            <span>⏰ 07.30–12.30</span>
+            <span>👶 30 Siswa</span>
+          </div>
+          <p>Persiapan komprehensif menuju jenjang Sekolah Dasar.</p>
+          <span class="program-link">Selengkapnya →</span>
+        </div>
+      </a>
     </div>
   </div></section>
+
+  <!-- WHY -->
   <section class="why"><div class="container why-grid">
     <div>
-      <div class="section-tag">💛 Mengapa An-Nahl?</div>
-      <h2 class="section-title" style="text-align:left;margin-bottom:12px">Keunggulan <span>Kami</span></h2>
-      <p style="color:var(--text-light);margin-bottom:28px;line-height:1.7">Kami berkomitmen memberikan pengalaman belajar terbaik berbasis nilai Islami</p>
+      <div class="section-tag">🐝 Mengapa An-Nahl?</div>
+      <h2 class="section-title" style="text-align:left;margin-bottom:12px">Program <span>Unggulan</span></h2>
+      <p style="color:var(--text-light);margin-bottom:24px;line-height:1.7">Kami menghadirkan pendekatan Islamic Montessori yang unik untuk perkembangan optimal anak</p>
       <div class="why-list">
-        <div class="why-item"><div class="why-icon" style="background:#FFF3CC">📖</div><div class="why-text"><h4>Kurikulum Islami Terpadu</h4><p>Menggabungkan kurikulum nasional dengan pendidikan agama Islam secara seimbang.</p></div></div>
-        <div class="why-item"><div class="why-icon" style="background:#E8F5E9">👩‍🏫</div><div class="why-text"><h4>Guru Berpengalaman & Bersertifikat</h4><p>Seluruh tenaga pendidik tersertifikasi dalam pendidikan anak usia dini.</p></div></div>
-        <div class="why-item"><div class="why-icon" style="background:#E3F2FD">🌈</div><div class="why-text"><h4>Bermain Sambil Belajar</h4><p>Pembelajaran aktif melalui permainan edukatif yang merangsang seluruh kecerdasan anak.</p></div></div>
-        <div class="why-item"><div class="why-icon" style="background:#FFE0F0">🏆</div><div class="why-text"><h4>Akreditasi A</h4><p>Terakreditasi A oleh Kemendikbud sebagai komitmen terhadap kualitas pendidikan.</p></div></div>
+        <div class="why-item"><div class="why-icon" style="background:#FFF3CC">🕌</div><div class="why-text"><h4>Islamic Montessori Method</h4><p>Metode Montessori yang diintegrasikan dengan nilai-nilai Islam untuk membentuk karakter mulia.</p></div></div>
+        <div class="why-item"><div class="why-icon" style="background:#E8F5E9">📖</div><div class="why-text"><h4>Tahfizh Al-Qur'an</h4><p>Program hafalan Al-Qur'an, doa-doa pilihan, dan hadits pilihan sejak dini.</p></div></div>
+        <div class="why-item"><div class="why-icon" style="background:#E3F2FD">🌍</div><div class="why-text"><h4>Bilingual Language</h4><p>Pembelajaran bahasa Arab dan Inggris untuk mempersiapkan generasi global yang Islami.</p></div></div>
+        <div class="why-item"><div class="why-icon" style="background:#FFE0F0">🧠</div><div class="why-text"><h4>Integrasi Refleks</h4><p>Program stimulasi refleks yang mendukung perkembangan neurologis optimal anak.</p></div></div>
       </div>
     </div>
-    <div><div class="why-img-box">🎓</div></div>
+    <div class="why-img-box">
+      <div class="why-img-placeholder">🏫</div>
+    </div>
   </div></section>
+
+  <!-- FASILITAS -->
   <section style="background:white"><div class="container">
     <div class="section-header">
+      <div class="section-tag">🏫 Fasilitas</div>
+      <h2 class="section-title">Fasilitas <span>Lengkap</span></h2>
+      <p class="section-desc">Kami menyediakan fasilitas terbaik untuk kenyamanan belajar anak</p>
+    </div>
+    <div class="fasilitas-grid">
+      <div class="fasilitas-card"><div class="fasilitas-icon" style="background:#FFF3CC">❄️</div><h4>Ruang Kelas Ber-AC</h4></div>
+      <div class="fasilitas-card"><div class="fasilitas-icon" style="background:#E8F5E9">🧩</div><h4>Apparatus Montessori Lengkap</h4></div>
+      <div class="fasilitas-card"><div class="fasilitas-icon" style="background:#E3F2FD">🛝</div><h4>Outdoor Playground</h4></div>
+      <div class="fasilitas-card"><div class="fasilitas-icon" style="background:#FFE0F0">👨‍👩‍👧</div><h4>Parenting Class</h4></div>
+      <div class="fasilitas-card"><div class="fasilitas-icon" style="background:#F3E5F5">🪑</div><h4>Tempat Tunggu Orang Tua</h4></div>
+      <div class="fasilitas-card"><div class="fasilitas-icon" style="background:#E0F7FA">🅿️</div><h4>Area Parkir</h4></div>
+    </div>
+  </div></section>
+
+  <!-- ACTIVITIES -->
+  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
+    <div class="section-header">
       <div class="section-tag">🎨 Kegiatan</div>
-      <h2 class="section-title">Activities & <span>Afterschool</span></h2>
+      <h2 class="section-title">Activities & <span>Ekstrakurikuler</span></h2>
       <p class="section-desc">Berbagai kegiatan untuk mengembangkan potensi dan bakat anak</p>
     </div>
     <div class="act-grid">
-      <a href="activities.html" class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FFD700,#FF8C00)">🎨</div><div class="act-body"><h3>Activities</h3><p>Kegiatan seni, sains, dan eksplorasi yang mengembangkan kreativitas dan rasa ingin tahu anak.</p><span class="program-link">Lihat Kegiatan →</span></div></a>
-      <a href="afterschool.html" class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#9C27B0,#E91E63)">🌟</div><div class="act-body"><h3>Afterschool</h3><p>Program ekstrakurikuler sore hari yang mengembangkan bakat anak di berbagai bidang.</p><span class="program-link">Lihat Ekskul →</span></div></a>
+      <a href="activities.html" class="act-card">
+        <div class="act-thumb" style="background:linear-gradient(135deg,#FFD700,#FF8C00)">🎨</div>
+        <div class="act-body">
+          <h3>Activities</h3>
+          <p>6 area pembelajaran Montessori: Practical Life, Sensorial, Language, Mathematic, Cultural & Islamic Area.</p>
+          <span class="program-link">Lihat Kegiatan →</span>
+        </div>
+      </a>
+      <a href="afterschool.html" class="act-card">
+        <div class="act-thumb" style="background:linear-gradient(135deg,#9C27B0,#E91E63)">🏹</div>
+        <div class="act-body">
+          <h3>Ekstrakurikuler</h3>
+          <p>Memanah, English for Kids, dan Art Coloring untuk mengembangkan bakat anak secara optimal.</p>
+          <span class="program-link">Lihat Ekskul →</span>
+        </div>
+      </a>
     </div>
   </div></section>
-  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
-    <div class="section-header">
-      <div class="section-tag">💬 Testimoni</div>
-      <h2 class="section-title">Kata <span>Orang Tua</span></h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card"><div class="testi-stars">⭐⭐⭐⭐⭐</div><p class="testi-text">"Anak saya sangat senang sekolah di sini! Guru-gurunya sabar dan penuh kasih sayang."</p><div class="testi-author"><div class="testi-avatar" style="background:#FFF3CC">👩</div><div><div class="testi-name">Ibu Sarah</div><div class="testi-role">Orang tua siswa K2</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">⭐⭐⭐⭐⭐</div><p class="testi-text">"Anak saya sudah bisa hafal beberapa surat pendek. Alhamdulillah, kurikulum Islaminya sangat bagus!"</p><div class="testi-author"><div class="testi-avatar" style="background:#E8F5E9">👨</div><div><div class="testi-name">Pak Ahmad</div><div class="testi-role">Orang tua siswa K1</div></div></div></div>
-      <div class="testi-card"><div class="testi-stars">⭐⭐⭐⭐⭐</div><p class="testi-text">"Metode bermain sambil belajarnya cocok untuk anak saya yang aktif. Highly recommended!"</p><div class="testi-author"><div class="testi-avatar" style="background:#E3F2FD">👩</div><div><div class="testi-name">Ibu Dewi</div><div class="testi-role">Orang tua siswa Toddler</div></div></div></div>
-    </div>
-  </div></section>
+
+  <!-- CTA -->
   <div class="cta-section">
-    <h2>Daftarkan Putra-Putri Anda Sekarang! 🎉</h2>
-    <p>Tempat terbatas! Jangan sampai ketinggalan PPDB tahun ajaran 2025/2026</p>
-    <a href="ppdb.html" class="cta-btn">📝 Daftar Sekarang</a>
+    <h2>Admission 2026–2027 Dibuka! 🐝</h2>
+    <p>Daftarkan putra-putri Anda sekarang. Tempat sangat terbatas! Hubungi kami untuk informasi lebih lanjut.</p>
+    <a href="ppdb.html" class="cta-btn">📝 Daftar Online</a>
+    <a href="https://wa.me/6281296282841" target="_blank" class="cta-btn wa">💬 Chat WhatsApp</a>
   </div>
+
   <div id="footer"></div>
   <script src="main.js"></script>
   <script>renderNavbar(); renderFooter();</script>

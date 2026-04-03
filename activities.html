@@ -2,91 +2,123 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Activities – An-Nahl Learning Center</title>
+  <title>Activities – TK. PGRI An-Nahl</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .act-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-    .act-card { background:white; border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s,box-shadow 0.3s; }
-    .act-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.13); }
-    .act-thumb { height:160px; display:flex; align-items:center; justify-content:center; font-size:70px; }
-    .act-body { padding:22px; }
-    .act-body h3 { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; margin-bottom:8px; }
-    .act-body p { font-size:14px; color:var(--text-light); line-height:1.6; }
-    .schedule-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-    .schedule-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
-    .schedule-card h4 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; color:var(--orange-dark); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
-    .sched-item { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px dashed #FFE0A0; }
-    .sched-item:last-child { border-bottom:none; }
-    .sched-time { background:var(--cream); color:var(--orange-dark); padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; white-space:nowrap; min-width:85px; text-align:center; }
-    @media(max-width:900px){ .act-grid { grid-template-columns:repeat(2,1fr); } .schedule-grid { grid-template-columns:1fr; } }
-    @media(max-width:600px){ .act-grid { grid-template-columns:1fr; } }
+    .area-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .area-card { background:white; border-radius:20px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s; text-align:center; }
+    .area-card:hover { transform:translateY(-6px); }
+    .area-num { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; color:white; margin:0 auto 14px; }
+    .area-icon { font-size:48px; margin-bottom:14px; }
+    .area-card h3 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; margin-bottom:10px; }
+    .area-card p { font-size:13px; color:var(--text-light); line-height:1.7; }
+    .kurikulum-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .kurikulum-item { background:white; border-radius:14px; padding:18px; box-shadow:0 4px 12px rgba(0,0,0,0.06); display:flex; align-items:center; gap:12px; }
+    .kurikulum-item .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .kurikulum-item span { font-size:14px; font-weight:700; }
+    .unggulan-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .unggulan-card { background:white; border-radius:18px; padding:22px; box-shadow:0 4px 16px rgba(0,0,0,0.07); display:flex; gap:14px; align-items:flex-start; }
+    .unggulan-icon { width:48px; height:48px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+    .unggulan-card h4 { font-weight:800; margin-bottom:6px; }
+    .unggulan-card p { font-size:13px; color:var(--text-light); line-height:1.6; }
+    @media(max-width:900px){ .area-grid,.kurikulum-grid,.unggulan-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:600px){ .area-grid,.kurikulum-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <div id="navbar"></div>
   <div class="page-hero">
-    <div class="page-hero-tag">🎨 Kegiatan</div>
-    <h1>Activities <span>An-Nahl</span></h1>
-    <p>Berbagai kegiatan seru dan edukatif yang dirancang untuk mengembangkan kreativitas, kecerdasan, dan karakter anak</p>
+    <div class="page-hero-tag">🎨 Metode Pembelajaran</div>
+    <h1>Islamic <span>Montessori</span> Method</h1>
+    <p>Kegiatan di TK. PGRI An-Nahl dirancang melalui 6 area pembelajaran Montessori yang saling melengkapi, diperkaya dengan nilai-nilai Islami</p>
   </div>
 
+  <!-- 6 AREA MONTESSORI -->
   <section style="background:white"><div class="container">
     <div class="section-header">
-      <div class="section-tag">🎯 Program Kegiatan</div>
-      <h2 class="section-title">Semua <span>Activities</span></h2>
-      <p class="section-desc">Kegiatan kami dirancang untuk merangsang seluruh aspek kecerdasan anak</p>
+      <div class="section-tag">🧩 Area Pembelajaran</div>
+      <h2 class="section-title">6 Area <span>Montessori</span></h2>
+      <p class="section-desc">Anak belajar mengembangkan keterampilan, pengetahuan, dan nilai Islami secara seimbang melalui 6 area berikut</p>
     </div>
-    <div class="act-grid">
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FFD700,#FFA500)">🎨</div><div class="act-body"><h3>Seni & Kreasi</h3><p>[Deskripsi kegiatan seni dan kreasi. Contoh: mewarnai, melukis, membuat kerajinan tangan, dan eksplorasi berbagai media seni.]</p></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">🔬</div><div class="act-body"><h3>Science & Eksplorasi</h3><p>[Deskripsi kegiatan sains. Contoh: eksperimen sederhana, mengenal alam, berkebun, dan observasi lingkungan sekitar.]</p></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#2196F3,#00BCD4)">📖</div><div class="act-body"><h3>Literasi & Bahasa</h3><p>[Deskripsi program literasi. Contoh: storytelling, mengenal huruf, bermain kata, dan pengenalan bahasa asing.]</p></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FF6B9D,#FF8C69)">🎵</div><div class="act-body"><h3>Musik & Gerak</h3><p>[Deskripsi kegiatan musik. Contoh: bernyanyi, memainkan instrumen sederhana, senam, dan tari tradisional.]</p></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#9C27B0,#E91E63)">🕌</div><div class="act-body"><h3>Kegiatan Islami</h3><p>[Deskripsi kegiatan Islami. Contoh: hafalan surat pendek, doa harian, cerita nabi, dan praktik ibadah dasar.]</p></div></div>
-      <div class="act-card"><div class="act-thumb" style="background:linear-gradient(135deg,#FF8C00,#E65C00)">⚽</div><div class="act-body"><h3>Olahraga & Gerak</h3><p>[Deskripsi kegiatan olahraga. Contoh: senam pagi, permainan outdoor, obstacle course, dan olahraga tim.]</p></div></div>
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-icon">🏠</div>
+        <div class="area-num" style="background:linear-gradient(135deg,#FF8C00,#E65C00)">1</div>
+        <h3>Practical Life Skills Area</h3>
+        <p>Mengembangkan kemandirian anak melalui aktivitas kehidupan sehari-hari seperti menuang, melipat, membersihkan, dan merawat diri sendiri.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">👁️</div>
+        <div class="area-num" style="background:linear-gradient(135deg,#FF6B9D,#C2185B)">2</div>
+        <h3>Sensorial Area</h3>
+        <p>Merangsang seluruh indra anak (penglihatan, pendengaran, peraba, penciuman, pengecap) melalui material Montessori yang terstruktur.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">📚</div>
+        <div class="area-num" style="background:linear-gradient(135deg,#4CAF50,#2E7D32)">3</div>
+        <h3>Language Area</h3>
+        <p>Mengembangkan kemampuan bahasa, membaca, menulis, dan komunikasi termasuk pengenalan bahasa Arab dan Inggris.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🔢</div>
+        <div class="area-num" style="background:linear-gradient(135deg,#2196F3,#1565C0)">4</div>
+        <h3>Mathematic Area</h3>
+        <p>Memperkenalkan konsep matematika secara konkret menggunakan material Montessori sehingga anak memahami angka dan operasi dasar.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🌍</div>
+        <div class="area-num" style="background:linear-gradient(135deg,#9C27B0,#7B1FA2)">5</div>
+        <h3>Cultural Area</h3>
+        <p>Mengenalkan anak pada budaya, alam, sains, geografi, dan seni sebagai bagian dari pemahaman dunia yang lebih luas.</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🕌</div>
+        <div class="area-num" style="background:linear-gradient(135deg,#FF8C00,#E65C00)">6</div>
+        <h3>Islamic Area</h3>
+        <p>Penanaman nilai-nilai Islam, ibadah, akhlak mulia, hafalan surat & doa, serta cerita para nabi sebagai fondasi karakter Islami.</p>
+      </div>
     </div>
   </div></section>
 
+  <!-- KURIKULUM MERDEKA -->
   <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
     <div class="section-header">
-      <div class="section-tag">📅 Jadwal</div>
-      <h2 class="section-title">Jadwal <span>Kegiatan Harian</span></h2>
-      <p class="section-desc">Jadwal kegiatan terstruktur untuk perkembangan optimal anak</p>
+      <div class="section-tag">📖 Kurikulum</div>
+      <h2 class="section-title">Kurikulum <span>Merdeka</span></h2>
+      <p class="section-desc">Di TK. PGRI An-Nahl, Kurikulum Merdeka diterapkan melalui pembelajaran mendalam, diperkaya metode Montessori, dan dikuatkan nilai-nilai Islami</p>
     </div>
-    <div class="schedule-grid">
-      <div class="schedule-card">
-        <h4>🌅 Senin & Rabu</h4>
-        <div class="sched-item"><span class="sched-time">07.30 – 08.00</span><span>🤲 Ikrar & Doa Pagi</span></div>
-        <div class="sched-item"><span class="sched-time">08.00 – 08.30</span><span>📖 Hafalan & Iqra</span></div>
-        <div class="sched-item"><span class="sched-time">08.30 – 09.30</span><span>🎨 Kegiatan Seni & Kreasi</span></div>
-        <div class="sched-item"><span class="sched-time">09.30 – 10.00</span><span>🍎 Istirahat & Makan</span></div>
-        <div class="sched-item"><span class="sched-time">10.00 – 11.00</span><span>🔬 Science & Eksplorasi</span></div>
-        <div class="sched-item"><span class="sched-time">11.00 – 11.30</span><span>🌟 Evaluasi & Pulang</span></div>
-      </div>
-      <div class="schedule-card">
-        <h4>🌞 Selasa & Kamis</h4>
-        <div class="sched-item"><span class="sched-time">07.30 – 08.00</span><span>🤲 Ikrar & Doa Pagi</span></div>
-        <div class="sched-item"><span class="sched-time">08.00 – 08.30</span><span>🎵 Musik & Gerak</span></div>
-        <div class="sched-item"><span class="sched-time">08.30 – 09.30</span><span>📖 Literasi & Bahasa</span></div>
-        <div class="sched-item"><span class="sched-time">09.30 – 10.00</span><span>🍱 Istirahat & Makan</span></div>
-        <div class="sched-item"><span class="sched-time">10.00 – 11.00</span><span>⚽ Olahraga & Gerak</span></div>
-        <div class="sched-item"><span class="sched-time">11.00 – 11.30</span><span>🌟 Evaluasi & Pulang</span></div>
-      </div>
-      <div class="schedule-card">
-        <h4>🕌 Jumat</h4>
-        <div class="sched-item"><span class="sched-time">07.30 – 08.00</span><span>🤲 Ikrar & Doa Pagi</span></div>
-        <div class="sched-item"><span class="sched-time">08.00 – 09.00</span><span>🕌 Kegiatan Islami</span></div>
-        <div class="sched-item"><span class="sched-time">09.00 – 09.30</span><span>🍎 Istirahat</span></div>
-        <div class="sched-item"><span class="sched-time">09.30 – 10.30</span><span>🎨 Kreasi Bebas</span></div>
-        <div class="sched-item"><span class="sched-time">10.30 – 11.00</span><span>🌟 Evaluasi & Pulang</span></div>
-      </div>
-      <div style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));border-radius:18px;padding:24px;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px">
-        <div style="font-size:50px">📝</div>
-        <h3 style="font-family:'Baloo 2',cursive;font-size:22px;font-weight:800">Ingin Tahu Lebih Lanjut?</h3>
-        <p style="opacity:0.9;font-size:14px">Hubungi kami untuk informasi detail tentang program activities</p>
-        <a href="kontak.html" style="background:white;color:var(--orange-dark);padding:10px 24px;border-radius:25px;font-weight:800;text-decoration:none;font-size:14px">Hubungi Kami</a>
-      </div>
+    <div class="kurikulum-grid">
+      <div class="kurikulum-item"><div class="dot" style="background:#FF8C00"></div><span>Nilai Agama, Moral & Budi Pekerti</span></div>
+      <div class="kurikulum-item"><div class="dot" style="background:#4CAF50"></div><span>Fisik Motorik (Halus & Kasar)</span></div>
+      <div class="kurikulum-item"><div class="dot" style="background:#2196F3"></div><span>Kognitif</span></div>
+      <div class="kurikulum-item"><div class="dot" style="background:#FF6B9D"></div><span>Sosial Emosional</span></div>
+      <div class="kurikulum-item"><div class="dot" style="background:#9C27B0"></div><span>Bahasa</span></div>
+      <div class="kurikulum-item"><div class="dot" style="background:#FF8C00"></div><span>Seni</span></div>
     </div>
   </div></section>
+
+  <!-- PROGRAM UNGGULAN -->
+  <section style="background:white"><div class="container">
+    <div class="section-header">
+      <div class="section-tag">⭐ Program Unggulan</div>
+      <h2 class="section-title">Keunggulan <span>An-Nahl</span></h2>
+    </div>
+    <div class="unggulan-grid">
+      <div class="unggulan-card"><div class="unggulan-icon" style="background:#FFF3CC">🕌</div><div><h4>Islamic Montessori Method</h4><p>Penerapan pendekatan metode Montessori yang diintegrasikan dengan nilai-nilai Islam secara menyeluruh.</p></div></div>
+      <div class="unggulan-card"><div class="unggulan-icon" style="background:#E8F5E9">📖</div><div><h4>Tahfizh Al-Qur'an</h4><p>Program hafalan Al-Qur'an dengan metode yang menyenangkan dan sesuai usia anak.</p></div></div>
+      <div class="unggulan-card"><div class="unggulan-icon" style="background:#E3F2FD">🤲</div><div><h4>Hafalan Doa & Hadits</h4><p>Hafalan doa-doa pilihan dan hadits-hadits pilihan sebagai bekal kehidupan sehari-hari.</p></div></div>
+      <div class="unggulan-card"><div class="unggulan-icon" style="background:#FFE0F0">🌍</div><div><h4>Bilingual Language</h4><p>Mempelajari bahasa Arab dan Inggris untuk mempersiapkan generasi yang kompeten secara global.</p></div></div>
+      <div class="unggulan-card"><div class="unggulan-icon" style="background:#F3E5F5">🧠</div><div><h4>Integrasi Refleks</h4><p>Program stimulasi refleks untuk mendukung perkembangan neurologis dan fisik optimal anak.</p></div></div>
+      <div class="unggulan-card"><div class="unggulan-icon" style="background:#E0F7FA">👨‍👩‍👧</div><div><h4>Parenting Class</h4><p>Kelas parenting untuk orang tua agar dapat mendukung perkembangan anak secara optimal di rumah.</p></div></div>
+    </div>
+  </div></section>
+
+  <div style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:60px 40px;text-align:center;color:white">
+    <h2 style="font-family:'Baloo 2',cursive;font-size:32px;font-weight:800;margin-bottom:14px">Ingin Tahu Lebih Lanjut? 🐝</h2>
+    <p style="font-size:16px;opacity:0.9;margin-bottom:28px">Hubungi kami atau kunjungi sekolah untuk informasi detail program pembelajaran</p>
+    <a href="kontak.html" style="background:white;color:var(--orange-dark);padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;margin:6px">📍 Kunjungi Sekolah</a>
+    <a href="https://wa.me/6281296282841" target="_blank" style="background:var(--yellow);color:var(--orange-dark);padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;margin:6px">💬 Tanya via WA</a>
+  </div>
 
   <div id="footer"></div>
   <script src="main.js"></script>

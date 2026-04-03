@@ -2,96 +2,115 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Afterschool – An-Nahl Learning Center</title>
+  <title>Ekstrakurikuler – TK. PGRI An-Nahl</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .ekskul-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-    .ekskul-card { background:white; border-radius:20px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.3s; text-align:center; }
-    .ekskul-card:hover { transform:translateY(-6px); }
-    .ekskul-icon { width:72px; height:72px; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:36px; margin:0 auto 18px; }
-    .ekskul-card h3 { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; margin-bottom:10px; }
-    .ekskul-card p { font-size:14px; color:var(--text-light); line-height:1.6; margin-bottom:14px; }
-    .ekskul-tag { display:inline-block; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; }
-    .info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-    .info-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); display:flex; gap:16px; }
-    .info-icon { width:50px; height:50px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
-    .info-text h4 { font-weight:800; margin-bottom:6px; }
-    .info-text p { font-size:14px; color:var(--text-light); line-height:1.6; }
-    @media(max-width:900px){ .ekskul-grid { grid-template-columns:repeat(2,1fr); } .info-grid { grid-template-columns:1fr; } }
-    @media(max-width:600px){ .ekskul-grid { grid-template-columns:1fr; } }
+    .ekskul-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    .ekskul-card { background:white; border-radius:22px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,0.09); transition:transform 0.3s,box-shadow 0.3s; }
+    .ekskul-card:hover { transform:translateY(-8px); box-shadow:0 16px 40px rgba(0,0,0,0.14); }
+    .ekskul-thumb { height:180px; display:flex; align-items:center; justify-content:center; font-size:80px; }
+    .ekskul-body { padding:24px; }
+    .ekskul-body h3 { font-family:'Baloo 2',cursive; font-size:22px; font-weight:800; margin-bottom:10px; }
+    .ekskul-body p { font-size:14px; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+    .ekskul-manfaat { display:flex; flex-direction:column; gap:8px; }
+    .ekskul-manfaat li { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:600; list-style:none; }
+    .why-ekskul { background:linear-gradient(135deg,var(--orange),var(--orange-dark)); border-radius:24px; padding:40px; color:white; text-align:center; }
+    .why-ekskul h3 { font-family:'Baloo 2',cursive; font-size:28px; font-weight:800; margin-bottom:14px; }
+    .why-ekskul p { font-size:16px; opacity:0.9; line-height:1.7; margin-bottom:24px; }
+    .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
+    .why-item { background:rgba(255,255,255,0.15); border-radius:16px; padding:18px; }
+    .why-item .icon { font-size:32px; margin-bottom:10px; }
+    .why-item h4 { font-weight:800; font-size:15px; margin-bottom:6px; }
+    .why-item p { font-size:13px; opacity:0.85; }
+    @media(max-width:900px){ .ekskul-grid,.why-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <div id="navbar"></div>
   <div class="page-hero">
-    <div class="page-hero-tag">🌟 Ekstrakurikuler</div>
-    <h1>Program <span>Afterschool</span></h1>
-    <p>Program ekstrakurikuler sore hari yang seru untuk mengembangkan bakat dan minat anak di berbagai bidang</p>
+    <div class="page-hero-tag">🏹 Ekstrakurikuler</div>
+    <h1>Program <span>Ekstrakurikuler</span></h1>
+    <p>Tiga program ekstrakurikuler unggulan An-Nahl untuk mengembangkan bakat dan potensi anak secara optimal</p>
   </div>
 
   <section style="background:white"><div class="container">
     <div class="section-header">
-      <div class="section-tag">🎯 Ekskul Kami</div>
+      <div class="section-tag">🌟 Ekskul Tambahan</div>
       <h2 class="section-title">Pilihan <span>Ekstrakurikuler</span></h2>
-      <p class="section-desc">Tersedia berbagai pilihan ekskul yang bisa disesuaikan dengan minat dan bakat anak</p>
+      <p class="section-desc">Program ekskul dirancang khusus untuk anak usia dini dengan metode yang menyenangkan</p>
     </div>
     <div class="ekskul-grid">
       <div class="ekskul-card">
-        <div class="ekskul-icon" style="background:#FFF3CC">🎨</div>
-        <h3>Melukis & Seni</h3>
-        <p>[Deskripsi ekskul melukis dan seni. Anak belajar berbagai teknik melukis dan berkarya seni.]</p>
-        <span class="ekskul-tag" style="background:#FFF3CC;color:#E65C00">Senin & Rabu</span>
+        <div class="ekskul-thumb" style="background:linear-gradient(135deg,#4CAF50,#8BC34A)">🏹</div>
+        <div class="ekskul-body">
+          <h3>Memanah</h3>
+          <p>Program memanah untuk anak usia dini yang melatih konsentrasi, ketenangan, dan koordinasi mata-tangan. Memanah adalah sunnah Rasulullah SAW yang sangat dianjurkan.</p>
+          <ul class="ekskul-manfaat">
+            <li>🎯 Melatih fokus dan konsentrasi</li>
+            <li>💪 Meningkatkan kekuatan motorik</li>
+            <li>🧘 Melatih ketenangan dan kesabaran</li>
+            <li>🕌 Mengikuti sunnah Rasulullah SAW</li>
+          </ul>
+        </div>
       </div>
       <div class="ekskul-card">
-        <div class="ekskul-icon" style="background:#E8F5E9">⚽</div>
-        <h3>Futsal</h3>
-        <p>[Deskripsi ekskul futsal. Mengembangkan kemampuan fisik, sportivitas, dan kerja sama tim.]</p>
-        <span class="ekskul-tag" style="background:#E8F5E9;color:#2E7D32">Selasa & Kamis</span>
+        <div class="ekskul-thumb" style="background:linear-gradient(135deg,#2196F3,#00BCD4)">🇬🇧</div>
+        <div class="ekskul-body">
+          <h3>English for Kids</h3>
+          <p>Program bahasa Inggris yang dirancang khusus untuk anak usia dini dengan metode bermain, bernyanyi, dan bercerita yang menyenangkan dan efektif.</p>
+          <ul class="ekskul-manfaat">
+            <li>🗣️ Kemampuan komunikasi bahasa Inggris</li>
+            <li>🎵 Belajar melalui lagu & permainan</li>
+            <li>📚 Pengenalan kosakata dasar</li>
+            <li>🌍 Persiapan generasi global Islami</li>
+          </ul>
+        </div>
       </div>
       <div class="ekskul-card">
-        <div class="ekskul-icon" style="background:#E3F2FD">🎵</div>
-        <h3>Musik & Nasyid</h3>
-        <p>[Deskripsi ekskul musik. Anak belajar bermain alat musik sederhana dan bernyanyi nasyid Islami.]</p>
-        <span class="ekskul-tag" style="background:#E3F2FD;color:#1565C0">Senin & Jumat</span>
-      </div>
-      <div class="ekskul-card">
-        <div class="ekskul-icon" style="background:#FFE0F0">💃</div>
-        <h3>Tari Tradisional</h3>
-        <p>[Deskripsi ekskul tari. Mengenalkan budaya Indonesia melalui tarian tradisional yang disesuaikan untuk anak.]</p>
-        <span class="ekskul-tag" style="background:#FFE0F0;color:#C2185B">Selasa & Jumat</span>
-      </div>
-      <div class="ekskul-card">
-        <div class="ekskul-icon" style="background:#F3E5F5">📖</div>
-        <h3>Tahfidz Al-Quran</h3>
-        <p>[Deskripsi ekskul tahfidz. Program menghafal Al-Quran dengan metode yang menyenangkan dan efektif.]</p>
-        <span class="ekskul-tag" style="background:#F3E5F5;color:#7B1FA2">Setiap Hari</span>
-      </div>
-      <div class="ekskul-card">
-        <div class="ekskul-icon" style="background:#E0F7FA">🌿</div>
-        <h3>Berkebun</h3>
-        <p>[Deskripsi ekskul berkebun. Anak belajar menanam, merawat tanaman, dan mengenal alam dengan cara yang menyenangkan.]</p>
-        <span class="ekskul-tag" style="background:#E0F7FA;color:#00695C">Rabu & Sabtu</span>
+        <div class="ekskul-thumb" style="background:linear-gradient(135deg,#FF6B9D,#FF8C69)">🎨</div>
+        <div class="ekskul-body">
+          <h3>Art Coloring</h3>
+          <p>Program seni mewarnai yang mengembangkan kreativitas, imajinasi, dan kemampuan motorik halus anak melalui berbagai teknik dan media seni yang menyenangkan.</p>
+          <ul class="ekskul-manfaat">
+            <li>🎨 Mengembangkan kreativitas</li>
+            <li>✋ Melatih motorik halus</li>
+            <li>🌈 Mengenal warna & estetika</li>
+            <li>😊 Ekspresi diri yang positif</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div></section>
 
   <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)"><div class="container">
-    <div class="section-header">
-      <div class="section-tag">ℹ️ Informasi</div>
-      <h2 class="section-title">Info <span>Afterschool</span></h2>
-    </div>
-    <div class="info-grid">
-      <div class="info-card"><div class="info-icon" style="background:#FFF3CC">⏰</div><div class="info-text"><h4>Jam Pelaksanaan</h4><p>Senin – Jumat: 13.00 – 15.00 WIB<br>Sabtu: 08.00 – 10.00 WIB</p></div></div>
-      <div class="info-card"><div class="info-icon" style="background:#E8F5E9">👶</div><div class="info-text"><h4>Peserta</h4><p>Terbuka untuk semua siswa An-Nahl Learning Center. Setiap kelas maksimal 10 anak.</p></div></div>
-      <div class="info-card"><div class="info-icon" style="background:#E3F2FD">💰</div><div class="info-text"><h4>Biaya</h4><p>[Isi dengan informasi biaya ekskul dari sekolah. Hubungi sekolah untuk info terbaru.]</p></div></div>
-      <div class="info-card"><div class="info-icon" style="background:#FFE0F0">📝</div><div class="info-text"><h4>Pendaftaran</h4><p>Pendaftaran ekskul dilakukan bersamaan dengan pendaftaran sekolah atau di awal semester.</p></div></div>
+    <div class="why-ekskul">
+      <h3>🐝 Mengapa Ekskul An-Nahl?</h3>
+      <p>Program ekskul kami dirancang dengan mempertimbangkan tumbuh kembang optimal anak usia dini berbasis nilai Islami</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="icon">👩‍🏫</div>
+          <h4>Instruktur Berpengalaman</h4>
+          <p>Dibimbing oleh instruktur berpengalaman di bidangnya masing-masing</p>
+        </div>
+        <div class="why-item">
+          <div class="icon">🕌</div>
+          <h4>Bernilai Islami</h4>
+          <p>Setiap kegiatan diintegrasikan dengan nilai-nilai Islam dan akhlak mulia</p>
+        </div>
+        <div class="why-item">
+          <div class="icon">😊</div>
+          <h4>Menyenangkan</h4>
+          <p>Metode bermain sambil belajar yang membuat anak antusias dan bahagia</p>
+        </div>
+      </div>
     </div>
   </div></section>
 
-  <div style="background:linear-gradient(135deg,var(--purple),#E91E63);padding:60px 40px;text-align:center;color:white">
-    <h2 style="font-family:'Baloo 2',cursive;font-size:34px;font-weight:800;margin-bottom:14px">Minat Ikut Program Afterschool? 🌟</h2>
-    <p style="font-size:16px;opacity:0.9;margin-bottom:28px">Hubungi kami untuk informasi lengkap dan pendaftaran ekskul</p>
-    <a href="kontak.html" style="background:white;color:#7B1FA2;padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;transition:all 0.3s">📞 Hubungi Kami</a>
+  <div style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:60px 40px;text-align:center;color:white">
+    <h2 style="font-family:'Baloo 2',cursive;font-size:32px;font-weight:800;margin-bottom:14px">Minat Ikut Ekstrakurikuler? 🏹</h2>
+    <p style="font-size:16px;opacity:0.9;margin-bottom:28px">Pendaftaran ekskul dilakukan bersamaan dengan pendaftaran sekolah</p>
+    <a href="ppdb.html" style="background:white;color:var(--orange-dark);padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;margin:6px">📝 Daftar Sekarang</a>
+    <a href="https://wa.me/6281296282841" target="_blank" style="background:var(--yellow);color:var(--orange-dark);padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;margin:6px">💬 Tanya via WA</a>
   </div>
 
   <div id="footer"></div>
