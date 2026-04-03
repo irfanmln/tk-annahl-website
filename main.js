@@ -64,30 +64,64 @@ function renderNavbar() {
         <li><a href="ppdb.html" class="nav-btn">Daftar Sekarang</a></li>
       </ul>
     </nav>
-    <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+    <div id="mobileDrawer" style="
+      display:none;
+      position:fixed;
+      top:72px; left:0; right:0; bottom:0;
+      z-index:9998;
+      overflow-y:auto;
+      background:white;
+      padding:8px 16px 40px;
+      flex-direction:column;
+      gap:4px;
+    ">
+      <a href="index.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('index.html') ? '#FFD700' : 'transparent'}">Beranda</a>
+      
+      <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
+        Program <span class="arr">▾</span>
+      </div>
+      <div style="display:none;flex-direction:column;background:#FFF8E7;border-radius:12px;padding:8px;margin-bottom:4px">
+        <a href="toddler.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">⭐ Toddler (2–3 Th)</a>
+        <a href="nursery.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🌱 Nursery (3–4 Th)</a>
+        <a href="k1.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">📚 Kindergarten 1</a>
+        <a href="k2.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🚀 Kindergarten 2</a>
+      </div>
+
+      <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
+        Kegiatan <span class="arr">▾</span>
+      </div>
+      <div style="display:none;flex-direction:column;background:#FFF8E7;border-radius:12px;padding:8px;margin-bottom:4px">
+        <a href="activities.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🎨 Activities</a>
+        <a href="afterschool.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🏹 Ekstrakurikuler</a>
+      </div>
+
+      <a href="ppdb.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Pendaftaran</a>
+      <a href="kontak.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Kontak</a>
+      <a href="ppdb.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;background:linear-gradient(135deg,#FF8C00,#E65C00);color:white;text-align:center;margin-top:8px">Daftar Sekarang</a>
+    </div>
+    <div id="navOverlay" onclick="closeNav()" style="display:none;position:fixed;inset:0;top:72px;background:rgba(0,0,0,0.5);z-index:9997"></div>
   `;
 }
 
 function toggleNav() {
-  const nav = document.getElementById('navLinks');
+  const drawer = document.getElementById('mobileDrawer');
   const overlay = document.getElementById('navOverlay');
-  const isOpen = nav.classList.contains('open');
+  const isOpen = drawer.style.display === 'flex';
   if (isOpen) {
     closeNav();
   } else {
-    nav.classList.add('open');
-    overlay.classList.add('open');
+    drawer.style.display = 'flex';
+    overlay.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
 }
 
 function closeNav() {
-  const nav = document.getElementById('navLinks');
+  const drawer = document.getElementById('mobileDrawer');
   const overlay = document.getElementById('navOverlay');
-  if (nav) nav.classList.remove('open');
-  if (overlay) overlay.classList.remove('open');
+  if (drawer) drawer.style.display = 'none';
+  if (overlay) overlay.style.display = 'none';
   document.body.style.overflow = '';
-  document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('mobile-open'));
 }
 
 function toggleDropdown(el) {
