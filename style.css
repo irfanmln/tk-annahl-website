@@ -448,7 +448,6 @@ footer {
     bottom: 0;
     background: white;
     padding: 12px 16px 32px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     gap: 2px;
     z-index: 998;
     overflow-y: auto;
@@ -457,17 +456,37 @@ footer {
   .nav-links.open { display: flex; }
   .nav-toggle { display: block; }
   .nav-links > li { width: 100%; }
-  .nav-links > li > a { padding: 12px 16px; border-radius: 12px; display: block; font-size: 16px; width: 100%; }
+  .nav-links > li > a {
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: block;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-  /* Mobile dropdown - PAKSA tampil ke bawah */
-  .nav-dropdown { width: 100%; position: relative; }
-  .nav-dropdown > a { display: flex !important; justify-content: space-between; align-items: center; }
+  /* Overlay gelap di belakang navbar */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: var(--nav-height);
+    background: rgba(0,0,0,0.4);
+    z-index: 997;
+  }
+  .nav-overlay.open { display: block; }
+
+  /* Mobile dropdown */
+  .nav-dropdown { width: 100%; position: static; }
+  .nav-dropdown > a {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
   .nav-dropdown-menu {
     display: none !important;
     position: static !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
+    top: auto !important; left: auto !important; right: auto !important;
     transform: none !important;
     box-shadow: none !important;
     padding: 4px 0 4px 12px !important;
@@ -481,7 +500,14 @@ footer {
   .nav-dropdown.mobile-open > .nav-dropdown-menu { display: block !important; }
   .nav-dropdown:hover > .nav-dropdown-menu { display: none !important; }
   .nav-dropdown.mobile-open:hover > .nav-dropdown-menu { display: block !important; }
-  .nav-dropdown-menu a { font-size: 14px !important; padding: 10px 14px !important; border-radius: 10px !important; display: block !important; width: 100% !important; }
+  .nav-dropdown-menu a {
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+    border-radius: 10px !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
 
   .page-hero h1 { font-size: 28px; }
   section { padding: 50px 20px; }
@@ -489,7 +515,7 @@ footer {
   .stats-bar .container { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
   body { overflow-x: hidden; }
-  * { max-width: 100%; }
+  * { max-width: 100%; box-sizing: border-box; }
 }
 
 @media (max-width: 600px) {
@@ -499,9 +525,6 @@ footer {
   .footer-grid { grid-template-columns: 1fr; }
   section { padding: 40px 16px; }
   .section-title { font-size: 26px; }
-  /* Paksa semua grid jadi 1 kolom di HP kecil */
-  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
   .sosmed-grid, .kuota-grid, .jam-grid { grid-template-columns: 1fr !important; }
   .unggulan-grid, .area-grid, .kuri-grid { grid-template-columns: 1fr !important; }
-  .why-grid { grid-template-columns: 1fr !important; }
 }

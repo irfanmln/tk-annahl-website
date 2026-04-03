@@ -64,28 +64,30 @@ function renderNavbar() {
         <li><a href="ppdb.html" class="nav-btn">Daftar Sekarang</a></li>
       </ul>
     </nav>
+    <div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
   `;
 }
 
 function toggleNav() {
   const nav = document.getElementById('navLinks');
-  nav.classList.toggle('open');
-  // Tutup navbar kalau klik di luar
-  if (nav.classList.contains('open')) {
-    setTimeout(() => {
-      document.addEventListener('click', closeNavOnOutside);
-    }, 100);
+  const overlay = document.getElementById('navOverlay');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) {
+    closeNav();
+  } else {
+    nav.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 }
 
-function closeNavOnOutside(e) {
+function closeNav() {
   const nav = document.getElementById('navLinks');
-  const toggle = document.querySelector('.nav-toggle');
-  if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-    nav.classList.remove('open');
-    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('mobile-open'));
-    document.removeEventListener('click', closeNavOnOutside);
-  }
+  const overlay = document.getElementById('navOverlay');
+  if (nav) nav.classList.remove('open');
+  if (overlay) overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('mobile-open'));
 }
 
 function toggleDropdown(el) {
