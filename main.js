@@ -48,8 +48,8 @@ function renderNavbar() {
           <div class="nav-dropdown-menu">
             <a href="toddler.html">⭐ Toddler (2–3 Th)</a>
             <a href="nursery.html">🌙 Nursery (3–4 Th)</a>
-            <a href="k1.html">📚 Kindergarten 1</a>
-            <a href="k2.html">🚀 Kindergarten 2</a>
+            <a href="k1.html">☀️ Kindergarten 1</a>
+            <a href="k2.html">☁️ Kindergarten 2</a>
           </div>
         </li>
         <li class="nav-dropdown">
@@ -83,8 +83,8 @@ function renderNavbar() {
       <div style="display:none;flex-direction:column;background:#FFF8E7;border-radius:12px;padding:8px;margin-bottom:4px">
         <a href="toddler.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">⭐ Toddler (2–3 Th)</a>
         <a href="nursery.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🌙 Nursery (3–4 Th)</a>
-        <a href="k1.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">📚 Kindergarten 1</a>
-        <a href="k2.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🚀 Kindergarten 2</a>
+        <a href="k1.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">☀️ Kindergarten 1</a>
+        <a href="k2.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">☁️ Kindergarten 2</a>
       </div>
 
       <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
@@ -155,8 +155,8 @@ function renderFooter() {
           <ul class="footer-links">
             <li><a href="toddler.html">⭐ Toddler Class (2–3 Th)</a></li>
             <li><a href="nursery.html">🌙 Nursery Class (3–4 Th)</a></li>
-            <li><a href="k1.html">📚 Kindergarten 1 (4–5 Th)</a></li>
-            <li><a href="k2.html">🚀 Kindergarten 2 (5–6 Th)</a></li>
+            <li><a href="k1.html">☀️ Kindergarten 1 (4–5 Th)</a></li>
+            <li><a href="k2.html">☁️ Kindergarten 2 (5–6 Th)</a></li>
           </ul>
         </div>
         <div>
