@@ -68,7 +68,24 @@ function renderNavbar() {
 }
 
 function toggleNav() {
-  document.getElementById('navLinks').classList.toggle('open');
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('open');
+  // Tutup navbar kalau klik di luar
+  if (nav.classList.contains('open')) {
+    setTimeout(() => {
+      document.addEventListener('click', closeNavOnOutside);
+    }, 100);
+  }
+}
+
+function closeNavOnOutside(e) {
+  const nav = document.getElementById('navLinks');
+  const toggle = document.querySelector('.nav-toggle');
+  if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+    nav.classList.remove('open');
+    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('mobile-open'));
+    document.removeEventListener('click', closeNavOnOutside);
+  }
 }
 
 function toggleDropdown(el) {
