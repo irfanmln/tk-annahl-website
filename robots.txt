@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tk-annahl-website.vercel.app/sitemap.xml
