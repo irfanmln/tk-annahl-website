@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="favicon.png"/>
   <title>Admin – An-Nahl Learning Center</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap');
-    :root { --yellow:#FFD700; --orange:#FF8C00; --orange-dark:#E65C00; --cream:#FFF8E7; --text:#3D2B00; --text-light:#7A5C1E; --sidebar:#2D1A00; --green:#4CAF50; --red:#F44336; --blue:#2196F3; }
+    :root {
+      --yellow:#FFD700; --orange:#FF8C00; --orange-dark:#E65C00;
+      --cream:#FFF8E7; --text:#3D2B00; --text-light:#7A5C1E;
+      --sidebar:#2D1A00; --green:#4CAF50; --red:#F44336; --blue:#2196F3;
+    }
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Nunito',sans-serif; background:#F5F5F5; color:var(--text); }
-
-    /* LOGIN */
     #login { position:fixed; inset:0; background:linear-gradient(135deg,#2D1A00,#5C3300); display:flex; align-items:center; justify-content:center; z-index:9999; }
     .login-card { background:white; border-radius:24px; padding:48px 40px; width:380px; box-shadow:0 30px 80px rgba(0,0,0,0.4); text-align:center; }
-    .login-logo { width:72px; height:72px; background:linear-gradient(135deg,#FFD700,#FF8C00); border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:36px; margin:0 auto 20px; }
+    .login-logo { width:72px; height:72px; border-radius:50%; overflow:hidden; margin:0 auto 20px; background:linear-gradient(135deg,#FFD700,#FF8C00); display:flex; align-items:center; justify-content:center; font-size:36px; }
+    .login-logo img { width:100%; height:100%; object-fit:cover; }
     .login-title { font-family:'Baloo 2',cursive; font-size:24px; font-weight:800; color:var(--orange-dark); margin-bottom:6px; }
     .login-sub { font-size:13px; color:var(--text-light); margin-bottom:28px; }
     .login-input { width:100%; padding:13px 16px; border:2px solid #FFE0A0; border-radius:12px; font-family:'Nunito',sans-serif; font-size:15px; background:var(--cream); margin-bottom:14px; outline:none; transition:border-color 0.3s; }
     .login-input:focus { border-color:var(--orange); background:white; }
-    .login-btn { width:100%; padding:14px; background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; border:none; border-radius:12px; font-family:'Nunito',sans-serif; font-size:16px; font-weight:700; cursor:pointer; }
-    .login-hint { margin-top:14px; font-size:12px; color:#aaa; }
-    #login-err { color:var(--red); font-size:13px; margin-bottom:10px; display:none; }
-
-    /* APP */
+    .login-btn { width:100%; padding:14px; background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; border:none; border-radius:12px; font-family:'Nunito',sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s; }
+    .login-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,140,0,0.3); }
+    .login-btn:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+    #login-err { color:var(--red); font-size:13px; margin-bottom:12px; display:none; padding:10px; background:#FFEBEE; border-radius:8px; }
     #app { display:none; min-height:100vh; }
     .sidebar { width:260px; background:var(--sidebar); min-height:100vh; position:fixed; top:0; left:0; display:flex; flex-direction:column; z-index:100; }
     .sidebar-logo { padding:22px 18px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; gap:12px; }
-    .sidebar-logo-icon { width:44px; height:44px; background:linear-gradient(135deg,#FFD700,#FF8C00); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; }
+    .sidebar-logo-icon { width:44px; height:44px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg,#FFD700,#FF8C00); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+    .sidebar-logo-icon img { width:100%; height:100%; object-fit:cover; }
     .sidebar-logo-text { font-family:'Baloo 2',cursive; font-size:14px; font-weight:700; color:#FFD700; line-height:1.2; }
     .sidebar-logo-text span { display:block; font-size:11px; color:rgba(255,255,255,0.45); font-family:'Nunito',sans-serif; }
     .sidebar-nav { flex:1; padding:16px 0; }
@@ -39,8 +43,6 @@
     .sidebar-footer { padding:14px 10px; border-top:1px solid rgba(255,255,255,0.08); }
     .logout { display:flex; align-items:center; gap:12px; padding:11px 18px; color:rgba(255,255,255,0.5); cursor:pointer; border-radius:12px; transition:all 0.3s; font-size:14px; font-weight:700; }
     .logout:hover { background:rgba(244,67,54,0.15); color:#FF6B6B; }
-
-    /* MAIN */
     .main { margin-left:260px; min-height:100vh; }
     .topbar { background:white; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 12px rgba(0,0,0,0.06); position:sticky; top:0; z-index:50; }
     .topbar-title { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; }
@@ -49,8 +51,6 @@
     .content { padding:28px; }
     .page { display:none; }
     .page.active { display:block; }
-
-    /* CARDS */
     .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:24px; }
     .stat-card { background:white; border-radius:18px; padding:22px; box-shadow:0 4px 16px rgba(0,0,0,0.06); display:flex; align-items:center; gap:14px; transition:transform 0.3s; }
     .stat-card:hover { transform:translateY(-4px); }
@@ -59,8 +59,6 @@
     .stat-lbl { font-size:12px; color:var(--text-light); font-weight:700; margin-top:4px; }
     .card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-bottom:20px; }
     .card-title { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; margin-bottom:18px; }
-
-    /* TABLE */
     table { width:100%; border-collapse:collapse; }
     th { text-align:left; padding:10px 14px; font-size:12px; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:0.5px; border-bottom:2px solid #F0E8D0; }
     td { padding:13px 14px; font-size:14px; border-bottom:1px solid #F5EDD5; }
@@ -77,45 +75,52 @@
     .abtn.reject:hover { background:#F44336; color:white; }
     .abtn.delete { background:#FFEBEE; color:#C62828; }
     .abtn.delete:hover { background:#F44336; color:white; }
-
-    /* PAGE HEADER */
     .page-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
     .page-hdr h2 { font-family:'Baloo 2',cursive; font-size:22px; font-weight:800; }
     .add-btn { background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; border:none; padding:10px 22px; border-radius:12px; font-family:'Nunito',sans-serif; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 4px 12px rgba(255,140,0,0.3); }
-
-    /* TOAST */
     .toast { position:fixed; bottom:24px; right:24px; z-index:9999; padding:14px 24px; border-radius:14px; font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; color:white; box-shadow:0 8px 24px rgba(0,0,0,0.2); }
     .toast.success { background:#4CAF50; }
     .toast.error { background:#F44336; }
-
     .empty { text-align:center; padding:40px; color:var(--text-light); font-size:15px; }
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; font-size:13px; font-weight:700; margin-bottom:6px; color:var(--text); }
+    .form-group input { width:100%; padding:11px 14px; border:2px solid #FFE0A0; border-radius:10px; font-family:'Nunito',sans-serif; font-size:14px; outline:none; background:var(--cream); transition:border-color 0.3s; }
+    .form-group input:focus { border-color:var(--orange); background:white; }
+    .save-btn { padding:12px 28px; background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; border:none; border-radius:12px; font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; cursor:pointer; transition:all 0.3s; }
+    .save-btn:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(255,140,0,0.3); }
+    .save-btn:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
   </style>
 </head>
 <body>
 
 <div id="login">
   <div class="login-card">
-    <div class="login-logo">🌻</div>
+    <div class="login-logo">
+      <img src="logo-annahl.png" alt="An-Nahl" onerror="this.style.display='none'"/>
+    </div>
     <div class="login-title">Admin Panel</div>
-    <div class="login-sub">An-Nahl Learning Center</div>
-    <div id="login-err">⚠️ Username atau password salah!</div>
+    <div class="login-sub">TK. PGRI An-Nahl Learning Centre</div>
+    <div id="login-err"></div>
     <input class="login-input" id="uname" type="text" placeholder="Username" onkeypress="if(event.key==='Enter')doLogin()"/>
     <input class="login-input" id="upass" type="password" placeholder="Password" onkeypress="if(event.key==='Enter')doLogin()"/>
-    <button class="login-btn" onclick="doLogin()">🔐 Masuk</button>
-    <div class="login-hint">Demo: admin / annahl2025</div>
+    <button class="login-btn" id="loginBtn" onclick="doLogin()">🔐 Masuk</button>
   </div>
 </div>
 
 <div id="app">
   <div class="sidebar">
     <div class="sidebar-logo">
-      <div class="sidebar-logo-icon">🌻</div>
+      <div class="sidebar-logo-icon">
+        <img src="logo-annahl.png" alt="An-Nahl" onerror="this.style.display='none'"/>
+      </div>
       <div class="sidebar-logo-text">An-Nahl LC<span>Admin Panel</span></div>
     </div>
     <div class="sidebar-nav">
       <div class="nav-section">Menu Utama</div>
       <div class="nav-item active" onclick="showPage('dashboard',this)"><span class="ni">📊</span> Dashboard</div>
-      <div class="nav-item" onclick="showPage('pendaftar',this)" id="nav-pendaftar"><span class="ni">📝</span> Data Pendaftar <span class="nav-badge" id="badge-count">0</span></div>
+      <div class="nav-item" onclick="showPage('pendaftar',this)"><span class="ni">📝</span> Data Pendaftar <span class="nav-badge" id="badge-count">0</span></div>
+      <div class="nav-section" style="margin-top:10px">Pengaturan</div>
+      <div class="nav-item" onclick="showPage('password',this)"><span class="ni">🔐</span> Ganti Password</div>
       <div class="nav-section" style="margin-top:10px">Lainnya</div>
       <div class="nav-item" onclick="window.open('index.html','_blank')"><span class="ni">🌐</span> Lihat Website</div>
     </div>
@@ -127,11 +132,13 @@
   <div class="main">
     <div class="topbar">
       <div class="topbar-title" id="topbar-title">Dashboard</div>
-      <div class="admin-pill"><div class="admin-avatar">👤</div><div style="font-size:14px;font-weight:700">Admin</div></div>
+      <div class="admin-pill">
+        <div class="admin-avatar">👤</div>
+        <div style="font-size:14px;font-weight:700" id="admin-name">Admin</div>
+      </div>
     </div>
     <div class="content">
 
-      <!-- DASHBOARD -->
       <div class="page active" id="page-dashboard">
         <div class="stat-row">
           <div class="stat-card"><div class="stat-icon" style="background:#FFF3CC">📝</div><div><div class="stat-num" id="stat-total">–</div><div class="stat-lbl">Total Pendaftar</div></div></div>
@@ -145,7 +152,6 @@
         </div>
       </div>
 
-      <!-- PENDAFTAR -->
       <div class="page" id="page-pendaftar">
         <div class="page-hdr">
           <h2>📝 Semua Data Pendaftar</h2>
@@ -153,6 +159,30 @@
         </div>
         <div class="card">
           <div id="pendaftar-table"><div class="empty">⏳ Memuat data...</div></div>
+        </div>
+      </div>
+
+      <div class="page" id="page-password">
+        <div class="page-hdr"><h2>🔐 Ganti Password Admin</h2></div>
+        <div class="card" style="max-width:460px">
+          <div class="card-title">Ubah Kredensial Login</div>
+          <div class="form-group">
+            <label>Username Baru</label>
+            <input type="text" id="newUsername" placeholder="Kosongkan jika tidak ingin diubah"/>
+          </div>
+          <div class="form-group">
+            <label>Password Lama *</label>
+            <input type="password" id="oldPassword" placeholder="Password yang sekarang"/>
+          </div>
+          <div class="form-group">
+            <label>Password Baru *</label>
+            <input type="password" id="newPassword" placeholder="Minimal 8 karakter"/>
+          </div>
+          <div class="form-group">
+            <label>Konfirmasi Password Baru *</label>
+            <input type="password" id="confirmPassword" placeholder="Ulangi password baru"/>
+          </div>
+          <button class="save-btn" id="savePassBtn" onclick="gantiPassword()">💾 Simpan Perubahan</button>
         </div>
       </div>
 
@@ -164,22 +194,130 @@
 const SUPABASE_URL = 'https://ssfiywjmgiogixryssbx.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_Xo3_edCbQl5okm56MkuiLQ_JRWyYwea';
 
-function doLogin() {
-  const u = document.getElementById('uname').value;
-  const p = document.getElementById('upass').value;
-  if (u === 'admin' && p === 'annahl2025') {
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    loadDashboard();
-  } else {
-    document.getElementById('login-err').style.display = 'block';
+let currentSession = null;
+
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function doLogin() {
+  const username = document.getElementById('uname').value.trim();
+  const password = document.getElementById('upass').value;
+  const btn = document.getElementById('loginBtn');
+  const errEl = document.getElementById('login-err');
+
+  if (!username || !password) {
+    errEl.textContent = '⚠️ Username dan password wajib diisi!';
+    errEl.style.display = 'block';
+    return;
   }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Memeriksa...';
+  errEl.style.display = 'none';
+
+  try {
+    const hashedPassword = await hashPassword(password);
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/admin_users?username=eq.${encodeURIComponent(username)}&password_hash=eq.${hashedPassword}&select=id,username`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    const data = await res.json();
+
+    if (Array.isArray(data) && data.length > 0) {
+      currentSession = { id: data[0].id, username: data[0].username };
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      document.getElementById('admin-name').textContent = data[0].username;
+      loadDashboard();
+    } else {
+      errEl.textContent = '⚠️ Username atau password salah!';
+      errEl.style.display = 'block';
+    }
+  } catch (err) {
+    errEl.textContent = '⚠️ Gagal terhubung. Coba lagi.';
+    errEl.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '🔐 Masuk';
+}
+
+async function gantiPassword() {
+  const newUsername = document.getElementById('newUsername').value.trim();
+  const oldPassword = document.getElementById('oldPassword').value;
+  const newPassword = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const btn = document.getElementById('savePassBtn');
+
+  if (!oldPassword || !newPassword || !confirmPassword) { showToast('Mohon lengkapi semua field!', 'error'); return; }
+  if (newPassword.length < 8) { showToast('Password baru minimal 8 karakter!', 'error'); return; }
+  if (newPassword !== confirmPassword) { showToast('Konfirmasi password tidak cocok!', 'error'); return; }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Menyimpan...';
+
+  try {
+    const oldHash = await hashPassword(oldPassword);
+    const checkRes = await fetch(
+      `${SUPABASE_URL}/rest/v1/admin_users?id=eq.${currentSession.id}&password_hash=eq.${oldHash}&select=id`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    const checkData = await checkRes.json();
+
+    if (!Array.isArray(checkData) || checkData.length === 0) {
+      showToast('Password lama salah!', 'error');
+      btn.disabled = false;
+      btn.textContent = '💾 Simpan Perubahan';
+      return;
+    }
+
+    const newHash = await hashPassword(newPassword);
+    const updateBody = { password_hash: newHash };
+    if (newUsername) updateBody.username = newUsername;
+
+    const updateRes = await fetch(`${SUPABASE_URL}/rest/v1/admin_users?id=eq.${currentSession.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(updateBody)
+    });
+
+    if (updateRes.ok) {
+      if (newUsername) {
+        currentSession.username = newUsername;
+        document.getElementById('admin-name').textContent = newUsername;
+      }
+      showToast('Password berhasil diubah!');
+      document.getElementById('oldPassword').value = '';
+      document.getElementById('newPassword').value = '';
+      document.getElementById('confirmPassword').value = '';
+    } else {
+      showToast('Gagal menyimpan. Coba lagi.', 'error');
+    }
+  } catch (err) {
+    showToast('Terjadi error. Coba lagi.', 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '💾 Simpan Perubahan';
 }
 
 function doLogout() {
   if (confirm('Yakin ingin keluar?')) {
+    currentSession = null;
     document.getElementById('app').style.display = 'none';
     document.getElementById('login').style.display = 'flex';
+    document.getElementById('uname').value = '';
+    document.getElementById('upass').value = '';
   }
 }
 
@@ -188,7 +326,7 @@ function showPage(id, el) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   if (el) el.classList.add('active');
-  const titles = { dashboard: 'Dashboard', pendaftar: 'Data Pendaftar PPDB' };
+  const titles = { dashboard: 'Dashboard', pendaftar: 'Data Pendaftar PPDB', password: 'Ganti Password' };
   document.getElementById('topbar-title').textContent = titles[id] || id;
   if (id === 'pendaftar') loadPendaftar();
 }
@@ -209,7 +347,7 @@ async function fetchData(params = '') {
 }
 
 async function hapusData(id) {
-  if (!confirm('Yakin ingin menghapus data pendaftar ini? Data tidak bisa dikembalikan!')) return;
+  if (!confirm('Yakin ingin menghapus data ini? Tidak bisa dikembalikan!')) return;
   const res = await fetch(`${SUPABASE_URL}/rest/v1/pendaftaran?id=eq.${id}`, {
     method: 'DELETE',
     headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'return=minimal' }
@@ -228,10 +366,16 @@ async function updateStatus(id, status) {
   else showToast('Gagal mengubah status.', 'error');
 }
 
-function fmtDate(d) { if (!d) return '-'; return new Date(d).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }); }
+function fmtDate(d) {
+  if (!d) return '-';
+  return new Date(d).toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
+}
 
 function renderTable(data, container) {
-  if (!data || data.length === 0) { document.getElementById(container).innerHTML = '<div class="empty">📭 Belum ada data pendaftar.</div>'; return; }
+  if (!data || data.length === 0) {
+    document.getElementById(container).innerHTML = '<div class="empty">📭 Belum ada data pendaftar.</div>';
+    return;
+  }
   const rows = data.map(r => `
     <tr>
       <td><b>${r.nama_anak}</b></td>
