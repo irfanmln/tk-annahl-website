@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <meta name="description" content="Galeri foto kegiatan TK. PGRI An-Nahl Sukabumi – momen berharga aktivitas belajar dan bermain anak usia dini."/>
+  <meta name="keywords" content="galeri TK An-Nahl, foto kegiatan TK sukabumi, dokumentasi PAUD sukabumi"/>
+  <meta name="author" content="TK. PGRI An-Nahl Learning Centre"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://tk-annahl-website.vercel.app/galeri.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Galeri Kegiatan – TK. PGRI An-Nahl Sukabumi"/>
+  <meta property="og:description" content="Momen berharga aktivitas belajar dan bermain anak-anak An-Nahl yang penuh keceriaan."/>
+  <meta property="og:image" content="https://tk-annahl-website.vercel.app/assets/K1_B_Class_Activity.webp"/>
+  <meta property="og:url" content="https://tk-annahl-website.vercel.app/galeri.html"/>
+  <meta property="og:locale" content="id_ID"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Galeri Kegiatan – TK. PGRI An-Nahl Sukabumi"/>
+  <meta name="twitter:description" content="Momen berharga aktivitas belajar dan bermain anak-anak An-Nahl."/>
+  <title>Galeri – TK. PGRI An-Nahl</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Filter tabs */
+    .filter-wrap { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:36px; }
+    .filter-btn { padding:9px 22px; border-radius:25px; border:2px solid #FFD700; background:white; font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:var(--orange-dark); cursor:pointer; transition:all 0.2s; }
+    .filter-btn.active, .filter-btn:hover { background:var(--orange-dark); color:white; border-color:var(--orange-dark); }
+
+    /* Gallery grid – CSS columns for masonry effect */
+    .gallery-grid { columns:3; column-gap:16px; }
+    .gallery-item { break-inside:avoid; margin-bottom:16px; border-radius:16px; overflow:hidden; cursor:pointer; position:relative; display:block; }
+    .gallery-item img { width:100%; display:block; transition:transform 0.4s; }
+    .gallery-item:hover img { transform:scale(1.05); }
+    .gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 55%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; padding:16px; }
+    .gallery-item:hover .gallery-overlay { opacity:1; }
+    .gallery-overlay span { color:white; font-weight:700; font-size:13px; line-height:1.4; }
+    .gallery-item.hidden { display:none; }
+
+    /* Lightbox */
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:99999; flex-direction:column; align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lb-inner { position:relative; display:flex; flex-direction:column; align-items:center; max-width:92vw; }
+    .lb-inner img { max-width:88vw; max-height:80vh; object-fit:contain; border-radius:12px; display:block; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+    .lb-close { position:absolute; top:-44px; right:0; font-size:26px; color:white; cursor:pointer; background:rgba(255,255,255,0.15); border:none; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+    .lb-close:hover { background:rgba(255,255,255,0.3); }
+    .lb-nav { position:fixed; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:white; font-size:28px; width:48px; height:64px; border-radius:12px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+    .lb-nav:hover { background:rgba(255,255,255,0.25); }
+    .lb-prev { left:16px; }
+    .lb-next { right:16px; }
+    .lb-caption { color:rgba(255,255,255,0.85); text-align:center; font-size:14px; margin-top:14px; font-weight:700; }
+    .lb-counter { color:rgba(255,255,255,0.45); text-align:center; font-size:12px; margin-top:5px; }
+
+    /* Empty state */
+    .gallery-empty { display:none; text-align:center; padding:60px 20px; color:var(--text-light); }
+    .gallery-empty .icon { font-size:60px; margin-bottom:16px; }
+
+    @media(max-width:900px){ .gallery-grid { columns:2; } }
+    @media(max-width:500px){ .gallery-grid { columns:1; } .lb-nav { display:none; } }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-tag">📸 Dokumentasi</div>
+    <h1>Galeri <span>Kegiatan</span></h1>
+    <p>Momen-momen berharga aktivitas belajar dan bermain anak-anak An-Nahl yang penuh keceriaan</p>
+  </div>
+
+  <section style="background:white"><div class="container">
+
+    <!-- Filter Tabs -->
+    <div class="filter-wrap">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">🖼️ Semua Foto</button>
+      <button class="filter-btn" onclick="filterGallery('kelas',this)">📚 Kegiatan Kelas</button>
+      <button class="filter-btn" onclick="filterGallery('outdoor',this)">🌳 Outdoor</button>
+      <button class="filter-btn" onclick="filterGallery('program',this)">🏫 Program</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- Kegiatan Kelas -->
+      <div class="gallery-item" data-cat="kelas" data-caption="Kegiatan Kelas K1" onclick="openLb(this)">
+        <img src="assets/K1_B_Class_Activity.webp" alt="Kegiatan Kelas K1" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kegiatan Kelas K1</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Aktivitas Belajar K1" onclick="openLb(this)">
+        <img src="assets/K1_B_Class_Activity_2.webp" alt="Aktivitas Belajar K1" loading="lazy"/>
+        <div class="gallery-overlay"><span>Aktivitas Belajar K1</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Kegiatan Kelas Nursery" onclick="openLb(this)">
+        <img src="assets/Nursery_Class_Activity.webp" alt="Kegiatan Kelas Nursery" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kegiatan Kelas Nursery</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Aktivitas Nursery" onclick="openLb(this)">
+        <img src="assets/Nursery_Class_Activity_2.webp" alt="Aktivitas Nursery" loading="lazy"/>
+        <div class="gallery-overlay"><span>Aktivitas Nursery</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Kreasi Nursery" onclick="openLb(this)">
+        <img src="assets/Nursery_Class_Activity_3.webp" alt="Kreasi Nursery" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kreasi Nursery</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Kegiatan Kelas Toddler" onclick="openLb(this)">
+        <img src="assets/Toddler_Class_Activity.webp" alt="Kegiatan Kelas Toddler" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kegiatan Kelas Toddler</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Aktivitas Toddler" onclick="openLb(this)">
+        <img src="assets/Toddler_Class_Activity_2.webp" alt="Aktivitas Toddler" loading="lazy"/>
+        <div class="gallery-overlay"><span>Aktivitas Toddler</span></div>
+      </div>
+      <div class="gallery-item" data-cat="kelas" data-caption="Kegiatan Kelas K2" onclick="openLb(this)">
+        <img src="assets/K2_Class_Activity.webp" alt="Kegiatan Kelas K2" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kegiatan Kelas K2</span></div>
+      </div>
+
+      <!-- Outdoor -->
+      <div class="gallery-item" data-cat="outdoor" data-caption="Senam & Olahraga K1" onclick="openLb(this)">
+        <img src="assets/K1_A_Gymnastic_Activity.webp" alt="Senam & Olahraga K1" loading="lazy"/>
+        <div class="gallery-overlay"><span>Senam & Olahraga K1</span></div>
+      </div>
+      <div class="gallery-item" data-cat="outdoor" data-caption="Aktivitas Outdoor K1" onclick="openLb(this)">
+        <img src="assets/K1_B_Outdoor_Activity.webp" alt="Aktivitas Outdoor K1" loading="lazy"/>
+        <div class="gallery-overlay"><span>Aktivitas Outdoor K1</span></div>
+      </div>
+
+      <!-- Program -->
+      <div class="gallery-item" data-cat="program" data-caption="Kelas Toddler – An-Najma" onclick="openLb(this)">
+        <img src="assets/Toddler.webp" alt="Toddler Class An-Najma" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kelas Toddler – An-Najma</span></div>
+      </div>
+      <div class="gallery-item" data-cat="program" data-caption="Kelas Nursery – Al-Qomar" onclick="openLb(this)">
+        <img src="assets/Nursery.webp" alt="Nursery Class Al-Qomar" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kelas Nursery – Al-Qomar</span></div>
+      </div>
+      <div class="gallery-item" data-cat="program" data-caption="Kindergarten 1 – As-Syams (A)" onclick="openLb(this)">
+        <img src="assets/K1_A.webp" alt="Kindergarten 1 As-Syams" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kindergarten 1 – As-Syams (A)</span></div>
+      </div>
+      <div class="gallery-item" data-cat="program" data-caption="Kindergarten 1 – As-Syams (B)" onclick="openLb(this)">
+        <img src="assets/K1_B.webp" alt="Kindergarten 1 As-Syams B" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kindergarten 1 – As-Syams (B)</span></div>
+      </div>
+      <div class="gallery-item" data-cat="program" data-caption="Kindergarten 2 – As-Sahab" onclick="openLb(this)">
+        <img src="assets/K2.webp" alt="Kindergarten 2 As-Sahab" loading="lazy"/>
+        <div class="gallery-overlay"><span>Kindergarten 2 – As-Sahab</span></div>
+      </div>
+      <div class="gallery-item" data-cat="program" data-caption="Gedung An-Nahl Learning Centre" onclick="openLb(this)">
+        <img src="assets/Beranda.webp" alt="Gedung An-Nahl Learning Centre" loading="lazy"/>
+        <div class="gallery-overlay"><span>Gedung An-Nahl Learning Centre</span></div>
+      </div>
+
+    </div>
+
+    <div class="gallery-empty" id="galleryEmpty">
+      <div class="icon">📷</div>
+      <p style="font-size:16px;font-weight:700">Foto segera hadir</p>
+    </div>
+
+  </div></section>
+
+  <!-- CTA -->
+  <div style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:60px 40px;text-align:center;color:white">
+    <h2 style="font-family:'Baloo 2',cursive;font-size:32px;font-weight:800;margin-bottom:14px">Ingin Putra-Putri Anda Ada di Sini? 📸</h2>
+    <p style="font-size:16px;opacity:0.9;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto">Daftarkan sekarang dan biarkan anak Anda tumbuh bersama keluarga besar An-Nahl!</p>
+    <a href="ppdb.html" style="background:white;color:var(--orange-dark);padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;margin:6px">📝 Daftar Sekarang</a>
+    <a href="https://wa.me/6281296282841" target="_blank" style="background:var(--yellow);color:var(--orange-dark);padding:13px 32px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;display:inline-block;margin:6px">💬 Tanya via WA</a>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-nav lb-prev" onclick="lbNav(-1,event)">&#8249;</button>
+    <div class="lb-inner">
+      <button class="lb-close" onclick="closeLb()">✕</button>
+      <img id="lbImg" src="" alt=""/>
+      <div class="lb-caption" id="lbCaption"></div>
+      <div class="lb-counter" id="lbCounter"></div>
+    </div>
+    <button class="lb-nav lb-next" onclick="lbNav(1,event)">&#8250;</button>
+  </div>
+
+  <div id="footer"></div>
+  <script src="main.js"></script>
+  <script>
+    renderNavbar(); renderFooter();
+
+    let lbItems = [], lbIdx = 0;
+
+    function getVisible() {
+      return [...document.querySelectorAll('.gallery-item:not(.hidden)')];
+    }
+
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.classList.toggle('hidden', cat !== 'all' && item.dataset.cat !== cat);
+      });
+      const empty = document.getElementById('galleryEmpty');
+      empty.style.display = getVisible().length === 0 ? 'block' : 'none';
+    }
+
+    function openLb(el) {
+      lbItems = getVisible();
+      lbIdx = lbItems.indexOf(el);
+      showLb();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLb() {
+      const item = lbItems[lbIdx];
+      if (!item) return;
+      document.getElementById('lbImg').src = item.querySelector('img').src;
+      document.getElementById('lbCaption').textContent = item.dataset.caption || '';
+      document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + lbItems.length;
+    }
+
+    function closeLb() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lbNav(dir, e) {
+      if (e) e.stopPropagation();
+      lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+      showLb();
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLb();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'ArrowRight') lbNav(1, null);
+      if (e.key === 'ArrowLeft') lbNav(-1, null);
+      if (e.key === 'Escape') closeLb();
+    });
+  </script>
+</body>
+</html>

@@ -59,6 +59,7 @@ function renderNavbar() {
             <a href="afterschool.html">🏹 Ekstrakurikuler</a>
           </div>
         </li>
+        <li><a href="galeri.html" class="${isActive('galeri.html')}">Galeri</a></li>
         <li><a href="ppdb.html" class="${isActive('ppdb.html')}">Pendaftaran</a></li>
         <li><a href="kontak.html" class="${isActive('kontak.html')}">Kontak</a></li>
         <li><a href="ppdb.html" class="nav-btn">Daftar Sekarang</a></li>
@@ -95,6 +96,7 @@ function renderNavbar() {
         <a href="afterschool.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🏹 Ekstrakurikuler</a>
       </div>
 
+      <a href="galeri.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('galeri.html') ? '#FFD700' : 'transparent'}">📸 Galeri</a>
       <a href="ppdb.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Pendaftaran</a>
       <a href="kontak.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Kontak</a>
       <a href="ppdb.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;background:linear-gradient(135deg,#FF8C00,#E65C00);color:white;text-align:center;margin-top:8px">Daftar Sekarang</a>
@@ -164,6 +166,7 @@ function renderFooter() {
           <ul class="footer-links">
             <li><a href="activities.html">🎨 Activities</a></li>
             <li><a href="afterschool.html">🏹 Ekstrakurikuler</a></li>
+            <li><a href="galeri.html">📸 Galeri Foto</a></li>
             <li><a href="ppdb.html">📝 Pendaftaran PPDB</a></li>
             <li><a href="kontak.html">📍 Kontak Kami</a></li>
           </ul>

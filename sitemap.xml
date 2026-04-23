@@ -49,6 +49,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tk-annahl-website.vercel.app/galeri.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tk-annahl-website.vercel.app/kontak.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
