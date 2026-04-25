@@ -30,7 +30,12 @@
     .gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 55%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; padding:16px; }
     .gallery-item:hover .gallery-overlay { opacity:1; }
     .gallery-overlay span { color:white; font-weight:700; font-size:13px; line-height:1.4; }
-    .gallery-item.hidden { display:none; }
+    .load-more-wrap { text-align:center; margin-top:36px; }
+    .load-more-btn { background:white; border:2px solid var(--orange-dark); color:var(--orange-dark); padding:12px 36px; border-radius:30px; font-family:'Nunito',sans-serif; font-weight:800; font-size:15px; cursor:pointer; transition:all 0.2s; }
+    .load-more-btn:hover { background:var(--orange-dark); color:white; }
+    .gallery-count { text-align:center; margin-top:16px; font-size:13px; color:var(--text-light); font-weight:600; }
+    .gallery-empty { display:none; text-align:center; padding:60px 20px; color:var(--text-light); }
+    .gallery-empty .icon { font-size:60px; margin-bottom:16px; }
     .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.93); z-index:99999; flex-direction:column; align-items:center; justify-content:center; }
     .lightbox.open { display:flex; }
     .lb-inner { position:relative; display:flex; flex-direction:column; align-items:center; max-width:92vw; }
@@ -43,8 +48,6 @@
     .lb-next { right:16px; }
     .lb-caption { color:rgba(255,255,255,0.85); text-align:center; font-size:14px; margin-top:14px; font-weight:700; }
     .lb-counter { color:rgba(255,255,255,0.45); text-align:center; font-size:12px; margin-top:5px; }
-    .gallery-empty { display:none; text-align:center; padding:60px 20px; color:var(--text-light); }
-    .gallery-empty .icon { font-size:60px; margin-bottom:16px; }
     @media(max-width:900px){ .gallery-grid { columns:2; } }
     @media(max-width:500px){ .gallery-grid { columns:1; } .lb-nav { display:none; } }
   </style>
@@ -71,219 +74,19 @@
       <button class="filter-btn" onclick="filterGallery('program',this)">🏫 Program</button>
     </div>
 
-    <!-- Gallery -->
-    <div class="gallery-grid" id="galleryGrid">
-
-      <!-- TODDLER -->
-      <div class="gallery-item" data-cat="toddler" data-caption="Kegiatan Kelas Toddler" onclick="openLb(this)">
-        <img src="assets/Toddler_Class_Activity.webp" alt="Kegiatan Toddler" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Kelas Toddler</span></div>
-      </div>
-      <div class="gallery-item" data-cat="toddler" data-caption="Aktivitas Toddler" onclick="openLb(this)">
-        <img src="assets/Toddler_Class_Activity_2.webp" alt="Aktivitas Toddler" loading="lazy"/>
-        <div class="gallery-overlay"><span>Aktivitas Toddler</span></div>
-      </div>
-
-      <!-- NURSERY -->
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Kelas Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_Class_Activity.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Kelas Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Aktivitas Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_Class_Activity_2.webp" alt="Aktivitas Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Aktivitas Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kreasi Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_Class_Activity_3.webp" alt="Kreasi Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kreasi Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_1.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_3.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_4.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_5.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_6.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Nursery</span></div>
-      </div>
-      <div class="gallery-item" data-cat="nursery" data-caption="Kegiatan Nursery" onclick="openLb(this)">
-        <img src="assets/Nursery_7.webp" alt="Kegiatan Nursery" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Nursery</span></div>
-      </div>
-
-      <!-- K1 -->
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan Kelas K1" onclick="openLb(this)">
-        <img src="assets/K1_B_Class_Activity.webp" alt="Kegiatan K1" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Kelas K1</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Aktivitas Belajar K1" onclick="openLb(this)">
-        <img src="assets/K1_B_Class_Activity_2.webp" alt="Aktivitas K1" loading="lazy"/>
-        <div class="gallery-overlay"><span>Aktivitas Belajar K1</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_1.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_2.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_3.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_4.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_5.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_6.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_7.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_8.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_9.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_10.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_11.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1A" onclick="openLb(this)">
-        <img src="assets/K1A_12.webp" alt="Kegiatan K1A" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1A</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1B" onclick="openLb(this)">
-        <img src="assets/K1B_1.webp" alt="Kegiatan K1B" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1B</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1B" onclick="openLb(this)">
-        <img src="assets/K1B_2.webp" alt="Kegiatan K1B" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1B</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1B" onclick="openLb(this)">
-        <img src="assets/K1B_3.webp" alt="Kegiatan K1B" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1B</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1B" onclick="openLb(this)">
-        <img src="assets/K1B_4.webp" alt="Kegiatan K1B" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1B</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k1" data-caption="Kegiatan K1B" onclick="openLb(this)">
-        <img src="assets/K1B_5.webp" alt="Kegiatan K1B" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K1B</span></div>
-      </div>
-
-      <!-- K2 -->
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan Kelas K2" onclick="openLb(this)">
-        <img src="assets/K2_Class_Activity.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan Kelas K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_1.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_2.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_3.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_4.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_5.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_6.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_7.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_8.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-      <div class="gallery-item" data-cat="k2" data-caption="Kegiatan K2" onclick="openLb(this)">
-        <img src="assets/K2_9.webp" alt="Kegiatan K2" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kegiatan K2</span></div>
-      </div>
-
-      <!-- OUTDOOR -->
-      <div class="gallery-item" data-cat="outdoor" data-caption="Senam & Olahraga K1" onclick="openLb(this)">
-        <img src="assets/K1_A_Gymnastic_Activity.webp" alt="Senam K1" loading="lazy"/>
-        <div class="gallery-overlay"><span>Senam & Olahraga K1</span></div>
-      </div>
-      <div class="gallery-item" data-cat="outdoor" data-caption="Aktivitas Outdoor K1" onclick="openLb(this)">
-        <img src="assets/K1_B_Outdoor_Activity.webp" alt="Outdoor K1" loading="lazy"/>
-        <div class="gallery-overlay"><span>Aktivitas Outdoor K1</span></div>
-      </div>
-
-      <!-- PROGRAM -->
-      <div class="gallery-item" data-cat="program" data-caption="Kelas Toddler – An-Najma" onclick="openLb(this)">
-        <img src="assets/Toddler.webp" alt="Toddler Class" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kelas Toddler – An-Najma</span></div>
-      </div>
-      <div class="gallery-item" data-cat="program" data-caption="Kelas Nursery – Al-Qomar" onclick="openLb(this)">
-        <img src="assets/Nursery.webp" alt="Nursery Class" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kelas Nursery – Al-Qomar</span></div>
-      </div>
-      <div class="gallery-item" data-cat="program" data-caption="Kindergarten 1 – As-Syams (A)" onclick="openLb(this)">
-        <img src="assets/K1_A.webp" alt="K1A Class" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kindergarten 1 – As-Syams (A)</span></div>
-      </div>
-      <div class="gallery-item" data-cat="program" data-caption="Kindergarten 1 – As-Syams (B)" onclick="openLb(this)">
-        <img src="assets/K1_B.webp" alt="K1B Class" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kindergarten 1 – As-Syams (B)</span></div>
-      </div>
-      <div class="gallery-item" data-cat="program" data-caption="Kindergarten 2 – As-Sahab" onclick="openLb(this)">
-        <img src="assets/K2.webp" alt="K2 Class" loading="lazy"/>
-        <div class="gallery-overlay"><span>Kindergarten 2 – As-Sahab</span></div>
-      </div>
-      <div class="gallery-item" data-cat="program" data-caption="Gedung An-Nahl Learning Centre" onclick="openLb(this)">
-        <img src="assets/Beranda.webp" alt="Gedung An-Nahl" loading="lazy"/>
-        <div class="gallery-overlay"><span>Gedung An-Nahl Learning Centre</span></div>
-      </div>
-
-    </div>
+    <!-- Gallery Grid (diisi JS) -->
+    <div class="gallery-grid" id="galleryGrid"></div>
 
     <div class="gallery-empty" id="galleryEmpty">
       <div class="icon">📷</div>
       <p style="font-size:16px;font-weight:700">Foto segera hadir</p>
     </div>
+
+    <!-- Load More -->
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+      <button class="load-more-btn" onclick="loadMore()">📸 Muat Lebih Banyak</button>
+    </div>
+    <div class="gallery-count" id="galleryCount"></div>
 
   </div></section>
 
@@ -312,35 +115,149 @@
   <script>
     renderNavbar(); renderFooter();
 
-    let lbItems = [], lbIdx = 0;
+    // =============================================
+    // DATA FOTO — untuk menambah foto baru,
+    // cukup tambahkan baris baru di sini:
+    // { src:'assets/NamaFile.webp', cat:'kategori', caption:'Keterangan foto' }
+    //
+    // Kategori yang tersedia:
+    // 'toddler' | 'nursery' | 'k1' | 'k2' | 'outdoor' | 'program'
+    // =============================================
+    const PHOTOS = [
+      // TODDLER
+      { src:'assets/Toddler_Class_Activity.webp',   cat:'toddler', caption:'Kegiatan Kelas Toddler' },
+      { src:'assets/Toddler_Class_Activity_2.webp', cat:'toddler', caption:'Aktivitas Toddler' },
 
-    function getVisible() {
-      return [...document.querySelectorAll('.gallery-item:not(.hidden)')];
+      // NURSERY
+      { src:'assets/Nursery_Class_Activity.webp',   cat:'nursery', caption:'Kegiatan Kelas Nursery' },
+      { src:'assets/Nursery_Class_Activity_2.webp', cat:'nursery', caption:'Aktivitas Nursery' },
+      { src:'assets/Nursery_Class_Activity_3.webp', cat:'nursery', caption:'Kreasi Nursery' },
+      { src:'assets/Nursery_1.webp', cat:'nursery', caption:'Kegiatan Nursery' },
+      { src:'assets/Nursery_3.webp', cat:'nursery', caption:'Kegiatan Nursery' },
+      { src:'assets/Nursery_4.webp', cat:'nursery', caption:'Kegiatan Nursery' },
+      { src:'assets/Nursery_5.webp', cat:'nursery', caption:'Kegiatan Nursery' },
+      { src:'assets/Nursery_6.webp', cat:'nursery', caption:'Kegiatan Nursery' },
+      { src:'assets/Nursery_7.webp', cat:'nursery', caption:'Kegiatan Nursery' },
+
+      // K1
+      { src:'assets/K1_B_Class_Activity.webp',   cat:'k1', caption:'Kegiatan Kelas K1' },
+      { src:'assets/K1_B_Class_Activity_2.webp', cat:'k1', caption:'Aktivitas Belajar K1' },
+      { src:'assets/K1A_1.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_2.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_3.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_4.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_5.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_6.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_7.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_8.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_9.webp',  cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_10.webp', cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_11.webp', cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1A_12.webp', cat:'k1', caption:'Kegiatan K1A' },
+      { src:'assets/K1B_1.webp',  cat:'k1', caption:'Kegiatan K1B' },
+      { src:'assets/K1B_2.webp',  cat:'k1', caption:'Kegiatan K1B' },
+      { src:'assets/K1B_3.webp',  cat:'k1', caption:'Kegiatan K1B' },
+      { src:'assets/K1B_4.webp',  cat:'k1', caption:'Kegiatan K1B' },
+      { src:'assets/K1B_5.webp',  cat:'k1', caption:'Kegiatan K1B' },
+
+      // K2
+      { src:'assets/K2_Class_Activity.webp', cat:'k2', caption:'Kegiatan Kelas K2' },
+      { src:'assets/K2_1.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_2.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_3.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_4.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_5.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_6.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_7.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_8.webp', cat:'k2', caption:'Kegiatan K2' },
+      { src:'assets/K2_9.webp', cat:'k2', caption:'Kegiatan K2' },
+
+      // OUTDOOR
+      { src:'assets/K1_A_Gymnastic_Activity.webp', cat:'outdoor', caption:'Senam & Olahraga K1' },
+      { src:'assets/K1_B_Outdoor_Activity.webp',   cat:'outdoor', caption:'Aktivitas Outdoor K1' },
+
+      // PROGRAM
+      { src:'assets/Toddler.webp', cat:'program', caption:'Kelas Toddler – An-Najma' },
+      { src:'assets/Nursery.webp', cat:'program', caption:'Kelas Nursery – Al-Qomar' },
+      { src:'assets/K1_A.webp',    cat:'program', caption:'Kindergarten 1 – As-Syams (A)' },
+      { src:'assets/K1_B.webp',    cat:'program', caption:'Kindergarten 1 – As-Syams (B)' },
+      { src:'assets/K2.webp',      cat:'program', caption:'Kindergarten 2 – As-Sahab' },
+      { src:'assets/Beranda.webp', cat:'program', caption:'Gedung An-Nahl Learning Centre' },
+    ];
+
+    // =============================================
+    // ENGINE — tidak perlu diubah saat tambah foto
+    // =============================================
+    const PER_PAGE = 18;
+    let activeCat = 'all';
+    let shownCount = 0;
+    let filtered = [];
+    let lbIdx = 0;
+    let lbPool = [];
+
+    function getFiltered() {
+      return activeCat === 'all' ? PHOTOS : PHOTOS.filter(p => p.cat === activeCat);
+    }
+
+    function makeItem(photo, idx) {
+      const el = document.createElement('div');
+      el.className = 'gallery-item';
+      el.dataset.idx = idx;
+      el.innerHTML = `
+        <img src="${photo.src}" alt="${photo.caption}" loading="lazy"/>
+        <div class="gallery-overlay"><span>${photo.caption}</span></div>`;
+      el.addEventListener('click', () => openLb(idx));
+      return el;
+    }
+
+    function renderBatch(reset) {
+      const grid = document.getElementById('galleryGrid');
+      if (reset) { grid.innerHTML = ''; shownCount = 0; }
+      filtered = getFiltered();
+      const batch = filtered.slice(shownCount, shownCount + PER_PAGE);
+      batch.forEach((photo, i) => grid.appendChild(makeItem(photo, shownCount + i)));
+      shownCount += batch.length;
+      updateUI();
+    }
+
+    function updateUI() {
+      filtered = getFiltered();
+      const empty = document.getElementById('galleryEmpty');
+      const wrap  = document.getElementById('loadMoreWrap');
+      const count = document.getElementById('galleryCount');
+      const hasMore = shownCount < filtered.length;
+      empty.style.display  = filtered.length === 0 ? 'block' : 'none';
+      wrap.style.display   = hasMore ? 'block' : 'none';
+      count.textContent    = filtered.length > 0
+        ? `Menampilkan ${shownCount} dari ${filtered.length} foto`
+        : '';
     }
 
     function filterGallery(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        item.classList.toggle('hidden', cat !== 'all' && item.dataset.cat !== cat);
-      });
-      document.getElementById('galleryEmpty').style.display = getVisible().length === 0 ? 'block' : 'none';
+      activeCat = cat;
+      renderBatch(true);
     }
 
-    function openLb(el) {
-      lbItems = getVisible();
-      lbIdx = lbItems.indexOf(el);
+    function loadMore() { renderBatch(false); }
+
+    // Lightbox
+    function openLb(idx) {
+      filtered = getFiltered();
+      lbPool = filtered;
+      lbIdx = idx;
       showLb();
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function showLb() {
-      const item = lbItems[lbIdx];
-      if (!item) return;
-      document.getElementById('lbImg').src = item.querySelector('img').src;
-      document.getElementById('lbCaption').textContent = item.dataset.caption || '';
-      document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + lbItems.length;
+      const p = lbPool[lbIdx];
+      if (!p) return;
+      document.getElementById('lbImg').src = p.src;
+      document.getElementById('lbCaption').textContent = p.caption;
+      document.getElementById('lbCounter').textContent = (lbIdx + 1) + ' / ' + lbPool.length;
     }
 
     function closeLb() {
@@ -350,7 +267,7 @@
 
     function lbNav(dir, e) {
       if (e) e.stopPropagation();
-      lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+      lbIdx = (lbIdx + dir + lbPool.length) % lbPool.length;
       showLb();
     }
 
@@ -361,9 +278,12 @@
     document.addEventListener('keydown', function(e) {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
       if (e.key === 'ArrowRight') lbNav(1, null);
-      if (e.key === 'ArrowLeft') lbNav(-1, null);
-      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft')  lbNav(-1, null);
+      if (e.key === 'Escape')     closeLb();
     });
+
+    // Init
+    renderBatch(true);
   </script>
 </body>
 </html>
