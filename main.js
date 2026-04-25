@@ -1,3 +1,11 @@
+// ===== FORCE LIGHT MODE (cegah browser dark mode override) =====
+(function() {
+  const m = document.createElement('meta');
+  m.name = 'color-scheme';
+  m.content = 'light';
+  document.head.appendChild(m);
+})();
+
 // ===== SUPABASE CONFIG =====
 const SUPABASE_URL = 'https://ssfiywjmgiogixryssbx.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_Xo3_edCbQl5okm56MkuiLQ_JRWyYwea';
