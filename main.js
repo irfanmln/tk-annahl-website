@@ -184,7 +184,6 @@ function renderFooter() {
           <ul class="footer-links">
             <li><a href="#">📍 Jl. Didi Sukardi Gang SMA PGRI, Citamiang, Kota Sukabumi</a></li>
             <li><a href="https://wa.me/6281296282841">📱 0812-9628-2841 (Ms. Laeli)</a></li>
-            <li><a href="https://wa.me/6281333412607">📱 0813-3341-2607 (Ms. Salsa)</a></li>
             <li><a href="mailto:annahllearningcentre@gmail.com">📧 annahllearningcentre@gmail.com</a></li>
             <li><a href="https://instagram.com/annahl_learningcentre" target="_blank">📸 @annahl_learningcentre</a></li>
           </ul>
