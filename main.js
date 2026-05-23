@@ -6,6 +6,19 @@
   document.head.appendChild(m);
 })();
 
+// ===== GOOGLE ANALYTICS GA4 =====
+(function() {
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-N67S44R7L6';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-N67S44R7L6');
+})();
+
 // ===== SUPABASE CONFIG =====
 const SUPABASE_URL = 'https://ssfiywjmgiogixryssbx.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_Xo3_edCbQl5okm56MkuiLQ_JRWyYwea';
