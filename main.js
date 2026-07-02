@@ -54,7 +54,7 @@ function renderNavbar() {
 
   document.getElementById('navbar').innerHTML = `
     <nav>
-      <a href="index.html" class="logo">
+      <a href="index" class="logo">
         <img src="logo-annahl.png" alt="An-Nahl" style="width:46px;height:46px;border-radius:50%;object-fit:cover"/>
         <div class="logo-text">
           TK. PGRI An-Nahl
@@ -63,27 +63,27 @@ function renderNavbar() {
       </a>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="${isActive('index.html')}">Beranda</a></li>
+        <li><a href="index" class="${isActive('index.html')}">Beranda</a></li>
         <li class="nav-dropdown">
           <a href="#" onclick="toggleDropdown(this);return false;" class="${['toddler.html','nursery.html','k1.html','k2.html'].includes(currentPath) ? 'active' : ''}">Program ▾</a>
           <div class="nav-dropdown-menu">
-            <a href="toddler.html">⭐ Toddler (2–3 Th)</a>
-            <a href="nursery.html">🌙 Nursery (3–4 Th)</a>
-            <a href="k1.html">☀️ Kindergarten 1</a>
-            <a href="k2.html">☁️ Kindergarten 2</a>
+            <a href="toddler">⭐ Toddler (2–3 Th)</a>
+            <a href="nursery">🌙 Nursery (3–4 Th)</a>
+            <a href="k1">☀️ Kindergarten 1</a>
+            <a href="k2">☁️ Kindergarten 2</a>
           </div>
         </li>
         <li class="nav-dropdown">
           <a href="#" onclick="toggleDropdown(this);return false;" class="${['activities.html','afterschool.html'].includes(currentPath) ? 'active' : ''}">Kegiatan ▾</a>
           <div class="nav-dropdown-menu">
-            <a href="activities.html">🎨 Activities</a>
-            <a href="afterschool.html">🏹 Ekstrakurikuler</a>
+            <a href="activities">🎨 Activities</a>
+            <a href="afterschool">🏹 Ekstrakurikuler</a>
           </div>
         </li>
-        <li><a href="galeri.html" class="${isActive('galeri.html')}">Galeri</a></li>
-        <li><a href="ppdb.html" class="${isActive('ppdb.html')}">Pendaftaran</a></li>
-        <li><a href="kontak.html" class="${isActive('kontak.html')}">Kontak</a></li>
-        <li><a href="ppdb.html" class="nav-btn">Daftar Sekarang</a></li>
+        <li><a href="galeri" class="${isActive('galeri.html')}">Galeri</a></li>
+        <li><a href="ppdb" class="${isActive('ppdb.html')}">Pendaftaran</a></li>
+        <li><a href="kontak" class="${isActive('kontak.html')}">Kontak</a></li>
+        <li><a href="ppdb" class="nav-btn">Daftar Sekarang</a></li>
       </ul>
     </nav>
     <div id="mobileDrawer" style="
@@ -97,30 +97,30 @@ function renderNavbar() {
       flex-direction:column;
       gap:4px;
     ">
-      <a href="index.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('index.html') ? '#FFD700' : 'transparent'}">Beranda</a>
+      <a href="index" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('index.html') ? '#FFD700' : 'transparent'}">Beranda</a>
       
       <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
         Program <span class="arr">▾</span>
       </div>
       <div style="display:none;flex-direction:column;background:#FFF8E7;border-radius:12px;padding:8px;margin-bottom:4px">
-        <a href="toddler.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">⭐ Toddler (2–3 Th)</a>
-        <a href="nursery.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🌙 Nursery (3–4 Th)</a>
-        <a href="k1.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">☀️ Kindergarten 1</a>
-        <a href="k2.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">☁️ Kindergarten 2</a>
+        <a href="toddler" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">⭐ Toddler (2–3 Th)</a>
+        <a href="nursery" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🌙 Nursery (3–4 Th)</a>
+        <a href="k1" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">☀️ Kindergarten 1</a>
+        <a href="k2" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">☁️ Kindergarten 2</a>
       </div>
 
       <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
         Kegiatan <span class="arr">▾</span>
       </div>
       <div style="display:none;flex-direction:column;background:#FFF8E7;border-radius:12px;padding:8px;margin-bottom:4px">
-        <a href="activities.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🎨 Activities</a>
-        <a href="afterschool.html" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🏹 Ekstrakurikuler</a>
+        <a href="activities" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🎨 Activities</a>
+        <a href="afterschool" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🏹 Ekstrakurikuler</a>
       </div>
 
-      <a href="galeri.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('galeri.html') ? '#FFD700' : 'transparent'}">📸 Galeri</a>
-      <a href="ppdb.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Pendaftaran</a>
-      <a href="kontak.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Kontak</a>
-      <a href="ppdb.html" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;background:linear-gradient(135deg,#FF8C00,#E65C00);color:white;text-align:center;margin-top:8px">Daftar Sekarang</a>
+      <a href="galeri" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('galeri.html') ? '#FFD700' : 'transparent'}">📸 Galeri</a>
+      <a href="ppdb" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Pendaftaran</a>
+      <a href="kontak" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Kontak</a>
+      <a href="ppdb" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;background:linear-gradient(135deg,#FF8C00,#E65C00);color:white;text-align:center;margin-top:8px">Daftar Sekarang</a>
     </div>
     <div id="navOverlay" onclick="closeNav()" style="display:none;position:fixed;inset:0;top:72px;background:rgba(0,0,0,0.5);z-index:9997"></div>
   `;
@@ -176,20 +176,20 @@ function renderFooter() {
         <div>
           <div class="footer-title">Program</div>
           <ul class="footer-links">
-            <li><a href="toddler.html">⭐ Toddler Class (2–3 Th)</a></li>
-            <li><a href="nursery.html">🌙 Nursery Class (3–4 Th)</a></li>
-            <li><a href="k1.html">☀️ Kindergarten 1 (4–5 Th)</a></li>
-            <li><a href="k2.html">☁️ Kindergarten 2 (5–6 Th)</a></li>
+            <li><a href="toddler">⭐ Toddler Class (2–3 Th)</a></li>
+            <li><a href="nursery">🌙 Nursery Class (3–4 Th)</a></li>
+            <li><a href="k1">☀️ Kindergarten 1 (4–5 Th)</a></li>
+            <li><a href="k2">☁️ Kindergarten 2 (5–6 Th)</a></li>
           </ul>
         </div>
         <div>
           <div class="footer-title">Kegiatan</div>
           <ul class="footer-links">
-            <li><a href="activities.html">🎨 Activities</a></li>
-            <li><a href="afterschool.html">🏹 Ekstrakurikuler</a></li>
-            <li><a href="galeri.html">📸 Galeri Foto</a></li>
-            <li><a href="ppdb.html">📝 Pendaftaran PPDB</a></li>
-            <li><a href="kontak.html">📍 Kontak Kami</a></li>
+            <li><a href="activities">🎨 Activities</a></li>
+            <li><a href="afterschool">🏹 Ekstrakurikuler</a></li>
+            <li><a href="galeri">📸 Galeri Foto</a></li>
+            <li><a href="ppdb">📝 Pendaftaran PPDB</a></li>
+            <li><a href="kontak">📍 Kontak Kami</a></li>
           </ul>
         </div>
         <div>
