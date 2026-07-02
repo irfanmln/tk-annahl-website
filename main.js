@@ -49,7 +49,7 @@ async function supabaseSelect(table, params = '') {
 
 // ===== NAVBAR =====
 function renderNavbar() {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPath = window.location.pathname.split('/').pop() || 'index';
   const isActive = (page) => currentPath === page ? 'active' : '';
 
   document.getElementById('navbar').innerHTML = `
@@ -63,9 +63,9 @@ function renderNavbar() {
       </a>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index" class="${isActive('index.html')}">Beranda</a></li>
+        <li><a href="index" class="${isActive('index')}">Beranda</a></li>
         <li class="nav-dropdown">
-          <a href="#" onclick="toggleDropdown(this);return false;" class="${['toddler.html','nursery.html','k1.html','k2.html'].includes(currentPath) ? 'active' : ''}">Program ▾</a>
+          <a href="#" onclick="toggleDropdown(this);return false;" class="${['toddler','nursery','k1','k2'].includes(currentPath) ? 'active' : ''}">Program ▾</a>
           <div class="nav-dropdown-menu">
             <a href="toddler">⭐ Toddler (2–3 Th)</a>
             <a href="nursery">🌙 Nursery (3–4 Th)</a>
@@ -74,15 +74,15 @@ function renderNavbar() {
           </div>
         </li>
         <li class="nav-dropdown">
-          <a href="#" onclick="toggleDropdown(this);return false;" class="${['activities.html','afterschool.html'].includes(currentPath) ? 'active' : ''}">Kegiatan ▾</a>
+          <a href="#" onclick="toggleDropdown(this);return false;" class="${['activities','afterschool'].includes(currentPath) ? 'active' : ''}">Kegiatan ▾</a>
           <div class="nav-dropdown-menu">
             <a href="activities">🎨 Activities</a>
             <a href="afterschool">🏹 Ekstrakurikuler</a>
           </div>
         </li>
-        <li><a href="galeri" class="${isActive('galeri.html')}">Galeri</a></li>
-        <li><a href="ppdb" class="${isActive('ppdb.html')}">Pendaftaran</a></li>
-        <li><a href="kontak" class="${isActive('kontak.html')}">Kontak</a></li>
+        <li><a href="galeri" class="${isActive('galeri')}">Galeri</a></li>
+        <li><a href="ppdb" class="${isActive('ppdb')}">Pendaftaran</a></li>
+        <li><a href="kontak" class="${isActive('kontak')}">Kontak</a></li>
         <li><a href="ppdb" class="nav-btn">Daftar Sekarang</a></li>
       </ul>
     </nav>
@@ -97,7 +97,7 @@ function renderNavbar() {
       flex-direction:column;
       gap:4px;
     ">
-      <a href="index" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('index.html') ? '#FFD700' : 'transparent'}">Beranda</a>
+      <a href="index" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('index') ? '#FFD700' : 'transparent'}">Beranda</a>
       
       <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
         Program <span class="arr">▾</span>
@@ -117,7 +117,7 @@ function renderNavbar() {
         <a href="afterschool" style="display:block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:14px">🏹 Ekstrakurikuler</a>
       </div>
 
-      <a href="galeri" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('galeri.html') ? '#FFD700' : 'transparent'}">📸 Galeri</a>
+      <a href="galeri" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('galeri') ? '#FFD700' : 'transparent'}">📸 Galeri</a>
       <a href="ppdb" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Pendaftaran</a>
       <a href="kontak" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px">Kontak</a>
       <a href="ppdb" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;background:linear-gradient(135deg,#FF8C00,#E65C00);color:white;text-align:center;margin-top:8px">Daftar Sekarang</a>
