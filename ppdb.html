@@ -51,11 +51,9 @@
 <body>
   <div id="navbar"></div>
 
-  <div class="page-hero">
-    <div class="page-hero-tag">📝 Admission 2026–2027</div>
-    <h1>Pendaftaran <span>Peserta Didik Baru</span></h1>
-    <p>Daftarkan putra-putri Anda ke TK. PGRI An-Nahl! Tempat sangat terbatas untuk tahun ajaran 2026/2027</p>
-  </div>
+<div class="page-hero-tag">🔴 Kuota Penuh 2026–2027</div>
+    <h1>Pendaftaran <span>Ditutup</span></h1>
+    <p>Kuota peserta didik baru tahun ajaran 2026/2027 telah terpenuhi. Hubungi kami untuk masuk daftar tunggu.</p>
 
   <section style="background:white">
     <div class="container">
@@ -147,60 +145,14 @@
           </div>
         </div>
         <div class="form-card">
-          <h3>📩 Formulir Pendaftaran Online</h3>
-          <div class="form-group">
-            <label>Nama Lengkap Anak *</label>
-            <input type="text" id="namaAnak" placeholder="Masukkan nama lengkap anak" required/>
+          <div style="text-align:center;padding:16px 0 24px">
+            <div style="font-size:64px;margin-bottom:16px">🔴</div>
+            <h3 style="color:#C0392B;margin-bottom:10px">Kuota Penuh</h3>
+            <p style="color:var(--text-light);font-size:15px;line-height:1.7;margin-bottom:24px">Maaf, kuota peserta didik baru untuk tahun ajaran 2026/2027 telah terpenuhi.<br><br>Anda dapat mendaftarkan diri ke <strong>daftar tunggu (waitlist)</strong>. Kami akan menghubungi Anda jika ada kuota yang tersedia.</p>
+            <a href="https://wa.me/6281296282841?text=Halo%20Ms.%20Laeli%2C%20saya%20ingin%20mendaftar%20ke%20daftar%20tunggu%20(waitlist)%20TK.%20PGRI%20An-Nahl%20tahun%20ajaran%202026%2F2027." target="_blank" style="display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:14px 32px;border-radius:14px;text-decoration:none;font-weight:800;font-size:16px;width:100%;box-sizing:border-box">💬 Daftar Waitlist via WhatsApp</a>
+            <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:14px">Tim kami akan menghubungi Anda jika ada kuota tersedia</p>
           </div>
-          <div class="form-group">
-            <label>Tanggal Lahir Anak *</label>
-            <input type="date" id="tglLahir" required/>
-          </div>
-          <div class="form-group">
-            <label>Program yang Dituju *</label>
-            <select id="program" required>
-              <option value="">-- Pilih Program --</option>
-              <option>Toddler – An-Najma (2–3 Tahun)</option>
-              <option>Nursery – Al-Qomar (3–4 Tahun)</option>
-              <option>Kindergarten 1 – As-Syams (4–5 Tahun)</option>
-              <option>Kindergarten 2 – As-Sahab (5–6 Tahun)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Nama Orang Tua / Wali *</label>
-            <input type="text" id="namaOrtu" placeholder="Nama lengkap orang tua" required/>
-          </div>
-          <div class="form-group">
-            <label>No. WhatsApp *</label>
-            <input type="tel" id="noWa" placeholder="Contoh: 08123456789" required/>
-          </div>
-          <div class="form-group">
-            <label>Pesan / Pertanyaan</label>
-            <textarea id="pesan" placeholder="Tuliskan pertanyaan atau pesan Anda..."></textarea>
-          </div>
-          <button class="submit-btn" id="submitBtn" onclick="submitPendaftaran()">🐝 Kirim Pendaftaran</button>
-          <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:12px">Tim kami akan menghubungi Anda dalam 1x24 jam</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:white">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">📄 Pemberkasan</div>
-        <h2 class="section-title">Dokumen yang <span>Diperlukan</span></h2>
-      </div>
-      <div class="syarat-grid">
-        <div class="syarat-item">📋 Fc Kartu Keluarga (3 Lembar)</div>
-        <div class="syarat-item">📜 Fc Akta Kelahiran (3 Lembar)</div>
-        <div class="syarat-item">🪪 Fc KTP Orang Tua (3 Lembar)</div>
-        <div class="syarat-item">📷 Pas Foto Background Merah 3x4 & 4x6 (2 Lembar)</div>
-        <div class="syarat-item">🪪 FC KTA 3 Lembar (jika memiliki)</div>
-        <div class="syarat-item">📋 Surat Keterangan Sakit/Terapis (jika ada)</div>
-      </div>
-    </div>
-  </section>
 
   <div id="footer"></div>
   <script src="main.js"></script>
@@ -208,47 +160,5 @@
     renderNavbar();
     renderFooter();
 
-    async function submitPendaftaran() {
-      const namaAnak = document.getElementById('namaAnak').value.trim();
-      const tglLahir = document.getElementById('tglLahir').value;
-      const program = document.getElementById('program').value;
-      const namaOrtu = document.getElementById('namaOrtu').value.trim();
-      const noWa = document.getElementById('noWa').value.trim();
-      const pesan = document.getElementById('pesan').value.trim();
-
-      if (!namaAnak || !tglLahir || !program || !namaOrtu || !noWa) {
-        showToast('Mohon lengkapi semua data yang wajib diisi!', 'error');
-        return;
-      }
-
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.textContent = '⏳ Mengirim...';
-
-      const ok = await supabaseInsert('pendaftaran', {
-        nama_anak: namaAnak,
-        tanggal_lahir: tglLahir,
-        program: program,
-        nama_orangtua: namaOrtu,
-        no_whatsapp: noWa,
-        pesan: pesan
-      });
-
-      if (ok) {
-        showToast('Pendaftaran berhasil! Tim kami akan segera menghubungi Anda. 🐝');
-        document.getElementById('namaAnak').value = '';
-        document.getElementById('tglLahir').value = '';
-        document.getElementById('program').value = '';
-        document.getElementById('namaOrtu').value = '';
-        document.getElementById('noWa').value = '';
-        document.getElementById('pesan').value = '';
-      } else {
-        showToast('Gagal mengirim. Silakan hubungi kami langsung via WhatsApp.', 'error');
-      }
-
-      btn.disabled = false;
-      btn.textContent = '🐝 Kirim Pendaftaran';
-    }
-  </script>
 </body>
 </html>
