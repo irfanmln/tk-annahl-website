@@ -49,12 +49,12 @@ async function supabaseSelect(table, params = '') {
 
 // ===== NAVBAR =====
 function renderNavbar() {
-  const currentPath = window.location.pathname.split('/').pop() || 'index';
+  const currentPath = window.location.pathname.split('/').pop() || '';
   const isActive = (page) => currentPath === page ? 'active' : '';
 
   document.getElementById('navbar').innerHTML = `
     <nav>
-      <a href="index" class="logo">
+      <a href="/" class="logo">
         <img src="logo-annahl.png" alt="An-Nahl" style="width:46px;height:46px;border-radius:50%;object-fit:cover"/>
         <div class="logo-text">
           TK. PGRI An-Nahl
@@ -63,7 +63,7 @@ function renderNavbar() {
       </a>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index" class="${isActive('index')}">Beranda</a></li>
+        <li><a href="/" class="${isActive('')}">Beranda</a></li>
         <li class="nav-dropdown">
           <a href="#" onclick="toggleDropdown(this);return false;" class="${['toddler','nursery','k1','k2'].includes(currentPath) ? 'active' : ''}">Program ▾</a>
           <div class="nav-dropdown-menu">
@@ -97,7 +97,7 @@ function renderNavbar() {
       flex-direction:column;
       gap:4px;
     ">
-      <a href="index" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('index') ? '#FFD700' : 'transparent'}">Beranda</a>
+      <a href="/" style="display:block;padding:14px 16px;border-radius:12px;text-decoration:none;color:#3D2B00;font-weight:700;font-size:16px;background:${isActive('') ? '#FFD700' : 'transparent'}">Beranda</a>
       
       <div style="padding:14px 16px;font-weight:700;font-size:16px;color:#3D2B00;cursor:pointer;border-radius:12px;display:flex;justify-content:space-between;align-items:center" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'flex':'none';this.querySelector('.arr').textContent=this.nextElementSibling.style.display==='none'?'▾':'▴'">
         Program <span class="arr">▾</span>
