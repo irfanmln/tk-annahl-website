@@ -1,3 +1,10 @@
 {
-  "photos": []
+  "photos": [
+    {
+      "category": "k1",
+      "filename": "mtauvqbsxja.webp",
+      "caption": "Penerimaan Psikolog TK PGRI An-Nahl",
+      "uploaded_at": "2026-08-27T01:40:50.801Z"
+    }
+  ]
 }
