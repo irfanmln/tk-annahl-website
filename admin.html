@@ -89,6 +89,37 @@
     .save-btn { padding:12px 28px; background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; border:none; border-radius:12px; font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; cursor:pointer; transition:all 0.3s; }
     .save-btn:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(255,140,0,0.3); }
     .save-btn:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+
+    /* Gallery */
+    .gal-cat-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+    .gal-tab { padding:7px 16px; border-radius:20px; border:2px solid #FFD700; background:white; font-family:'Nunito',sans-serif; font-weight:700; font-size:13px; color:var(--orange-dark); cursor:pointer; transition:all 0.2s; }
+    .gal-tab.active, .gal-tab:hover { background:var(--orange-dark); color:white; border-color:var(--orange-dark); }
+    .gal-upload-zone { border:2px dashed #FFD700; border-radius:16px; padding:32px; text-align:center; cursor:pointer; background:#FFFDF0; transition:all 0.3s; }
+    .gal-upload-zone:hover, .gal-upload-zone.drag { border-color:var(--orange); background:#FFF3CC; }
+    .gal-upload-zone .icon { font-size:40px; margin-bottom:10px; }
+    .gal-upload-zone p { color:var(--text-light); font-size:14px; font-weight:600; margin-bottom:4px; }
+    .gal-upload-zone small { font-size:12px; color:#aaa; }
+    .gal-preview-wrap { position:relative; margin-bottom:12px; }
+    .gal-preview-wrap img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px; display:block; }
+    .gal-preview-clear { position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.6); color:white; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
+    .gal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+    .gal-photo { position:relative; border-radius:12px; overflow:hidden; aspect-ratio:1; background:#F0E8D0; }
+    .gal-photo img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.3s; }
+    .gal-photo:hover img { transform:scale(1.05); }
+    .gal-photo-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.45); opacity:0; transition:opacity 0.2s; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+    .gal-photo:hover .gal-photo-overlay { opacity:1; }
+    .gal-photo-caption { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.6); color:white; font-size:11px; padding:5px 8px; font-weight:700; line-height:1.3; }
+    .gal-del-btn { background:#F44336; color:white; border:none; border-radius:8px; padding:5px 12px; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; cursor:pointer; }
+    .gal-del-btn:hover { background:#C62828; }
+    .gal-upload-btn { background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; border:none; border-radius:12px; padding:12px 24px; font-family:'Nunito',sans-serif; font-weight:700; font-size:15px; cursor:pointer; width:100%; margin-top:8px; transition:all 0.3s; box-shadow:0 4px 12px rgba(255,140,0,0.3); }
+    .gal-upload-btn:hover { transform:translateY(-2px); }
+    .gal-upload-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+    .gal-form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+    .gal-select { width:100%; padding:11px 14px; border:2px solid #FFE0A0; border-radius:10px; font-family:'Nunito',sans-serif; font-size:14px; outline:none; background:var(--cream); transition:border-color 0.3s; cursor:pointer; }
+    .gal-select:focus { border-color:var(--orange); background:white; }
+    .gal-count { font-size:13px; color:var(--text-light); font-weight:600; margin-bottom:16px; }
+    .gal-empty { text-align:center; padding:40px; color:var(--text-light); font-size:15px; }
+    @media(max-width:700px){ .gal-form-row { grid-template-columns:1fr; } .gal-grid { grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); } }
   </style>
 </head>
 <body>
@@ -119,10 +150,11 @@
       <div class="nav-section">Menu Utama</div>
       <div class="nav-item active" onclick="showPage('dashboard',this)"><span class="ni">📊</span> Dashboard</div>
       <div class="nav-item" onclick="showPage('pendaftar',this)"><span class="ni">📝</span> Data Pendaftar <span class="nav-badge" id="badge-count">0</span></div>
+      <div class="nav-item" onclick="showPage('galeri',this)"><span class="ni">🖼️</span> Kelola Galeri</div>
       <div class="nav-section" style="margin-top:10px">Pengaturan</div>
       <div class="nav-item" onclick="showPage('password',this)"><span class="ni">🔐</span> Ganti Password</div>
       <div class="nav-section" style="margin-top:10px">Lainnya</div>
-      <div class="nav-item" onclick="window.open('index.html','_blank')"><span class="ni">🌐</span> Lihat Website</div>
+      <div class="nav-item" onclick="window.open('/','_blank')"><span class="ni">🌐</span> Lihat Website</div>
     </div>
     <div class="sidebar-footer">
       <div class="logout" onclick="doLogout()"><span style="font-size:18px">🚪</span> Keluar</div>
@@ -162,6 +194,80 @@
         </div>
       </div>
 
+      <!-- GALERI PAGE -->
+      <div class="page" id="page-galeri">
+        <div class="page-hdr"><h2>🖼️ Kelola Galeri Foto</h2></div>
+
+        <!-- Upload card -->
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title">📤 Upload Foto Baru</div>
+          <div class="gal-form-row">
+            <!-- Dropzone / preview -->
+            <div>
+              <div class="gal-preview-wrap" id="galPreviewWrap" style="display:none">
+                <img id="galPreviewImg" src="" alt="preview"/>
+                <button class="gal-preview-clear" onclick="clearGalUpload()" title="Hapus">✕</button>
+              </div>
+              <div class="gal-upload-zone" id="galDropzone" onclick="document.getElementById('galFileInput').click()"
+                ondragover="event.preventDefault();this.classList.add('drag')"
+                ondragleave="this.classList.remove('drag')"
+                ondrop="handleGalDrop(event)">
+                <div class="icon">📷</div>
+                <p>Klik atau seret foto ke sini</p>
+                <small>JPG, PNG, JPEG – otomatis crop 1:1 & convert ke WebP</small>
+              </div>
+              <input type="file" id="galFileInput" accept="image/*" style="display:none" onchange="handleGalFile(this.files[0])"/>
+            </div>
+            <!-- Form fields -->
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div class="form-group" style="margin-bottom:0">
+                <label>Kategori *</label>
+                <select class="gal-select" id="galCat">
+                  <option value="toddler">⭐ Toddler</option>
+                  <option value="nursery">🌙 Nursery</option>
+                  <option value="k1" selected>☀️ K1</option>
+                  <option value="k2">☁️ K2</option>
+                  <option value="outdoor">🌳 Outdoor</option>
+                  <option value="program">🏫 Program</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label>Keterangan Foto *</label>
+                <input type="text" id="galCaption" placeholder="Contoh: Kegiatan Seni Kelas K1B" maxlength="80"/>
+              </div>
+              <div style="background:#FFF8E7;border-radius:12px;padding:14px;font-size:13px;color:var(--text-light);line-height:1.6">
+                ℹ️ Foto akan otomatis:<br>
+                • Di-crop menjadi <b>persegi (1:1)</b><br>
+                • Di-convert ke <b>WebP</b><br>
+                • Di-compress ke ukuran lebih kecil
+              </div>
+              <button class="gal-upload-btn" id="galUploadBtn" onclick="doGalUpload()" disabled>
+                📤 Upload Foto
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery list card -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+            <div class="card-title" style="margin-bottom:0">📸 Foto di Galeri</div>
+            <button class="add-btn" onclick="loadGaleri()">🔄 Refresh</button>
+          </div>
+          <div class="gal-cat-tabs" id="galFilterTabs">
+            <button class="gal-tab active" onclick="filterGalAdmin('all',this)">🖼️ Semua</button>
+            <button class="gal-tab" onclick="filterGalAdmin('toddler',this)">⭐ Toddler</button>
+            <button class="gal-tab" onclick="filterGalAdmin('nursery',this)">🌙 Nursery</button>
+            <button class="gal-tab" onclick="filterGalAdmin('k1',this)">☀️ K1</button>
+            <button class="gal-tab" onclick="filterGalAdmin('k2',this)">☁️ K2</button>
+            <button class="gal-tab" onclick="filterGalAdmin('outdoor',this)">🌳 Outdoor</button>
+            <button class="gal-tab" onclick="filterGalAdmin('program',this)">🏫 Program</button>
+          </div>
+          <div class="gal-count" id="galCount"></div>
+          <div id="galGrid" class="gal-grid"><div class="gal-empty">⏳ Memuat foto...</div></div>
+        </div>
+      </div>
+
       <div class="page" id="page-password">
         <div class="page-hdr"><h2>🔐 Ganti Password Admin</h2></div>
         <div class="card" style="max-width:460px">
@@ -195,6 +301,12 @@ const SUPABASE_URL = 'https://ssfiywjmgiogixryssbx.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_Xo3_edCbQl5okm56MkuiLQ_JRWyYwea';
 
 let currentSession = null;
+let adminToken = null;
+
+// Gallery state
+let galPhotos = [];
+let galActiveCat = 'all';
+let galProcessedFile = null; // { base64, filename }
 
 async function hashPassword(password) {
   const encoder = new TextEncoder();
@@ -230,6 +342,16 @@ async function doLogin() {
 
     if (Array.isArray(data) && data.length > 0) {
       currentSession = { id: data[0].id, username: data[0].username };
+      // Get admin API token for gallery operations
+      try {
+        const tokenRes = await fetch('/api/admin-auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, passwordHash: hashedPassword })
+        });
+        const tokenData = await tokenRes.json();
+        adminToken = tokenData.token || null;
+      } catch (_) { adminToken = null; }
       document.getElementById('login').style.display = 'none';
       document.getElementById('app').style.display = 'block';
       document.getElementById('admin-name').textContent = data[0].username;
@@ -326,9 +448,10 @@ function showPage(id, el) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   if (el) el.classList.add('active');
-  const titles = { dashboard: 'Dashboard', pendaftar: 'Data Pendaftar PPDB', password: 'Ganti Password' };
+  const titles = { dashboard: 'Dashboard', pendaftar: 'Data Pendaftar PPDB', password: 'Ganti Password', galeri: 'Kelola Galeri Foto' };
   document.getElementById('topbar-title').textContent = titles[id] || id;
   if (id === 'pendaftar') loadPendaftar();
+  if (id === 'galeri') loadGaleri();
 }
 
 function showToast(msg, type = 'success') {
@@ -411,6 +534,177 @@ async function loadPendaftar() {
   document.getElementById('pendaftar-table').innerHTML = '<div class="empty">⏳ Memuat...</div>';
   const data = await fetchData('select=*');
   renderTable(Array.isArray(data) ? data : [], 'pendaftar-table');
+}
+
+// =============================================
+// GALLERY
+// =============================================
+
+async function processImage(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const blobUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(blobUrl);
+      const size = Math.min(img.width, img.height);
+      const sx = (img.width - size) / 2;
+      const sy = (img.height - size) / 2;
+      const outputSize = Math.min(size, 1200);
+      const canvas = document.createElement('canvas');
+      canvas.width = outputSize;
+      canvas.height = outputSize;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, sx, sy, size, size, 0, 0, outputSize, outputSize);
+      canvas.toBlob(blob => {
+        const reader = new FileReader();
+        reader.onload = () => resolve({
+          base64: reader.result.split(',')[1],
+          previewUrl: URL.createObjectURL(blob)
+        });
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      }, 'image/webp', 0.82);
+    };
+    img.onerror = reject;
+    img.src = blobUrl;
+  });
+}
+
+function handleGalDrop(e) {
+  e.preventDefault();
+  document.getElementById('galDropzone').classList.remove('drag');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) handleGalFile(file);
+}
+
+async function handleGalFile(file) {
+  if (!file) return;
+  document.getElementById('galUploadBtn').disabled = true;
+  document.getElementById('galUploadBtn').textContent = '⏳ Memproses...';
+  try {
+    const result = await processImage(file);
+    galProcessedFile = {
+      base64: result.base64,
+      filename: Date.now().toString(36) + Math.random().toString(36).slice(2,5) + '.webp'
+    };
+    document.getElementById('galPreviewImg').src = result.previewUrl;
+    document.getElementById('galPreviewWrap').style.display = 'block';
+    document.getElementById('galDropzone').style.display = 'none';
+    document.getElementById('galUploadBtn').disabled = false;
+    document.getElementById('galUploadBtn').textContent = '📤 Upload Foto';
+  } catch (err) {
+    showToast('Gagal memproses gambar. Coba lagi.', 'error');
+    document.getElementById('galUploadBtn').disabled = false;
+    document.getElementById('galUploadBtn').textContent = '📤 Upload Foto';
+  }
+}
+
+function clearGalUpload() {
+  galProcessedFile = null;
+  document.getElementById('galPreviewWrap').style.display = 'none';
+  document.getElementById('galDropzone').style.display = 'block';
+  document.getElementById('galFileInput').value = '';
+  document.getElementById('galUploadBtn').disabled = true;
+  document.getElementById('galUploadBtn').textContent = '📤 Upload Foto';
+}
+
+async function doGalUpload() {
+  if (!galProcessedFile) return showToast('Pilih foto terlebih dahulu!', 'error');
+  const caption = document.getElementById('galCaption').value.trim();
+  const category = document.getElementById('galCat').value;
+  if (!caption) return showToast('Keterangan foto wajib diisi!', 'error');
+  if (!adminToken) return showToast('Sesi tidak valid. Silakan login ulang.', 'error');
+
+  const btn = document.getElementById('galUploadBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Mengupload...';
+
+  try {
+    const res = await fetch('/api/galeri', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Key': adminToken },
+      body: JSON.stringify({
+        category,
+        filename: galProcessedFile.filename,
+        content: galProcessedFile.base64,
+        caption
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Upload gagal');
+    showToast('Foto berhasil diupload! 🎉');
+    document.getElementById('galCaption').value = '';
+    clearGalUpload();
+    loadGaleri();
+  } catch (err) {
+    showToast('Gagal upload: ' + err.message, 'error');
+    btn.disabled = false;
+    btn.textContent = '📤 Upload Foto';
+  }
+}
+
+async function loadGaleri() {
+  document.getElementById('galGrid').innerHTML = '<div class="gal-empty">⏳ Memuat foto...</div>';
+  document.getElementById('galCount').textContent = '';
+  try {
+    const res = await fetch('/api/galeri');
+    const data = await res.json();
+    galPhotos = Array.isArray(data.photos) ? data.photos : [];
+    renderGalGrid();
+  } catch (err) {
+    document.getElementById('galGrid').innerHTML = '<div class="gal-empty">❌ Gagal memuat. Coba refresh.</div>';
+  }
+}
+
+function filterGalAdmin(cat, btn) {
+  galActiveCat = cat;
+  document.querySelectorAll('.gal-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderGalGrid();
+}
+
+function renderGalGrid() {
+  const filtered = galActiveCat === 'all' ? galPhotos : galPhotos.filter(p => p.category === galActiveCat);
+  const catLabel = { all:'Semua', toddler:'Toddler', nursery:'Nursery', k1:'K1', k2:'K2', outdoor:'Outdoor', program:'Program' };
+  document.getElementById('galCount').textContent =
+    filtered.length === 0 ? '' : `${filtered.length} foto ${galActiveCat !== 'all' ? 'kategori ' + catLabel[galActiveCat] : 'di galeri'}`;
+
+  if (filtered.length === 0) {
+    document.getElementById('galGrid').innerHTML =
+      `<div class="gal-empty">📷 Belum ada foto${galActiveCat !== 'all' ? ' di kategori ini' : ''}.</div>`;
+    return;
+  }
+
+  document.getElementById('galGrid').innerHTML = filtered.map(p => {
+    const src = `assets/galeri/${p.category}/${p.filename}`;
+    return `
+      <div class="gal-photo">
+        <img src="${src}" alt="${p.caption}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect fill=%22%23FFE0A0%22 width=%22100%25%22 height=%22100%25%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-size=%2228%22>📷</text></svg>'"/>
+        <div class="gal-photo-overlay">
+          <button class="gal-del-btn" onclick="deleteGalPhoto('${p.category}','${p.filename}',event)">🗑 Hapus</button>
+        </div>
+        <div class="gal-photo-caption">${p.caption || '—'}</div>
+      </div>`;
+  }).join('');
+}
+
+async function deleteGalPhoto(category, filename, e) {
+  e.stopPropagation();
+  if (!confirm(`Yakin hapus foto ini?\n${filename}\n\nTidak bisa dibatalkan!`)) return;
+  if (!adminToken) return showToast('Sesi tidak valid. Login ulang.', 'error');
+  try {
+    const res = await fetch('/api/galeri', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Key': adminToken },
+      body: JSON.stringify({ category, filename })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Hapus gagal');
+    showToast('Foto berhasil dihapus!');
+    loadGaleri();
+  } catch (err) {
+    showToast('Gagal hapus: ' + err.message, 'error');
+  }
 }
 </script>
 </body>

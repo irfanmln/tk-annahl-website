@@ -324,7 +324,8 @@
       <h2 class="section-title">Kegiatan <span>Terbaru</span></h2>
       <p class="section-desc">Momen berharga aktivitas belajar dan bermain anak-anak An-Nahl</p>
     </div>
-    <div class="latest-grid">
+    <div class="latest-grid" id="latestGrid">
+      <!-- Fallback hardcoded – diganti JS jika ada foto baru -->
       <a href="galeri" class="latest-item latest-big">
         <img src="assets/K1_B_Class_Activity.webp" alt="Kegiatan Kelas K1" loading="lazy"/>
         <div class="latest-overlay"><span>Kegiatan Kelas K1</span></div>
@@ -354,6 +355,23 @@
       <a href="galeri" class="btn-primary">📸 Lihat Semua Foto →</a>
     </div>
   </div></section>
+  <script>
+    // Coba ambil 6 foto terbaru dari manifest, tampilkan jika ada
+    fetch('/api/galeri')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data || !Array.isArray(data.photos) || data.photos.length === 0) return;
+        const latest = data.photos.slice(0, 6);
+        const grid = document.getElementById('latestGrid');
+        if (!grid) return;
+        grid.innerHTML = latest.map((p, i) => `
+          <a href="galeri" class="latest-item${i === 0 ? ' latest-big' : ''}">
+            <img src="assets/galeri/${p.category}/${p.filename}" alt="${p.caption}" loading="lazy"/>
+            <div class="latest-overlay"><span>${p.caption}</span></div>
+          </a>`).join('');
+      })
+      .catch(() => {});
+  </script>
 
   <!-- CTA -->
   <div class="cta-section">

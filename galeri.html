@@ -115,15 +115,8 @@
   <script>
     renderNavbar(); renderFooter();
 
-    // =============================================
-    // DATA FOTO — untuk menambah foto baru,
-    // cukup tambahkan baris baru di sini:
-    // { src:'assets/NamaFile.webp', cat:'kategori', caption:'Keterangan foto' }
-    //
-    // Kategori yang tersedia:
-    // 'toddler' | 'nursery' | 'k1' | 'k2' | 'outdoor' | 'program'
-    // =============================================
-    const PHOTOS = [
+    // Foto lama (hardcoded)
+    const PHOTOS_LAMA = [
       // TODDLER
       { src:'assets/Toddler_Class_Activity.webp',   cat:'toddler', caption:'Kegiatan Kelas Toddler' },
       { src:'assets/Toddler_Class_Activity_2.webp', cat:'toddler', caption:'Aktivitas Toddler' },
@@ -189,8 +182,26 @@
       { src:'assets/Beranda.webp', cat:'program', caption:'Gedung An-Nahl Learning Centre' },
     ];
 
+    let PHOTOS = [...PHOTOS_LAMA];
+
+    // Fetch foto baru dari manifest dan gabungkan
+    fetch('/api/galeri')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data || !Array.isArray(data.photos) || data.photos.length === 0) return;
+        const baru = data.photos.map(p => ({
+          src: `assets/galeri/${p.category}/${p.filename}`,
+          cat: p.category,
+          caption: p.caption || p.filename
+        }));
+        // Foto baru tampil di depan
+        PHOTOS = [...baru, ...PHOTOS_LAMA];
+        renderBatch(true);
+      })
+      .catch(() => {});
+
     // =============================================
-    // ENGINE — tidak perlu diubah saat tambah foto
+    // ENGINE
     // =============================================
     const PER_PAGE = 18;
     let activeCat = 'all';
