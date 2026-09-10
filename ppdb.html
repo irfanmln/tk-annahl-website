@@ -362,18 +362,31 @@
     }
 
     function buildWaLinks(data) {
+      // Emoji ditulis sebagai Unicode escape agar tidak rusak
+      // oleh perbedaan encoding file/browser/perangkat apa pun.
+      const E = {
+        baby: String.fromCodePoint(0x1F476),
+        cake: String.fromCodePoint(0x1F382),
+        school: String.fromCodePoint(0x1F3EB),
+        shirt: String.fromCodePoint(0x1F455),
+        adult: String.fromCodePoint(0x1F464),
+        phone: String.fromCodePoint(0x1F4F1),
+        chat: String.fromCodePoint(0x1F4AC),
+        pray: String.fromCodePoint(0x1F64F)
+      };
       const lines = [
-        'Halo Ms. Laeli, saya sudah mengisi formulir PPDB 2027/2028 TK. PGRI An-Nahl:',
+        "Assalamu'alaikum, Admin PPDB TK. PGRI An-Nahl.",
+        'Saya sudah mengisi formulir PPDB 2027/2028:',
         '',
-        `👶 Nama anak: ${data.namaAnak}`,
-        `🎂 Tgl lahir: ${data.tglLahir}`,
-        `🏫 Program: ${data.program}`,
-        `👕 Ukuran seragam: ${data.ukuran}`,
-        `👤 Ortu: ${data.namaOrtu}`,
-        `📱 WA: ${data.noWa}`,
+        `${E.baby} Nama anak: ${data.namaAnak}`,
+        `${E.cake} Tgl lahir: ${data.tglLahir}`,
+        `${E.school} Program: ${data.program}`,
+        `${E.shirt} Ukuran seragam: ${data.ukuran}`,
+        `${E.adult} Ortu: ${data.namaOrtu}`,
+        `${E.phone} WA: ${data.noWa}`,
       ];
-      if (data.pesan) lines.push(`💬 Pesan: ${data.pesan}`);
-      lines.push('', 'Bukti pembayaran Rp 400.000 sudah saya upload di formulir. Terima kasih. 🙏');
+      if (data.pesan) lines.push(`${E.chat} Pesan: ${data.pesan}`);
+      lines.push('', 'Bukti pembayaran Rp 400.000 sudah saya upload di formulir. Terima kasih. ' + E.pray);
       document.getElementById('waConfirmBtn').href =
         `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(lines.join('\n'))}`;
 
