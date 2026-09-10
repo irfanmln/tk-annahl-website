@@ -532,12 +532,17 @@ function renderTable(data, container) {
     document.getElementById(container).innerHTML = '<div class="empty">📭 Belum ada data pendaftar.</div>';
     return;
   }
+  const thumb = (url, label) => url
+    ? `<a href="${url}" target="_blank" title="${label} — klik untuk perbesar"><img src="${url}" alt="${label}" loading="lazy" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:2px solid #F0E8D0;display:block"/></a>`
+    : '';
   const rows = data.map(r => `
     <tr>
       <td><b>${r.nama_anak}</b></td>
       <td>${r.program}</td>
+      <td style="text-align:center"><b>${r.ukuran_seragam || '-'}</b></td>
       <td>${r.nama_orangtua}</td>
       <td><a href="https://wa.me/${r.no_whatsapp?.replace(/\D/g,'')}" target="_blank" style="color:var(--orange-dark);font-weight:700">${r.no_whatsapp}</a></td>
+      <td><div style="display:flex;gap:6px">${thumb(r.bukti_bayar_url, 'Bukti bayar')}${thumb(r.foto_siswa_url, 'Foto siswa')}</div></td>
       <td>${fmtDate(r.created_at)}</td>
       <td><span class="badge ${r.status}">${r.status}</span></td>
       <td>
@@ -547,7 +552,7 @@ function renderTable(data, container) {
     </tr>`).join('');
   document.getElementById(container).innerHTML = `
     <table>
-      <tr><th>Nama Anak</th><th>Program</th><th>Orang Tua</th><th>WhatsApp</th><th>Tgl Daftar</th><th>Status</th><th>Aksi</th></tr>
+      <tr><th>Nama Anak</th><th>Program</th><th>Ukuran</th><th>Orang Tua</th><th>WhatsApp</th><th>Berkas</th><th>Tgl Daftar</th><th>Status</th><th>Aksi</th></tr>
       ${rows}
     </table>`;
 }

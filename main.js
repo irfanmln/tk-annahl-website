@@ -209,6 +209,56 @@ function renderFooter() {
   `;
 }
 
+// ===== STORAGE UPLOAD (Supabase) =====
+// Kompres gambar di browser (pertahankan rasio aspek, max 1600px, WebP).
+// Melempar Error jika file bukan gambar yang bisa dibaca (mis. HEIC rusak).
+function compressImage(file, maxDim = 1600, quality = 0.82) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const blobUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(blobUrl);
+      const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      canvas.toBlob(
+        blob => blob ? resolve(blob) : reject(new Error('compress-failed')),
+        'image/webp',
+        quality
+      );
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(blobUrl);
+      reject(new Error('unreadable-image'));
+    };
+    img.src = blobUrl;
+  });
+}
+
+function randomFileName(ext = 'webp') {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8) + '.' + ext;
+}
+
+// Upload blob ke bucket Supabase Storage. Mengembalikan public URL atau null.
+async function supabaseUpload(bucket, path, blob, contentType = 'image/webp') {
+  const res = await fetch(`${SUPABASE_URL}/storage/v1/object/${bucket}/${path}`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': contentType,
+      'x-upsert': 'false'
+    },
+    body: blob
+  });
+  if (!res.ok) return null;
+  return `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${path}`;
+}
+
 // ===== TOAST =====
 function showToast(msg, type = 'success') {
   const toast = document.createElement('div');

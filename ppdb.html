@@ -125,6 +125,26 @@
     </div>
   </section>
 
+  <section style="background:white" id="seragam">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">👕 Seragam</div>
+        <h2 class="section-title">List Ukuran <span>Seragam</span></h2>
+        <p class="section-desc">Seragam An-Nahl Learning Centre — pilih ukurannya saat mengisi formulir di bawah</p>
+      </div>
+      <div class="form-card" style="max-width:720px;margin:0 auto;overflow-x:auto">
+        <table class="seragam-table">
+          <tr><th>Ukuran</th><th>Lingkar Dada</th><th>Panjang Baju</th><th>Panjang Tangan</th><th>Panjang Celana/Rok</th></tr>
+          <tr><td>S</td><td>68 cm</td><td>45 cm</td><td>32 cm</td><td>56 cm</td></tr>
+          <tr><td>M</td><td>71 cm</td><td>48 cm</td><td>34 cm</td><td>60 cm</td></tr>
+          <tr><td>L</td><td>78 cm</td><td>50 cm</td><td>38 cm</td><td>64 cm</td></tr>
+          <tr><td>XL</td><td>82 cm</td><td>52 cm</td><td>40 cm</td><td>66 cm</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--text-light);margin-top:14px;line-height:1.6">* Panjang baju dari pundak ke bawah diukur masing-masing anak.</p>
+      </div>
+    </div>
+  </section>
+
   <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)">
     <div class="container">
       <div class="ppdb-wrapper">
@@ -197,6 +217,27 @@
             </select>
           </div>
           <div class="form-group">
+            <label>Ukuran Seragam *</label>
+            <select id="ukuran" required>
+              <option value="">-- Pilih Ukuran --</option>
+              <option value="S">S (Dada 68 • Baju 45 • Tangan 32 • Bawahan 56 cm)</option>
+              <option value="M">M (Dada 71 • Baju 48 • Tangan 34 • Bawahan 60 cm)</option>
+              <option value="L">L (Dada 78 • Baju 50 • Tangan 38 • Bawahan 64 cm)</option>
+              <option value="XL">XL (Dada 82 • Baju 52 • Tangan 40 • Bawahan 66 cm)</option>
+            </select>
+            <button type="button" onclick="document.getElementById('sizeChartMini').style.display=document.getElementById('sizeChartMini').style.display==='none'?'block':'none'" style="margin-top:8px;background:none;border:none;color:var(--orange-dark);font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;cursor:pointer;padding:0">📏 Lihat Size Chart</button>
+            <div id="sizeChartMini" style="display:none;margin-top:10px;overflow-x:auto">
+              <table class="seragam-table">
+                <tr><th>Ukuran</th><th>Dada</th><th>Baju</th><th>Tangan</th><th>Bawahan</th></tr>
+                <tr><td>S</td><td>68</td><td>45</td><td>32</td><td>56</td></tr>
+                <tr><td>M</td><td>71</td><td>48</td><td>34</td><td>60</td></tr>
+                <tr><td>L</td><td>78</td><td>50</td><td>38</td><td>64</td></tr>
+                <tr><td>XL</td><td>82</td><td>52</td><td>40</td><td>66</td></tr>
+              </table>
+              <p style="font-size:11px;color:var(--text-light);margin-top:6px">Satuan cm. Detail lengkap ada di bagian <a href="#seragam" style="color:var(--orange-dark);font-weight:800">List Ukuran Seragam</a> di atas.</p>
+            </div>
+          </div>
+          <div class="form-group">
             <label>Nama Orang Tua / Wali *</label>
             <input type="text" id="namaOrtu" placeholder="Nama lengkap orang tua" required/>
           </div>
@@ -205,11 +246,37 @@
             <input type="tel" id="noWa" placeholder="Contoh: 08123456789" required/>
           </div>
           <div class="form-group">
+            <label>Bukti Pembayaran (Rp 400.000,-) *</label>
+            <input type="file" id="bukti" accept="image/*" required onchange="previewFile(this,'buktiPreview')"/>
+            <p style="font-size:12px;color:var(--text-light);margin-top:6px">Foto/screenshot bukti transfer. Maks 8MB, otomatis dikompres.</p>
+            <img id="buktiPreview" alt="" style="display:none;max-width:100%;max-height:220px;border-radius:12px;margin-top:8px;border:2px solid #FFE0A0"/>
+          </div>
+          <div class="form-group">
+            <label>Foto Calon Siswa (opsional)</label>
+            <input type="file" id="fotoSiswa" accept="image/*" onchange="previewFile(this,'fotoPreview')"/>
+            <img id="fotoPreview" alt="" style="display:none;max-width:100%;max-height:220px;border-radius:12px;margin-top:8px;border:2px solid #FFE0A0"/>
+          </div>
+          <div class="form-group">
             <label>Pesan / Pertanyaan</label>
             <textarea id="pesan" placeholder="Tuliskan pertanyaan atau pesan Anda..."></textarea>
           </div>
           <button class="submit-btn" id="submitBtn" onclick="submitPendaftaran()">🐝 Kirim Pendaftaran</button>
           <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:12px">Tim kami akan menghubungi Anda dalam 1x24 jam</p>
+        </div>
+        <div class="form-card" id="ppdbSuccess" style="display:none">
+          <div style="text-align:center;padding:8px 0 4px">
+            <div style="font-size:56px;margin-bottom:12px">✅</div>
+            <h3 style="margin-bottom:8px">Pendaftaran Terkirim!</h3>
+            <p style="color:var(--text-light);font-size:14px;line-height:1.7;margin-bottom:16px">Data Anda sudah tersimpan. Selesaikan 2 langkah berikut agar proses verifikasi cepat:</p>
+          </div>
+          <div id="successSummary" style="background:#FFF8E7;border-radius:14px;padding:16px;font-size:13px;line-height:1.8;margin-bottom:18px"></div>
+          <p style="font-weight:800;font-size:14px;margin-bottom:8px">Langkah 1 — Konfirmasi pembayaran <span style="color:#C0392B">(wajib)</span></p>
+          <a id="waConfirmBtn" href="#" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:14px;border-radius:14px;text-decoration:none;font-weight:800;font-size:15px;margin-bottom:6px">💬 Konfirmasi via WhatsApp</a>
+          <p style="font-size:12px;color:var(--text-light);margin-bottom:18px">Tombol ini membuka WA dengan pesan terisi otomatis sesuai data Anda — tinggal tekan kirim. Bukti pembayaran sudah terlampir di data pendaftaran (<i>link WA tidak bisa membawa lampiran gambar</i>).</p>
+          <p style="font-weight:800;font-size:14px;margin-bottom:8px">Langkah 2 — Gabung grup SPMB</p>
+          <a id="waGroupBtn" href="#" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,var(--orange),var(--orange-dark));color:white;padding:14px;border-radius:14px;text-decoration:none;font-weight:800;font-size:15px">👥 Gabung Grup WhatsApp SPMB</a>
+          <p id="groupNote" style="font-size:12px;color:var(--text-light);margin-top:6px"></p>
+          <p style="text-align:center;margin-top:18px"><button type="button" onclick="resetPpdbForm()" style="background:none;border:none;color:var(--orange-dark);font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif">↩️ Daftarkan anak lain</button></p>
         </div>
       </div>
     </div>
@@ -253,69 +320,154 @@
     </div>
   </section>
 
-  <section style="background:white" id="seragam">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">👕 Seragam</div>
-        <h2 class="section-title">List Ukuran <span>Seragam</span></h2>
-        <p class="section-desc">Seragam An-Nahl Learning Centre — diukur masing-masing anak saat daftar ulang</p>
-      </div>
-      <div class="form-card" style="max-width:720px;margin:0 auto;overflow-x:auto">
-        <table class="seragam-table">
-          <tr><th>Ukuran</th><th>Lingkar Dada</th><th>Panjang Baju</th><th>Panjang Tangan</th><th>Panjang Celana/Rok</th></tr>
-          <tr><td>S</td><td>68 cm</td><td>45 cm</td><td>32 cm</td><td>56 cm</td></tr>
-          <tr><td>M</td><td>71 cm</td><td>48 cm</td><td>34 cm</td><td>60 cm</td></tr>
-          <tr><td>L</td><td>78 cm</td><td>50 cm</td><td>38 cm</td><td>64 cm</td></tr>
-          <tr><td>XL</td><td>82 cm</td><td>52 cm</td><td>40 cm</td><td>66 cm</td></tr>
-        </table>
-        <p style="font-size:12px;color:var(--text-light);margin-top:14px;line-height:1.6">* Panjang baju dari pundak ke bawah diukur masing-masing anak.</p>
-      </div>
-    </div>
-  </section>
-
   <div id="footer"></div>
   <script src="main.js"></script>
   <script>
     renderNavbar();
     renderFooter();
 
+    // Nomor admin tujuan konfirmasi (Ms. Laeli)
+    const WA_ADMIN = '6281296282841';
+    // TODO: ganti dengan link invite grup WA SPMB resmi, contoh: 'https://chat.whatsapp.com/AbCdEf123456'
+    // Selama kosong, tombol grup mengarah ke admin dengan pesan minta link grup.
+    const GROUP_WA_URL = '';
+
+    function previewFile(input, previewId) {
+      const img = document.getElementById(previewId);
+      const file = input.files && input.files[0];
+      if (!file) { img.style.display = 'none'; img.src = ''; return; }
+      if (!file.type.startsWith('image/')) {
+        showToast('File harus berupa gambar (JPG/PNG).', 'error');
+        input.value = ''; img.style.display = 'none'; return;
+      }
+      if (file.size > 8 * 1024 * 1024) {
+        showToast('Ukuran file maksimal 8MB.', 'error');
+        input.value = ''; img.style.display = 'none'; return;
+      }
+      const url = URL.createObjectURL(file);
+      img.src = url; img.style.display = 'block';
+    }
+
+    function resetPpdbForm() {
+      ['namaAnak','tglLahir','program','ukuran','namaOrtu','noWa','pesan'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      ['bukti','fotoSiswa'].forEach(id => { document.getElementById(id).value = ''; });
+      ['buktiPreview','fotoPreview'].forEach(id => {
+        const img = document.getElementById(id);
+        img.style.display = 'none'; img.src = '';
+      });
+      document.getElementById('ppdbSuccess').style.display = 'none';
+      document.getElementById('formulir').style.display = 'block';
+      document.getElementById('formulir').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function buildWaLinks(data) {
+      const lines = [
+        'Halo Ms. Laeli, saya sudah mengisi formulir PPDB 2027/2028 TK. PGRI An-Nahl:',
+        '',
+        `👶 Nama anak: ${data.namaAnak}`,
+        `🎂 Tgl lahir: ${data.tglLahir}`,
+        `🏫 Program: ${data.program}`,
+        `👕 Ukuran seragam: ${data.ukuran}`,
+        `👤 Ortu: ${data.namaOrtu}`,
+        `📱 WA: ${data.noWa}`,
+      ];
+      if (data.pesan) lines.push(`💬 Pesan: ${data.pesan}`);
+      lines.push('', 'Bukti pembayaran Rp 400.000 sudah saya upload di formulir. Terima kasih. 🙏');
+      document.getElementById('waConfirmBtn').href =
+        `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(lines.join('\n'))}`;
+
+      const groupBtn = document.getElementById('waGroupBtn');
+      const groupNote = document.getElementById('groupNote');
+      if (GROUP_WA_URL) {
+        groupBtn.href = GROUP_WA_URL;
+        groupNote.textContent = '';
+      } else {
+        groupBtn.href = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(
+          `Halo Ms. Laeli, saya (${data.namaOrtu}) sudah mendaftar PPDB untuk ${data.namaAnak}. Mohon link grup WhatsApp SPMB. Terima kasih. 🙏`
+        )}`;
+        groupNote.textContent = 'Catatan: link grup resmi menyusul — tombol ini meminta link grup via admin.';
+      }
+
+      document.getElementById('successSummary').innerHTML =
+        `👶 <strong>${data.namaAnak}</strong> • 🏫 ${data.program}<br>👕 Seragam: <strong>${data.ukuran}</strong> • 📎 Bukti: ${data.buktiName}${data.fotoName ? ' • 📷 Foto: ' + data.fotoName : ''}`;
+    }
+
     async function submitPendaftaran() {
       const namaAnak = document.getElementById('namaAnak').value.trim();
       const tglLahir = document.getElementById('tglLahir').value;
       const program = document.getElementById('program').value;
+      const ukuran = document.getElementById('ukuran').value;
       const namaOrtu = document.getElementById('namaOrtu').value.trim();
       const noWa = document.getElementById('noWa').value.trim();
       const pesan = document.getElementById('pesan').value.trim();
+      const buktiFile = document.getElementById('bukti').files[0];
+      const fotoFile = document.getElementById('fotoSiswa').files[0];
 
-      if (!namaAnak || !tglLahir || !program || !namaOrtu || !noWa) {
+      if (!namaAnak || !tglLahir || !program || !ukuran || !namaOrtu || !noWa) {
         showToast('Mohon lengkapi semua data yang wajib diisi!', 'error');
+        return;
+      }
+      if (!buktiFile) {
+        showToast('Mohon upload foto bukti pembayaran!', 'error');
         return;
       }
 
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.textContent = '⏳ Mengirim...';
 
-      const ok = await supabaseInsert('pendaftaran', {
-        nama_anak: namaAnak,
-        tanggal_lahir: tglLahir,
-        program: program,
-        nama_orangtua: namaOrtu,
-        no_whatsapp: noWa,
-        pesan: pesan
-      });
+      try {
+        // 1) Kompres gambar di browser (bukti wajib, foto siswa opsional)
+        btn.textContent = '⏳ Mengompres foto...';
+        const buktiBlob = await compressImage(buktiFile);
+        const fotoBlob = fotoFile ? await compressImage(fotoFile) : null;
 
-      if (ok) {
-        showToast('Pendaftaran berhasil! Tim kami akan segera menghubungi Anda. 🐝');
-        document.getElementById('namaAnak').value = '';
-        document.getElementById('tglLahir').value = '';
-        document.getElementById('program').value = '';
-        document.getElementById('namaOrtu').value = '';
-        document.getElementById('noWa').value = '';
-        document.getElementById('pesan').value = '';
-      } else {
-        showToast('Gagal mengirim. Silakan hubungi kami langsung via WhatsApp.', 'error');
+        // 2) Upload ke Supabase Storage
+        btn.textContent = '⏳ Mengupload berkas...';
+        const folder = 'ppdb-2027/' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        const buktiUrl = await supabaseUpload('ppdb-files', `${folder}-bukti.webp`, buktiBlob);
+        if (!buktiUrl) throw new Error('upload-bukti-gagal');
+        let fotoUrl = '';
+        if (fotoBlob) {
+          fotoUrl = await supabaseUpload('ppdb-files', `${folder}-siswa.webp`, fotoBlob) || '';
+        }
+
+        // 3) Simpan baris pendaftaran
+        btn.textContent = '⏳ Menyimpan data...';
+        const ok = await supabaseInsert('pendaftaran', {
+          nama_anak: namaAnak,
+          tanggal_lahir: tglLahir,
+          program: program,
+          ukuran_seragam: ukuran,
+          nama_orangtua: namaOrtu,
+          no_whatsapp: noWa,
+          pesan: pesan,
+          bukti_bayar_url: buktiUrl,
+          foto_siswa_url: fotoUrl
+        });
+        if (!ok) throw new Error('db-gagal');
+      } catch (err) {
+        console.error('[ppdb]', err);
+        // Prinsip: jangan sampai calon siswa hilang — tombol WA tetap tampil dari data lokal.
+        if (err && (err.message === 'unreadable-image' || err.message === 'compress-failed')) {
+          showToast('Foto tidak terbaca. Gunakan JPG/PNG dari kamera/galeri.', 'error');
+          btn.disabled = false;
+          btn.textContent = '🐝 Kirim Pendaftaran';
+          return;
+        }
+        showToast('Gagal menyimpan otomatis, tapi Anda tetap bisa konfirmasi via WhatsApp di bawah. Data tidak hilang. ⚠️', 'error');
       }
+
+      // 4) Tampilkan panel sukses + tombol WA (selalu, dari data lokal)
+      buildWaLinks({
+        namaAnak, tglLahir, program, ukuran, namaOrtu, noWa, pesan,
+        buktiName: buktiFile.name, fotoName: fotoFile ? fotoFile.name : ''
+      });
+      document.getElementById('formulir').style.display = 'none';
+      const panel = document.getElementById('ppdbSuccess');
+      panel.style.display = 'block';
+      panel.scrollIntoView({ behavior: 'smooth' });
 
       btn.disabled = false;
       btn.textContent = '🐝 Kirim Pendaftaran';
