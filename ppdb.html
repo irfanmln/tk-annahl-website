@@ -44,7 +44,18 @@
     .kuota-card .nama { font-size:12px; color:var(--text-light); font-weight:700; margin-bottom:10px; }
     .kuota-card .angka { font-family:'Baloo 2',cursive; font-size:32px; font-weight:800; color:var(--text); }
     .kuota-card .label { font-size:12px; color:var(--text-light); }
-    @media(max-width:900px){ .ppdb-wrapper { grid-template-columns:1fr; } .syarat-grid,.kuota-grid { grid-template-columns:repeat(2,1fr); } }
+    .kelas-group-title { font-family:'Baloo 2',cursive; font-size:20px; font-weight:800; color:var(--orange-dark); text-align:center; margin:28px 0 16px; }
+    .kelas-group-sub { text-align:center; font-size:13px; color:var(--text-light); font-weight:700; margin:-10px 0 16px; }
+    .kuota-grid.grid-3 { grid-template-columns:repeat(3,1fr); }
+    .kuota-grid.grid-2 { grid-template-columns:repeat(2,1fr); max-width:640px; margin:0 auto; }
+    .biaya-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .biaya-table th { text-align:left; padding:10px 14px; font-size:12px; color:var(--text-light); text-transform:uppercase; letter-spacing:0.5px; border-bottom:2px solid #F0E8D0; }
+    .biaya-table td { padding:12px 14px; border-bottom:1px solid #F5EDD5; }
+    .seragam-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .seragam-table th { background:linear-gradient(135deg,var(--orange),var(--orange-dark)); color:white; padding:10px 12px; font-size:12px; }
+    .seragam-table td { padding:10px 12px; border-bottom:1px solid #F5EDD5; text-align:center; }
+    .seragam-table td:first-child { font-weight:800; color:var(--orange-dark); }
+    @media(max-width:900px){ .ppdb-wrapper { grid-template-columns:1fr; } .syarat-grid,.kuota-grid,.kuota-grid.grid-3,.kuota-grid.grid-2 { grid-template-columns:repeat(2,1fr); } }
     @media(max-width:600px){ .syarat-grid { grid-template-columns:1fr; } .kuota-grid { grid-template-columns:repeat(2,1fr); } }
   </style>
 </head>
@@ -55,42 +66,60 @@
     <div class="page-hero-tag">📝 Admission 2027–2028</div>
     <h1>Pendaftaran <span>Peserta Didik Baru</span></h1>
     <p>Daftarkan putra-putri Anda ke TK. PGRI An-Nahl! Tempat sangat terbatas untuk tahun ajaran 2027/2028</p>
+    <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="#formulir" style="background:white;color:var(--orange-dark);padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px">📝 Isi Formulir</a>
+      <a href="#biaya" style="background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;border:2px solid rgba(255,255,255,0.5)">💰 Rincian Biaya</a>
+    </div>
   </div>
 
   <section style="background:white">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">👶 Kuota Tersedia</div>
-        <h2 class="section-title">Kelompok <span>Belajar</span></h2>
+        <div class="section-tag">👶 Kuota & Jadwal Kelas</div>
+        <h2 class="section-title">Kelas <span>Reguler & Non-Reguler</span></h2>
       </div>
-      <div class="kuota-grid">
-        <div class="kuota-card">
-          <div class="kelas">Toddler</div>
-          <div class="nama">⭐ An-Najma • 2–3 Tahun</div>
-          <div class="angka">8</div>
-          <div class="label">Kuota Siswa</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 10.30–12.00</div>
-        </div>
+      <div class="kelas-group-title">🏫 Kelas Reguler</div>
+      <div class="kelas-group-sub">Senin – Jumat</div>
+      <div class="kuota-grid grid-3">
         <div class="kuota-card">
           <div class="kelas">Nursery</div>
           <div class="nama">🌙 Al-Qomar • 3–4 Tahun</div>
           <div class="angka">12</div>
           <div class="label">Kuota Siswa</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 08.00–10.00</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 08.00–10.00 WIB</div>
         </div>
         <div class="kuota-card">
-          <div class="kelas">Kindergarten 1</div>
+          <div class="kelas">K1</div>
           <div class="nama">☀️ As-Syams • 4–5 Tahun</div>
-          <div class="angka">30</div>
-          <div class="label">Kuota Siswa (2 Kelas)</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 07.30–12.00</div>
+          <div class="angka">32</div>
+          <div class="label">Kuota Siswa</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 07.30–12.00 WIB</div>
         </div>
         <div class="kuota-card">
-          <div class="kelas">Kindergarten 2</div>
+          <div class="kelas">K2</div>
           <div class="nama">☁️ As-Sahab • 5–6 Tahun</div>
-          <div class="angka">30</div>
-          <div class="label">Kuota Siswa (2 Kelas)</div>
-          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 07.30–12.30</div>
+          <div class="angka">32</div>
+          <div class="label">Kuota Siswa</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 07.30–12.30 WIB</div>
+        </div>
+      </div>
+      <div class="kelas-group-title">🌟 Kelas Non-Reguler</div>
+      <div class="kuota-grid grid-2">
+        <div class="kuota-card">
+          <div class="kelas">Nursery</div>
+          <div class="nama">🌙 Al-Qomar • 3–4 Tahun</div>
+          <div class="angka">12</div>
+          <div class="label">Kuota Siswa</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 10.30–12.00 WIB</div>
+          <div style="font-size:12px;color:var(--text-light);font-weight:700;margin-top:4px">📅 Senin, Rabu, Jumat</div>
+        </div>
+        <div class="kuota-card">
+          <div class="kelas">Toddler</div>
+          <div class="nama">⭐ An-Najma • 2–3 Tahun</div>
+          <div class="angka">8</div>
+          <div class="label">Kuota Siswa</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--orange-dark);font-weight:700">⏰ 10.30–12.00 WIB</div>
+          <div style="font-size:12px;color:var(--text-light);font-weight:700;margin-top:4px">📅 Selasa, Kamis, Jumat</div>
         </div>
       </div>
     </div>
@@ -107,36 +136,36 @@
             <div class="step">
               <div class="step-num">1</div>
               <div class="step-content">
-                <h4>Daftar Online & Bayar Biaya Pendaftaran</h4>
-                <p>Isi formulir pendaftaran dan bayar biaya pendaftaran sebesar <strong>Rp 400.000,-</strong></p>
+                <h4>Isi Formulir Online & Bayar Uang Pendaftaran</h4>
+                <p>Mengisi formulir pendaftaran secara online dan membayar uang pendaftaran sebesar <strong>Rp 400.000,-</strong></p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">2</div>
               <div class="step-content">
-                <h4>Bergabung Grup WhatsApp SPMB</h4>
-                <p>Wali murid akan diarahkan untuk bergabung grup WhatsApp SPMB TK. PGRI An-Nahl.</p>
+                <h4>Bergabung ke Grup WhatsApp</h4>
+                <p>Wali murid akan diarahkan untuk bergabung ke grup WhatsApp SPMB TK. PGRI An-Nahl.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">3</div>
               <div class="step-content">
-                <h4>Daftar Ulang (5 Januari)</h4>
-                <p>Bayar 80% biaya, kumpulkan pemberkasan, dan pengukuran seragam.</p>
+                <h4>Daftar Ulang (28 Februari 2027)</h4>
+                <p>Melakukan pelunasan pembayaran dan mengumpulkan berkas persyaratan.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">4</div>
               <div class="step-content">
-                <h4>Pelunasan & Seragam (Akhir Maret)</h4>
-                <p>Pelunasan biaya dan pembagian seragam pada akhir Maret.</p>
+                <h4>Observasi & Pembagian Seragam (April 2027)</h4>
+                <p>Melakukan observasi awal dan pembacaan hasil observasi serta pembagian seragam.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">5</div>
               <div class="step-content">
-                <h4>Observasi & Open House</h4>
-                <p>Observasi dilaksanakan April, Open House dilaksanakan Mei.</p>
+                <h4>Open House (Juli 2027)</h4>
+                <p>Mengikuti kegiatan Open House bersama keluarga besar An-Nahl.</p>
               </div>
             </div>
           </div>
@@ -146,7 +175,7 @@
             <p>📱 <a href="https://wa.me/6281296282841">0812-9628-2841 (Ms. Laeli)</a></p>
           </div>
         </div>
-        <div class="form-card">
+        <div class="form-card" id="formulir">
           <h3>📩 Formulir Pendaftaran Online</h3>
           <div class="form-group">
             <label>Nama Lengkap Anak *</label>
@@ -160,10 +189,11 @@
             <label>Program yang Dituju *</label>
             <select id="program" required>
               <option value="">-- Pilih Program --</option>
-              <option>Toddler – An-Najma (2–3 Tahun)</option>
-              <option>Nursery – Al-Qomar (3–4 Tahun)</option>
-              <option>Kindergarten 1 – As-Syams (4–5 Tahun)</option>
-              <option>Kindergarten 2 – As-Sahab (5–6 Tahun)</option>
+              <option>Toddler Non-Reguler – An-Najma (2–3 Tahun)</option>
+              <option>Nursery Reguler – Al-Qomar (3–4 Tahun)</option>
+              <option>Nursery Non-Reguler – Al-Qomar (3–4 Tahun)</option>
+              <option>Kindergarten 1 Reguler – As-Syams (4–5 Tahun)</option>
+              <option>Kindergarten 2 Reguler – As-Sahab (5–6 Tahun)</option>
             </select>
           </div>
           <div class="form-group">
@@ -198,6 +228,47 @@
         <div class="syarat-item">📷 Pas Foto Background Merah 3x4 & 4x6 (2 Lembar)</div>
         <div class="syarat-item">🪪 FC KTA 3 Lembar (jika memiliki)</div>
         <div class="syarat-item">📋 Surat Keterangan Sakit/Terapis (jika ada)</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)" id="biaya">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">💰 Pembiayaan</div>
+        <h2 class="section-title">Rincian <span>Biaya & Pembayaran</span></h2>
+        <p class="section-desc">Uang pendaftaran Rp 400.000,- dibayar saat mengisi formulir online</p>
+      </div>
+      <div class="form-card" style="max-width:720px;margin:0 auto">
+        <table class="biaya-table">
+          <tr><th>Komponen</th><th>Keterangan</th></tr>
+          <tr><td><strong>📝 Uang Pendaftaran</strong></td><td><strong>Rp 400.000,-</strong></td></tr>
+          <tr><td>📦 Daftar Ulang & Pelunasan</td><td>28 Februari 2027 — rincian menyusul, hubungi admin via WhatsApp</td></tr>
+          <tr><td>👕 Seragam</td><td>Dibagikan April 2027 bersamaan pembacaan hasil observasi</td></tr>
+          <tr><td>🏦 No. Rekening Transfer</td><td>Menyusul — hubungi <a href="https://wa.me/6281296282841" target="_blank" style="color:var(--orange-dark);font-weight:800">Ms. Laeli (WA)</a> untuk info pembayaran</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--text-light);margin-top:14px;line-height:1.6">* Tabel ini placeholder — rincian biaya daftar ulang, SPP, dan nomor rekening resmi akan diupdate setelah ada info dari klien.</p>
+        <a href="https://wa.me/6281296282841?text=Halo%20Ms.%20Laeli%2C%20saya%20ingin%20bertanya%20rincian%20biaya%20PPDB%202027%2F2028." target="_blank" style="display:inline-block;margin-top:12px;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:13px 28px;border-radius:14px;text-decoration:none;font-weight:800;font-size:15px">💬 Tanya Biaya via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:white" id="seragam">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">👕 Seragam</div>
+        <h2 class="section-title">List Ukuran <span>Seragam</span></h2>
+        <p class="section-desc">Seragam An-Nahl Learning Centre — diukur masing-masing anak saat daftar ulang</p>
+      </div>
+      <div class="form-card" style="max-width:720px;margin:0 auto;overflow-x:auto">
+        <table class="seragam-table">
+          <tr><th>Ukuran</th><th>Lingkar Dada</th><th>Panjang Baju</th><th>Panjang Tangan</th><th>Panjang Celana/Rok</th></tr>
+          <tr><td>S</td><td>68 cm</td><td>45 cm</td><td>32 cm</td><td>56 cm</td></tr>
+          <tr><td>M</td><td>71 cm</td><td>48 cm</td><td>34 cm</td><td>60 cm</td></tr>
+          <tr><td>L</td><td>78 cm</td><td>50 cm</td><td>38 cm</td><td>64 cm</td></tr>
+          <tr><td>XL</td><td>82 cm</td><td>52 cm</td><td>40 cm</td><td>66 cm</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--text-light);margin-top:14px;line-height:1.6">* Panjang baju dari pundak ke bawah diukur masing-masing anak.</p>
       </div>
     </div>
   </section>

@@ -27,7 +27,7 @@
     .act-body { padding:20px; }
     .act-body h3 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; margin-bottom:8px; }
     .act-body p { font-size:13px; color:var(--text-light); line-height:1.7; }
-    .jadwal-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .jadwal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:start; }
     .jadwal-card { background:white; border-radius:18px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
     .jadwal-card h4 { font-family:'Baloo 2',cursive; font-size:18px; font-weight:800; color:var(--orange-dark); margin-bottom:16px; }
     .jadwal-item { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px dashed #FFE0A0; }
@@ -136,22 +136,35 @@
       </div>
       <div class="jadwal-grid">
         <div class="jadwal-card">
-          <h4>☀️ K1 & ☁️ K2 (07.30–selesai)</h4>
-          <div class="jadwal-item"><span class="jadwal-time">07.30–08.00</span><span class="jadwal-activity">🤲 Ikrar & Doa Pagi</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">08.00–08.30</span><span class="jadwal-activity">📖 Hafalan & Iqra</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">08.30–09.30</span><span class="jadwal-activity">🎨 Kegiatan Inti (Area Montessori)</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">09.30–10.00</span><span class="jadwal-activity">🍎 Istirahat & Makan</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">10.00–11.00</span><span class="jadwal-activity">🔬 Eksplorasi & Kreasi</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">11.00–12.00</span><span class="jadwal-activity">⚽ Olahraga & Evaluasi</span></div>
+          <h4>🌙 Nursery (08.00–10.00)</h4>
+          <div class="jadwal-item"><span class="jadwal-time">08.00–08.30</span><span class="jadwal-activity">⭕ Morning circle</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">08.30–09.00</span><span class="jadwal-activity">🕌 Islamic education</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.00–09.30</span><span class="jadwal-activity">🧩 Eksplorasi Montessori & kegiatan inti</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.30–09.50</span><span class="jadwal-activity">🍎 Snack time</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.50–10.00</span><span class="jadwal-activity">👋 Recalling & Sayonara</span></div>
         </div>
         <div class="jadwal-card">
-          <h4>🌙 Nursery & ⭐ Toddler</h4>
-          <div class="jadwal-item"><span class="jadwal-time">08.00–08.20</span><span class="jadwal-activity">🤲 Doa & Salam Pagi</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">08.20–09.00</span><span class="jadwal-activity">🎵 Circle Time & Bernyanyi</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">09.00–09.30</span><span class="jadwal-activity">🧩 Kegiatan Sensorial</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">09.30–10.00</span><span class="jadwal-activity">🍎 Snack Time</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">10.00–10.30</span><span class="jadwal-activity">🎨 Free Play & Kreasi</span></div>
-          <div class="jadwal-item"><span class="jadwal-time">10.30–12.00</span><span class="jadwal-activity">🌟 Toddler: Masuk & Pulang</span></div>
+          <h4>☀️ Kindergarten 1 (07.30–12.15)</h4>
+          <div class="jadwal-item"><span class="jadwal-time">07.30–08.00</span><span class="jadwal-activity">⭕ Morning circle</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">08.00–09.00</span><span class="jadwal-activity">🕌 Islamic Education</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.00–09.30</span><span class="jadwal-activity">⚽ Olahraga & Gross motor</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.30–10.00</span><span class="jadwal-activity">🍎 Snack time</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">10.00–11.00</span><span class="jadwal-activity">🧩 Montessori time</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">11.00–11.30</span><span class="jadwal-activity">🌟 Eksplorasi 6 aspek perkembangan anak</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">11.30–12.00</span><span class="jadwal-activity">🤲 Persiapan & sholat dhuhur</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">12.00–12.15</span><span class="jadwal-activity">👋 Recalling & Sayonara</span></div>
+        </div>
+        <div class="jadwal-card">
+          <h4>☁️ Kindergarten 2 (07.30–12.30)</h4>
+          <div class="jadwal-item"><span class="jadwal-time">07.30–08.00</span><span class="jadwal-activity">⭕ Morning circle</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">08.00–09.00</span><span class="jadwal-activity">🕌 Islamic Education</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.00–09.30</span><span class="jadwal-activity">⚽ Olahraga & Gross motor</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">09.30–10.00</span><span class="jadwal-activity">🧩 Montessori time</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">10.00–10.30</span><span class="jadwal-activity">🍎 Snack time</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">10.30–11.00</span><span class="jadwal-activity">🧩 Montessori time</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">11.00–12.00</span><span class="jadwal-activity">🌟 Eksplorasi 6 aspek perkembangan anak</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">12.00–12.15</span><span class="jadwal-activity">🤲 Persiapan & sholat dhuhur</span></div>
+          <div class="jadwal-item"><span class="jadwal-time">12.15–12.30</span><span class="jadwal-activity">👋 Recalling & Sayonara</span></div>
         </div>
       </div>
     </div>
