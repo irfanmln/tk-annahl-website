@@ -326,11 +326,10 @@
     renderNavbar();
     renderFooter();
 
-    // Nomor admin tujuan konfirmasi (Ms. Laeli)
+    // Nomor admin tujuan konfirmasi pembayaran (Ms. Laeli — 0812-9628-2841)
     const WA_ADMIN = '6281296282841';
-    // TODO: ganti dengan link invite grup WA SPMB resmi, contoh: 'https://chat.whatsapp.com/AbCdEf123456'
-    // Selama kosong, tombol grup mengarah ke admin dengan pesan minta link grup.
-    const GROUP_WA_URL = '';
+    // Link invite grup WA Calon Peserta Didik 2027-2028
+    const GROUP_WA_URL = 'https://chat.whatsapp.com/GxonkfZywEoKzuZVrxhG66?s=sh&p=a&mlu=4&ilr=4';
 
     function previewFile(input, previewId) {
       const img = document.getElementById(previewId);
@@ -378,17 +377,8 @@
       document.getElementById('waConfirmBtn').href =
         `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(lines.join('\n'))}`;
 
-      const groupBtn = document.getElementById('waGroupBtn');
-      const groupNote = document.getElementById('groupNote');
-      if (GROUP_WA_URL) {
-        groupBtn.href = GROUP_WA_URL;
-        groupNote.textContent = '';
-      } else {
-        groupBtn.href = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(
-          `Halo Ms. Laeli, saya (${data.namaOrtu}) sudah mendaftar PPDB untuk ${data.namaAnak}. Mohon link grup WhatsApp SPMB. Terima kasih. 🙏`
-        )}`;
-        groupNote.textContent = 'Catatan: link grup resmi menyusul — tombol ini meminta link grup via admin.';
-      }
+      document.getElementById('waGroupBtn').href = GROUP_WA_URL;
+      document.getElementById('groupNote').textContent = '';
 
       document.getElementById('successSummary').innerHTML =
         `👶 <strong>${data.namaAnak}</strong> • 🏫 ${data.program}<br>👕 Seragam: <strong>${data.ukuran}</strong> • 📎 Bukti: ${data.buktiName}${data.fotoName ? ' • 📷 Foto: ' + data.fotoName : ''}`;
