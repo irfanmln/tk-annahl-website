@@ -201,8 +201,8 @@
       { src:'assets/K2_9.webp', cat:'k2', caption:'Kegiatan K2' },
 
       // OUTDOOR
-      { src:'assets/K1_A_Gymnastic_Activity.webp', cat:'outdoor', caption:'Senam & Olahraga K1' },
-      { src:'assets/K1_B_Outdoor_Activity.webp',   cat:'outdoor', caption:'Aktivitas Outdoor K1' },
+      { src:'assets/K1_A_Gymnastic_Activity.webp', cat:'outdoor', sub:'outing-class', caption:'Senam & Olahraga K1' },
+      { src:'assets/K1_B_Outdoor_Activity.webp',   cat:'outdoor', sub:'outing-class', caption:'Aktivitas Outdoor K1' },
 
       // PROGRAM
       { src:'assets/Toddler.webp', cat:'program', caption:'Kelas Toddler – An-Najma' },
@@ -313,7 +313,7 @@
       const wrap = document.getElementById('subFilterWrap');
       const subs = SUBS[activeCat];
       if (!subs) { wrap.style.display = 'none'; wrap.innerHTML = ''; return; }
-      const allLabel = activeCat === 'outdoor' ? '🌳 Semua Outdoor' : '🏫 Semua Penunjang';
+      const allLabel = activeCat === 'outdoor' ? '🌳 Semua Foto Outdoor' : '🏫 Semua Foto Kegiatan Penunjang';
       wrap.style.display = 'flex';
       wrap.innerHTML =
         `<button class="filter-btn${activeSub === '' ? ' active' : ''}" onclick="subFilter('',this)">${allLabel}</button>` +
