@@ -75,16 +75,16 @@
           <li>🧳 Study tour</li>
           <li>👨‍👩‍👧‍👦 Family gathering</li>
         </ul>
-        <p style="font-size:12px;color:var(--text-light);margin-top:12px">Gunakan filter <strong>🌳 Outdoor</strong> di bawah untuk melihat semua foto kegiatan luar sekolah.</p>
+        <p style="font-size:12px;color:var(--text-light);margin-top:12px">Klik filter <strong>🌳 Outdoor</strong> di bawah, lalu pilih sub-kegiatan: Field Trip, Outing Class, Study Tour, atau Family Gathering.</p>
       </div>
       <div style="background:white;border-radius:18px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,0.07)">
-        <h4 style="font-family:'Baloo 2',cursive;font-size:18px;font-weight:800;color:var(--orange-dark);margin-bottom:12px">🏫 Program Penunjang di Sekolah</h4>
+        <h4 style="font-family:'Baloo 2',cursive;font-size:18px;font-weight:800;color:var(--orange-dark);margin-bottom:12px">🏫 Kegiatan Penunjang di Sekolah</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--text)">
           <li>🏊 Berenang</li>
           <li>🕌 PHBI (Peringatan Hari Besar Islam)</li>
           <li>🇮🇩 Hari Nasional</li>
         </ul>
-        <p style="font-size:12px;color:var(--text-light);margin-top:12px">Gunakan filter <strong>🏫 Program</strong> di bawah untuk melihat foto kegiatan penunjang pembelajaran.</p>
+        <p style="font-size:12px;color:var(--text-light);margin-top:12px">Klik filter <strong>🏫 Kegiatan Penunjang</strong> di bawah, lalu pilih sub-kegiatan: Berenang, PHBI, atau Hari Nasional.</p>
       </div>
     </div>
   </div></section>
@@ -92,15 +92,18 @@
   <section style="background:white"><div class="container">
 
     <!-- Filter -->
-    <div class="filter-wrap">
+    <div class="filter-wrap" id="mainFilter">
       <button class="filter-btn active" onclick="filterGallery('all',this)">🖼️ Semua Foto</button>
       <button class="filter-btn" onclick="filterGallery('toddler',this)">⭐ Toddler</button>
       <button class="filter-btn" onclick="filterGallery('nursery',this)">🌙 Nursery</button>
       <button class="filter-btn" onclick="filterGallery('k1',this)">☀️ K1</button>
       <button class="filter-btn" onclick="filterGallery('k2',this)">☁️ K2</button>
       <button class="filter-btn" onclick="filterGallery('outdoor',this)">🌳 Outdoor</button>
-      <button class="filter-btn" onclick="filterGallery('program',this)">🏫 Program</button>
+      <button class="filter-btn" onclick="filterGallery('program',this)">🏫 Kegiatan Penunjang</button>
     </div>
+
+    <!-- Sub-filter (muncul saat Outdoor / Kegiatan Penunjang aktif) -->
+    <div class="filter-wrap" id="subFilterWrap" style="display:none;margin-top:-22px"></div>
 
     <!-- Gallery Grid (diisi JS) -->
     <div class="gallery-grid" id="galleryGrid"></div>
@@ -220,6 +223,7 @@
         const baru = data.photos.map(p => ({
           src: `assets/galeri/${p.category}/${p.filename}`,
           cat: p.category,
+          sub: p.sub || '',
           caption: p.caption || p.filename
         }));
         // Foto baru tampil di depan
@@ -231,15 +235,35 @@
     // =============================================
     // ENGINE
     // =============================================
+    // Sub-kategori resmi (harus sama dengan api/galeri.js & admin.html)
+    const SUBS = {
+      outdoor: [
+        { slug:'field-trip',       label:'🚌 Field Trip' },
+        { slug:'outing-class',      label:'🏫 Outing Class' },
+        { slug:'study-tour',        label:'🧳 Study Tour' },
+        { slug:'family-gathering',  label:'👨‍👩‍👧 Family Gathering' },
+      ],
+      program: [
+        { slug:'berenang',      label:'🏊 Berenang' },
+        { slug:'phbi',          label:'🕌 PHBI' },
+        { slug:'hari-nasional', label:'🇮🇩 Hari Nasional' },
+      ]
+    };
+    const SUB_LABEL = {};
+    Object.values(SUBS).flat().forEach(s => SUB_LABEL[s.slug] = s.label);
+
     const PER_PAGE = 18;
     let activeCat = 'all';
+    let activeSub = '';
     let shownCount = 0;
     let filtered = [];
     let lbIdx = 0;
     let lbPool = [];
 
     function getFiltered() {
-      return activeCat === 'all' ? PHOTOS : PHOTOS.filter(p => p.cat === activeCat);
+      let list = activeCat === 'all' ? PHOTOS : PHOTOS.filter(p => p.cat === activeCat);
+      if (activeSub) list = list.filter(p => (p.sub || '') === activeSub);
+      return list;
     }
 
     function makeItem(photo, idx) {
@@ -272,14 +296,34 @@
       empty.style.display  = filtered.length === 0 ? 'block' : 'none';
       wrap.style.display   = hasMore ? 'block' : 'none';
       count.textContent    = filtered.length > 0
-        ? `Menampilkan ${shownCount} dari ${filtered.length} foto`
+        ? `Menampilkan ${shownCount} dari ${filtered.length} foto${activeSub && SUB_LABEL[activeSub] ? ' • ' + SUB_LABEL[activeSub] : ''}`
         : '';
     }
 
     function filterGallery(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('#mainFilter .filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       activeCat = cat;
+      activeSub = '';
+      renderSubFilter();
+      renderBatch(true);
+    }
+
+    function renderSubFilter() {
+      const wrap = document.getElementById('subFilterWrap');
+      const subs = SUBS[activeCat];
+      if (!subs) { wrap.style.display = 'none'; wrap.innerHTML = ''; return; }
+      const allLabel = activeCat === 'outdoor' ? '🌳 Semua Outdoor' : '🏫 Semua Penunjang';
+      wrap.style.display = 'flex';
+      wrap.innerHTML =
+        `<button class="filter-btn${activeSub === '' ? ' active' : ''}" onclick="subFilter('',this)">${allLabel}</button>` +
+        subs.map(s => `<button class="filter-btn${activeSub === s.slug ? ' active' : ''}" onclick="subFilter('${s.slug}',this)">${s.label}</button>`).join('');
+    }
+
+    function subFilter(sub, btn) {
+      document.querySelectorAll('#subFilterWrap .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeSub = sub;
       renderBatch(true);
     }
 

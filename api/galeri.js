@@ -3,6 +3,12 @@ const GITHUB_REPO = 'tk-annahl-website';
 const BRANCH = 'main';
 const MANIFEST_PATH = 'assets/galeri/manifest.json';
 
+// Sub-kategori resmi per kategori induk (harus sama dengan galeri.html & admin.html)
+const VALID_SUBS = {
+  outdoor: ['field-trip', 'outing-class', 'study-tour', 'family-gathering'],
+  program: ['berenang', 'phbi', 'hari-nasional']
+};
+
 async function ghRequest(path, method = 'GET', body = null) {
   const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`;
   const opts = {
@@ -62,10 +68,12 @@ export default async function handler(req, res) {
     }
 
     if (req.method === 'POST') {
-      const { category, filename, content, caption } = req.body || {};
+      const { category, filename, content, caption, sub } = req.body || {};
       if (!category || !filename || !content) {
         return res.status(400).json({ error: 'Missing fields' });
       }
+      // Hanya simpan sub yang valid untuk kategorinya; selain itu kosongkan
+      const cleanSub = VALID_SUBS[category]?.includes(sub) ? sub : '';
       const filePath = `assets/galeri/${category}/${filename}`;
       await ghRequest(filePath, 'PUT', {
         message: `feat: tambah foto galeri ${category}/${filename}`,
@@ -76,6 +84,7 @@ export default async function handler(req, res) {
         category,
         filename,
         caption: caption || '',
+        sub: cleanSub,
         uploaded_at: new Date().toISOString()
       });
       await saveManifest(manifest.photos, manifest.sha);
