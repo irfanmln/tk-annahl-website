@@ -388,6 +388,18 @@
 
   <div id="footer"></div>
   <script src="main.js"></script>
-  <script>renderNavbar(); renderFooter();</script>
+  <script>renderNavbar(); renderFooter();
+    // Selaraskan status buka/tutup PPDB (lihat PPDB_REOPEN_AT di main.js)
+    (function gateIndex() {
+      try {
+        if (typeof isPpdbOpen !== 'function' || isPpdbOpen()) return;
+        var badge = document.querySelector('.hero-badge');
+        if (badge) badge.textContent = '🔒 PPDB Dibuka 27 Sept • 22.00';
+        var h2 = document.querySelector('.cta-section h2');
+        if (h2) h2.textContent = 'PPDB Dibuka 27 September 2026';
+        var p = document.querySelector('.cta-section p');
+        if (p) p.textContent = 'Pendaftaran online dibuka pukul 22.00 WIB. Lihat rincian biaya dan siapkan berkas Anda dari sekarang.';
+      } catch (_) {}
+    })();</script>
 </body>
 </html>

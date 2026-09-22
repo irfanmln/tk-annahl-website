@@ -259,6 +259,19 @@ async function supabaseUpload(bucket, path, blob, contentType = 'image/webp') {
   return `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${path}`;
 }
 
+// ===== PPDB TIME GATE =====
+// Pendaftaran "dikunci" sampai waktu ini, lalu terbuka OTOMATIS.
+// Format: tanggal ISO + zona WIB. Untuk mengunci lagi / mengubah jadwal,
+// cukup ubah nilai di bawah lalu push.
+const PPDB_REOPEN_AT = '2026-09-27T22:00:00+07:00';
+function isPpdbOpen() {
+  try {
+    return new Date() >= new Date(PPDB_REOPEN_AT);
+  } catch (_) {
+    return true;
+  }
+}
+
 // ===== TOAST =====
 function showToast(msg, type = 'success') {
   const toast = document.createElement('div');
