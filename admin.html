@@ -179,6 +179,10 @@
           <div class="stat-card"><div class="stat-icon" style="background:#FFEBEE">❌</div><div><div class="stat-num" id="stat-ditolak">–</div><div class="stat-lbl">Ditolak</div></div></div>
         </div>
         <div class="card">
+          <div class="card-title">📊 Ringkasan per Kelas</div>
+          <div id="kelas-table"><div class="empty">⏳ Memuat data...</div></div>
+        </div>
+        <div class="card">
           <div class="card-title">📝 Pendaftar Terbaru</div>
           <div id="dashboard-table"><div class="empty">⏳ Memuat data...</div></div>
         </div>
@@ -527,6 +531,48 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
 }
 
+// Normalisasi nama program (lama & baru) ke kelas kanonis
+function normKelas(program) {
+  const p = (program || '').toLowerCase();
+  if (p.includes('toddler')) return 'Toddler Non-Reguler';
+  if (p.includes('nursery')) return p.includes('non') ? 'Nursery Non-Reguler' : 'Nursery Reguler';
+  if (p.includes('k2') || p.includes('kindergarten 2') || p.includes('as-sahab')) return 'K2 Reguler';
+  if (p.includes('k1') || p.includes('kindergarten 1') || p.includes('as-syams')) return 'K1 Reguler';
+  return 'Lainnya';
+}
+
+function renderKelas(data) {
+  const order = ['Toddler Non-Reguler', 'Nursery Reguler', 'Nursery Non-Reguler', 'K1 Reguler', 'K2 Reguler'];
+  const agg = {};
+  order.forEach(k => agg[k] = { total: 0, pending: 0, diterima: 0, ditolak: 0 });
+  (data || []).forEach(r => {
+    const k = normKelas(r.program);
+    if (!agg[k]) agg[k] = { total: 0, pending: 0, diterima: 0, ditolak: 0 };
+    agg[k].total++;
+    if (r.status === 'pending') agg[k].pending++;
+    else if (r.status === 'diterima') agg[k].diterima++;
+    else if (r.status === 'ditolak') agg[k].ditolak++;
+  });
+  const rows = order.filter(k => agg[k].total > 0);
+  if (agg['Lainnya'] && agg['Lainnya'].total > 0) rows.push('Lainnya');
+  if (rows.length === 0) {
+    document.getElementById('kelas-table').innerHTML = '<div class="empty">📭 Belum ada data pendaftar.</div>';
+    return;
+  }
+  document.getElementById('kelas-table').innerHTML = `
+    <table>
+      <tr><th>Kelas</th><th>Total</th><th>Pending</th><th>Diterima</th><th>Ditolak</th></tr>
+      ${rows.map(k => `
+      <tr>
+        <td><b>${k}</b></td>
+        <td><b>${agg[k].total}</b></td>
+        <td><span class="badge pending">${agg[k].pending}</span></td>
+        <td><span class="badge diterima">${agg[k].diterima}</span></td>
+        <td><span class="badge ditolak">${agg[k].ditolak}</span></td>
+      </tr>`).join('')}
+    </table>`;
+}
+
 function renderTable(data, container) {
   if (!data || data.length === 0) {
     document.getElementById(container).innerHTML = '<div class="empty">📭 Belum ada data pendaftar.</div>';
@@ -565,6 +611,7 @@ async function loadDashboard() {
   document.getElementById('stat-diterima').textContent = data.filter(d => d.status === 'diterima').length;
   document.getElementById('stat-ditolak').textContent = data.filter(d => d.status === 'ditolak').length;
   document.getElementById('badge-count').textContent = data.filter(d => d.status === 'pending').length;
+  renderKelas(data);
   renderTable(data.slice(0, 5), 'dashboard-table');
 }
 
