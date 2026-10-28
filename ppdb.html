@@ -68,7 +68,7 @@
     <p>Daftarkan putra-putri Anda ke TK. PGRI An-Nahl! Tempat sangat terbatas untuk tahun ajaran 2027/2028</p>
     <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a href="#formulir" id="heroFormBtn" style="background:white;color:var(--orange-dark);padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px">📝 Isi Formulir</a>
-      <a href="#biaya" style="background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;border:2px solid rgba(255,255,255,0.5)">💰 Rincian Biaya</a>
+      <!-- <a href="#biaya" style="background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:800;font-size:15px;border:2px solid rgba(255,255,255,0.5)">💰 Rincian Biaya</a> -->
     </div>
   </div>
 
@@ -160,8 +160,10 @@
             <div class="step">
               <div class="step-num">1</div>
               <div class="step-content">
-                <h4>Isi Formulir Online & Bayar Uang Pendaftaran</h4>
-                <p>Mengisi formulir pendaftaran secara online dan membayar uang pendaftaran sebesar <strong>Rp 400.000,-</strong></p>
+                <h4>Isi Formulir Online</h4>
+                <!-- <h4>Isi Formulir Online & Bayar Uang Pendaftaran</h4> -->
+                <p>Mengisi formulir pendaftaran secara online.</p>
+                <!-- <p>Mengisi formulir pendaftaran secara online dan membayar uang pendaftaran sebesar <strong>Rp 400.000,-</strong></p> -->
               </div>
             </div>
             <div class="step">
@@ -252,7 +254,8 @@
             <input type="tel" id="noWa" placeholder="Contoh: 08123456789" required/>
           </div>
           <div class="form-group">
-            <label>Bukti Pembayaran (Rp 400.000,-) *</label>
+            <label>Bukti Pembayaran *</label>
+            <!-- <label>Bukti Pembayaran (Rp 400.000,-) *</label> -->
             <input type="file" id="bukti" accept="image/*" required onchange="previewFile(this,'buktiPreview')"/>
             <p style="font-size:12px;color:var(--text-light);margin-top:6px">Foto/screenshot bukti transfer. Maks 8MB, otomatis dikompres.</p>
             <img id="buktiPreview" alt="" style="display:none;max-width:100%;max-height:220px;border-radius:12px;margin-top:8px;border:2px solid #FFE0A0"/>
@@ -288,7 +291,8 @@
           <div style="text-align:center;padding:16px 0 24px">
             <div style="font-size:64px;margin-bottom:16px">🔒</div>
             <h3 style="margin-bottom:10px">Pendaftaran Dibuka 27 September 2026</h3>
-            <p style="color:var(--text-light);font-size:15px;line-height:1.7;margin-bottom:24px">Formulir pendaftaran online dibuka pada<br><strong>27 September 2026 pukul 22.00 WIB</strong>.<br><br>Sambil menunggu, Anda bisa melihat <a href="#biaya" style="color:var(--orange-dark);font-weight:800">rincian biaya</a> dan menyiapkan berkas persyaratan.</p>
+            <p style="color:var(--text-light);font-size:15px;line-height:1.7;margin-bottom:24px">Formulir pendaftaran online dibuka pada<br><strong>27 September 2026 pukul 22.00 WIB</strong>.<br><br>Sambil menunggu, Anda bisa menyiapkan berkas persyaratan.</p>
+            <!-- <p style="color:var(--text-light);font-size:15px;line-height:1.7;margin-bottom:24px">Formulir pendaftaran online dibuka pada<br><strong>27 September 2026 pukul 22.00 WIB</strong>.<br><br>Sambil menunggu, Anda bisa melihat <a href="#biaya" style="color:var(--orange-dark);font-weight:800">rincian biaya</a> dan menyiapkan berkas persyaratan.</p> -->
             <a href="https://wa.me/6281296282841?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20PPDB%202027%2F2028%20TK.%20PGRI%20An-Nahl." target="_blank" style="display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:white;padding:14px 32px;border-radius:14px;text-decoration:none;font-weight:800;font-size:16px;width:100%;box-sizing:border-box">💬 Tanya via WhatsApp</a>
           </div>
         </div>
@@ -313,6 +317,7 @@
     </div>
   </section>
 
+  <!-- SECTION BIAYA (DISEMBUNYIKAN SEMENTARA)
   <section style="background:linear-gradient(135deg,#FFF8E7,#FFE8B0)" id="biaya">
     <div class="container">
       <div class="section-header">
@@ -350,6 +355,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <div id="footer"></div>
   <script src="main.js"></script>
@@ -417,7 +423,7 @@
         `${E.phone} WA: ${data.noWa}`,
       ];
       if (data.pesan) lines.push(`${E.chat} Pesan: ${data.pesan}`);
-      lines.push('', 'Bukti pembayaran Rp 400.000 sudah saya upload di formulir. Terima kasih. ' + E.pray);
+      lines.push('', 'Bukti pembayaran sudah saya upload di formulir. Terima kasih. ' + E.pray);
       document.getElementById('waConfirmBtn').href =
         `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(lines.join('\n'))}`;
 
@@ -540,7 +546,7 @@
         const tag = document.querySelector('.page-hero .page-hero-tag');
         if (tag) tag.textContent = '🔒 Dibuka 27 Sept • 22.00 WIB';
         const sub = document.querySelector('.page-hero p');
-        if (sub) sub.innerHTML = 'Pendaftaran online dibuka kembali pada <strong>27 September 2026 pukul 22.00 WIB</strong>. Lihat rincian biaya & siapkan berkas Anda.';
+        if (sub) sub.innerHTML = 'Pendaftaran online dibuka kembali pada <strong>27 September 2026 pukul 22.00 WIB</strong>. Siapkan berkas Anda.';
         const hb = document.getElementById('heroFormBtn');
         if (hb) hb.style.display = 'none';
       } catch (_) {}
