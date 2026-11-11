@@ -254,8 +254,8 @@
             <label>Bukti Pembayaran (Rp 400.000,-) *</label>
             <div style="background:#FFF8E7;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:13px;border:1px solid #FFE0A0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
               <div>
-                <span style="font-size:12px;color:var(--text-light);display:block">Transfer ke Rekening BCA:</span>
-                <span style="font-weight:800;font-size:15px;color:var(--text)">0383046685</span> <span style="color:var(--text-light);font-size:12px">(a.n. Azmy Fitriyani)</span>
+                <span style="font-size:12px;color:var(--text-light);display:block">Transfer ke Rekening Bank Muamalat:</span>
+                <span style="font-weight:800;font-size:15px;color:var(--text)">1610044312</span> <span style="color:var(--text-light);font-size:12px">(a.n. Azmy Fitriyani)</span>
               </div>
               <button type="button" onclick="salinRek()" style="background:white;border:1.5px solid var(--orange-dark);color:var(--orange-dark);padding:5px 12px;border-radius:14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;cursor:pointer">📋 Salin Rekening</button>
             </div>
@@ -329,7 +329,7 @@
       <div class="form-card" style="max-width:640px;margin:0 auto;text-align:center">
         <div style="background:#FFF8E7;border-radius:14px;padding:22px;border:1.5px solid #FFE0A0">
           <div style="font-size:13px;color:var(--text-light);font-weight:700;margin-bottom:6px">🏦 No. Rekening Transfer Biaya Pendaftaran</div>
-          <div style="font-size:24px;font-weight:800;color:var(--text);letter-spacing:1px;font-family:'Baloo 2',cursive">BCA 0383046685</div>
+          <div style="font-size:24px;font-weight:800;color:var(--text);letter-spacing:1px;font-family:'Baloo 2',cursive">Bank Muamalat 1610044312</div>
           <div style="font-size:14px;margin-bottom:14px;color:var(--text-light)">a.n. Azmy Fitriyani • Nominal: <strong style="color:var(--orange-dark)">Rp 400.000,-</strong></div>
           <button type="button" onclick="salinRek()" style="background:white;border:2px solid var(--orange-dark);color:var(--orange-dark);padding:8px 22px;border-radius:24px;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;cursor:pointer">📋 Salin No. Rekening</button>
         </div>
@@ -520,7 +520,7 @@
     }
 
     function salinRek() {
-      const no = '0383046685';
+      const no = '1610044312';
       const done = () => showToast('No. rekening tersalin! Silakan paste di m-banking. 📋');
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(no).then(done).catch(() => fallbackSalin(no, done));
@@ -537,7 +537,7 @@
       document.body.appendChild(ta);
       ta.select();
       try { document.execCommand('copy'); done(); }
-      catch (_) { showToast('Gagal menyalin otomatis. Nomor: 0383046685', 'error'); }
+      catch (_) { showToast('Gagal menyalin otomatis. Nomor: 1610044312', 'error'); }
       document.body.removeChild(ta);
     }
 
